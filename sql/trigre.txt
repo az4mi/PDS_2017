@@ -1,0 +1,6 @@
+CREATE OR REPLACE TRIGGER id_spolocnost BEFORE INSERT ON spolocnost
+FOR EACH ROW
+BEGIN
+    SELECT seq_id_spolocnost.nextval INTO :new.id_spolocnosti FROM DUAL;
+END;
+/

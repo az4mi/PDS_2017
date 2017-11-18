@@ -11,8 +11,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,16 +25,21 @@ import java.util.logging.Logger;
  */
 public class DBPripojenie {
 
+    private ArrayList<Integer> kodyTypu;
+    private String connString = "jdbc:oracle:thin:@localhost:1521:xe";
+    private String meno ="polnik2";
+    private String heslo = "9504208252";
+    
     public DBPripojenie() throws ClassNotFoundException, SQLException {
         Class.forName("oracle.jdbc.driver.OracleDriver");
+        kodyTypu = new ArrayList<>(100);
         naplnTypyVagonov();
+        //naplnVozne(100);
     }
-    
-    
-    
+     
     public void naplnTypyVagonov() throws SQLException {
         Connection connection = null;
-        connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","polnik2","9504208252");
+        connection = DriverManager.getConnection(connString,meno,heslo);
         BufferedReader br;
         try {
             br = new BufferedReader(new FileReader("typy.txt"));
@@ -41,6 +49,7 @@ public class DBPripojenie {
                     String[] splitedLine = line.split(" ");
                     String rad = splitedLine[0];
                     int kod = Integer.parseInt(splitedLine[1]);
+                    kodyTypu.add(kod);
                     System.out.println(kod);
                     int interabilita = Integer.parseInt(splitedLine[2]);
                     double dlzka = Double.parseDouble(splitedLine[3].replaceAll(",", "."));
@@ -79,6 +88,72 @@ public class DBPripojenie {
         }
         finally {
             connection.close();
+        }
+    }
+    
+    public void naplnVozne( int pocet) {
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(connString,meno,heslo);
+            /*Statement stmt = connection.createStatement();
+            String sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('AWT Rail SK')";
+            stmt.executeUpdate(sql);
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('BF Logistics')";
+            stmt.executeUpdate(sql);
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('Deutsche Bahn')";
+            stmt.executeUpdate(sql);
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('Express Rail')";
+            stmt.executeUpdate(sql);
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('U.S. Steel Kosice')";
+            stmt.executeUpdate(sql);
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('UNIPETROL DOPRAVA')";
+            stmt.executeUpdate(sql);
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('TSS GRADE')";
+            stmt.executeUpdate(sql);
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('SLOV-VAGON')";
+            stmt.executeUpdate(sql);
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('Petrolsped')";
+            stmt.executeUpdate(sql);
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('OHL ŽS')";
+            stmt.executeUpdate(sql);*/
+            Statement stmt = connection.createStatement();
+            String sql = "SELECT id_spolocnosti FROM Spolocnost";
+            ResultSet rs = stmt.executeQuery(sql);
+            ArrayList<Integer> spolocnosti = new ArrayList<>(10);
+            while(rs.next()){
+                int id = rs.getInt("id_spolocnosti");
+                spolocnosti.add(id);
+            }
+            ArrayList<Integer> typy = new ArrayList<>(100);
+            sql = "SELECT kod FROM TYP_VOZNA";
+            rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                int kod = rs.getInt("kod");
+                typy.add(kod);
+            }
+            Random rand = new Random();
+            for (int i = 0; i < typy.size(); i++) {
+                int kod = typy.get(i);         
+                for (int j = 0; j < pocet; j++) {
+                    int idSpol = rand.nextInt(spolocnosti.size());
+                    double prst = rand.nextDouble();
+                    if( prst < 0.03 ) {
+                        sql = "INSERT INTO vozen VALUES(" + (j + 1) + "," + kod + "," + "'N'" + "," + spolocnosti.get(idSpol) + ")";
+                    } else {
+                        sql = "INSERT INTO vozen VALUES(" + (j + 1) + "," + kod + "," + "'A'" + "," + spolocnosti.get(idSpol) + ")";
+                    }
+                    stmt.executeUpdate(sql);
+                }
+            }      
+        } catch (SQLException ex) {
+            Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 }
