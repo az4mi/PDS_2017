@@ -1,0 +1,102 @@
+Tdgns 0147 21 9,64 14,50 25,50 - - - - 38,00 vısypnı vozeò na prepravu obilnín
+Tbis 0715 21 14,00 14,47 25,50 12,77 2,67 34,00 2,26 86,00 odsuvná strecha, posuvné steny, dvere 4,35 x 2,10, drevená podlaha
+Tds 0730 21 9,64 12,80 27,00 - - - - 38,00 vısypnı vozeò na prepravu hnojív
+Tds 0732 21 9,64 12,60 27,00 - - - - 48,00 vısypnı vozeò na prepravu hnojív
+Tms-u 0756 21 10,00 13,50 26,50 8,76 2,76 24,00 1,62 39,00 prekrytie plachtou, drevená podlaha
+Tams 0807 31 14,04 23,00 56,50 12,80 2,76 36,00 2,00 72,00 Eas s rolovacou plachtovou strechou, kovová podlaha
+Taes 0811 31 16,52 24,00 55,50 15,28 2,60 40,00 2,38 95,00 posuvná plachtová strecha - podvozky Y25
+Taes 0814 31 16,52 24,00 50,00 15,28 2,60 40,00 2,38 95,00 posuvná plachtová strecha - podvozky 26.2.8
+Taems 0851 31 14,04 22,50 57,50 12,30 2,62 32,50 2,23 72,50 otvárate¾ná strecha, na prepravu akého tovaru, drevená podlaha
+Gbs 1502 21 14,02 15,50 24,50 12,70 2,60 33,00 2,40 80,00
+Gbgkks 1533 21 14,02 15,50 24,50 12,73 2,63 33,00 2,40 88,00
+Gbkks 1537 21 14,02 14,80 25,00 12,73 2,63 33,00 2,40 88,00
+Gbkkqs 1538 42 14,02 15,00 25,00 12,73 2,63 33,00 2,40 88,00
+Gbqs 1542 40 14,02 14,50 25,50 12,73 2,63 33,00 2,40 88,00
+Gbs 1543 21 14,02 15,50 24,50 12,70 2,60 33,00 2,40 88,00
+Gbgkks 1547 21 14,02 15,50 24,50 12,73 2,63 33,00 2,40 88,00
+Gbgs 1573 21 14,02 15,50 21,00 12,70 2,60 33,00 2,40 80,00 dvere 2,5x2,15, 2 stropné otvory priemer 0,6 m
+Gags 1950 31 16,52 22,60 57,00 15,28 2,60 40,00 2,50 100,00 preprava priemyselnej soli
+Gags 1960 31 16,52 23,50 56,50 15,20 2,60 40,00 2,50 100,00 8 vetracích otvorov, vısypné klapky na dverách
+Gags 1990 31 16,52 23,50 56,50 15,28 2,60 40,00 2,50 100,00 8 vetracích otvorov, na prepravu obilia a potravín vısypné klapky na dverách
+Hbis 2245 21 14,02 15,50 24,50 12,76 2,90 37,00 2,07 98,00 plachtové odsuvné steny 6,25 x 2,60, 35 paliet
+Hbis 2250 21 14,02 14,00 26,00 12,70 2,67 34,00 2,67 76,00 kovové odsuvné steny 6,23 x 2,07, 31 paliet
+Hbbillns 2457 21 15,50 16,00 25,00 14,24 2,95 42,00 2,90 114,60 odsuvné steny 7,43x2,85; posuvné prieèky, 40 paliet
+Hbbins 2469 21 15,50 15,00 26,00 14,26 2,95 42,00 2,90 114,60 ve¾kopriestorovı vozeò, odsúvate¾né steny 7,43 x 2,85, 40 paliet
+Hadgs 2600 31 16,52 25,00 47,00 15,28 2,60 40,00 2,40 95,00 podlahové vısypky, na zrniny, 3 strešné otvory s priemerom 0,6 m
+Hadgs 2602 31 16,52 25,00 47,00 15,28 2,60 40,00 2,40 95,00 podvozky Y25, podlah. vısypky, na zrniny, 3 strešné otv. s priem. 0,6 m
+Has 2700 31 16,52 23,46 48,50 15,28 2,60 40,00 2,38 95,00 odsuvná kovová strecha
+Habis 2752 31 21,45 27,50 52,00 19,30 2,52 50,00 2,79 128,00 ve¾kopriestorovı vozeò, 4 otvárate¾né steny 4,90 x 2,20, 48 paliet
+Habbins 2770 31 23,26 26,50 55,50 22,00 2,84 62,40 2,80 167,40 ve¾kopriestorovı vozeò
+Habbillns 2780 31 23,26 28,80 53,20 21,20 2,84 60,30 2,80 161,40 ve¾kopriestorovı vozeò, odsúvate¾né steny, posuvne prieèky, 61 paliet
+Heirrs 2918 41 42,06 47,30 72,50 12,76 2,90 37,0 - 98,0 napevno spriahnutá trojièka, 3 x 35 paliet
+Hirrs 2920 41 28,04 30,75 49,00 12,76 2,90 37,0 - 98,0 napevno spriahnutá dvojièka, 2 x 35 paliet
+Kns 3300 21 13,86 14,01 30,50 12,52 2,82 35,30 - -
+Kbs 3331 21 13,90 12,50 27,50 12,50 2,75 34,60 - -
+Kbkks 3415 41 16,24 13,00 23,00 14,94 2,82 42,00 - -
+Kbkks 3414 41 16,24 10,90 25,00 14,90 2,83 42,00 - - na prepravu 40 stopovıch kontajnerov
+Rilhs 3536 31 19,90 25,20 54,50 18,53 2,66 49,30 2,40 104,00 plošinovı vozeò prekrytı odsúvate¾nou plachtou, upev. prvky
+Rils 3537 31 19,90 24,00 56,00 18,53 2,66 49,30 2,40 99,00 plošinovı vozeò prekrytı odsúvate¾nou plachtou
+Rils 3540 31 19,90 25,00 55,00 18,50 2,69 49,30 2,92 100,00 plošinovı vozeò prekrytı odsúvate¾nou plachtou, s klanicami
+Rilns 3552 31 19,90 26,00 56,00 18,50 2,74 51,00 2,40 104,00 plošinovı vozeò prekrytı odsúvate¾nou plachtou, s klanicami
+Res 3936 31 19,90 25,00 55,00 18,50 2,64 49,00 - - sklopné klanice, vıška 1,30 m
+Res 3941 81 20,04 25,50 46,50 18,68 2,78 51,93 - - vıška klaníc 1,43 m
+Res 3945 31 19,90 24,00 56,00 18,53 2,66 49,28 - - sklopné klanice, vıška 1,30 m
+Res 3946 31 20,04 24,95 55,00 18,68 2,78 51,93 - - zosilnené klanice na prepravu dreva, bez boènıch stien
+Res 3947 31 20,04 25,00 55,00 18,68 2,78 51,93 - - zosilnené klanice na prepravu dreva, boèné steny
+Lcmp 4018 42 11,24 10,50 29,50 10,00 2,81 28,10 - - oplenovı vozeò
+Laas 4305 21 27,72 26,20 53,00 12,52 2,74 34,3 - - drevená podlaha, 4-nápravovı dvojèlánkovı nákladnı vozeò
+Lgs 4425 21 14,02 10,80 29,20 12,780 2,820 - - - na prepravu 40 stopovıch ISO kontajnerov, bez podlahy (rošt)
+Sdgnss 4511 31 19,74 26,50 55,50 18,500 2,598 - - - košovı vozeò - kôš je odnímate¾nı, obil. nadstavba
+Sgs 4540 31 20,04 24,00 48,00 18,68 2,78 51,93 - - vozeò pre VK, drevená podlaha
+Sgnss 4575 31 19,74 19,80 62,20 18,500 2,438 44,00 2,591 - pre VK a vımenné nadstavby, bez podlahy (rošt)
+Shimmns 4668 31 12,04 21,50 60,40 - - - - - na prepravu zvitkov plechov na leato s 5 lôkami
+Scmms 4708 31 15,24 24,50 47,50 14,00 3,10 43,40 - - oplen
+Sps 4717 31 20,04 26,70 53,00 18,68 2,78 51,93 - - rekonštruovanı vozeò, podvozky Y25
+Sps 4720 31 20,04 26,50 53,50 18,44 2,78 51,26 - - rekonštruovanı vozeò so samoupínacím zariadením, podvozky Y25
+Smmps 4722 31 15,24 24,00 48,00 14,00 3,10 43,40 - -
+Snps 4723 31 20,84 24,00 57,00 19,60 2,73 - - 112,00 9 párov klaníc 31,5 kNm, samoupínacie zariadenie
+Shimms 4771 31 14,04 25,00 55,00 - - - - - na prepravu zvitkov plechov na leato s 5 lôkami
+Shimmns 4777 31 12,56 23,70 58,30 - - - - - na prepravu zvitkov plechov na leato so 7 lôkami
+Sammp 4821 82 15,20 27,40 81,00 14,00 3,10 43,40 - - + max. rıchlos 80 km/h
+Sammp 4822 82 15,24 27,40 81,00 14,00 3,10 43,40 - - + max. rıchlos 80 km/h
+Sggmrss 4962 31 29,59 29,00 94,00 13,80 2,60 - - - vozeò na prepravu 20´, 30´, 40´, 45´ ISO kontajnerov a vımennıch nadstavieb
+Eaos 5301 31 14,04 21,50 58,50 12,80 2,76 35,50 2.03 71,50 pevné èelné steny
+Eanos 5375 31 15,74 24,40 57,60 14,49 2,72 39,40 2,10 82,50 kovová podlaha
+Eanos 5376 31 15,74 24,90 57,10 14,49 2,72 39,40 2,03 82,70 kombin. podlaha (drevo/kov), 4 dvojité boèné dvere, ve¾kopriestorovı vozeò
+Eas 5420 31 14,04 22,70 57,00 12,80 2,76 36,00 2,03 72,00
+Es 5540 21 10,00 12,80 26,50 8,76 2,76 24,00 1,50 36,00 drevená podlaha, dvojité boèné dvere
+Es 5541 21 10,00 13,00 27,00 8,76 2,76 24,00 1,50 36,00 kombin. podlaha (drevo/kov), dvojité boèné dvere
+Eamos 5941 31 12,54 20,80 61,00 11,29 2,72 30,70 2,10 64,50 kovová podlaha
+Eas 5947 31 14,04 22,70 57,00 12,80 2,76 36,00 2,03 72,00 kombinovaná a kovová podlaha
+Eas 5948 81 14,04 22,70 57,00 12,80 2,76 36,00 2,03 72,00 preprava ruda - uhlie
+Eas 5950 31 14,04 22,70 57,00 12,80 2,76 36,00 2,03 72,00 kombinovaná a kovová podlaha
+Eas 5968 31 14,04 23,00 57,00 12,80 2,76 36,00 2,03 72,00 kovová podlaha
+Eas 5970 31 14,04 23,50 56,50 12,80 2,76 36,00 2,03 72,00 kovová podlaha
+Fals 6650 31 12,54 22,85 56,50 - - - - 75,00 vısypnı vozeò, 4 klapky
+Falls 6675 82 13,50 26,80 45,00 - - - - 75,00 rad 6676 podvozok 26-2.8, rad 6677 s podvozkami Y25 Lsd1
+Falls 6682 82 13,50 26,80 45,00 - - - - 75,00
+Falns 6633 31 13,50 26,50 55,50 - - - - 83,00
+Faccs 6992 31 12,74 21,80 50,00 - - - - 38,00 vyèlenené na prepravu peliet
+Faccs 6994 82 12,74 23,50 48,50 - - - - 36,00 vısypnı vozeò, 4 násypné otvory 0,5x1,8 m
+Faccs 6996 31 12,74 23,00 49,00 - - - - 38,00 vısypnı vozeò, 4 klapky
+Zkks 7400 21 9,54 11,60 24,50 - - - - 24,00 hliníkovı kotol
+Zekks 7449 21 9,54 12,00 24,00 - - - - 23,30 hliníkovı kotol, parné vykurovanie
+Zas 7850 31 13,24 23,20 48,50 - - - - 61,00 oce¾ovı kotol
+Zas 7851 31 13,35 22,70 49,00 - - - - 63,00 oce¾ovı kotol
+Zaes 7874 31 12,64 26,00 54,00 - - - - 61,00 na metanol, oce¾ovı kotol, parné vykurovanie
+Zaes 7880 31 13,24 26,00 46,00 - - - - 60,00 oce¾ovı kotol, parné vykurovanie
+Zaes 7882 31 13,65 25,00 47,00 - - - - 61,60 oce¾ovı kotol, parné vykurovanie
+Zaes 7981 31 12,79 27,00 45,00 - - - - 40,00 izolovanı oce¾ovı kotol, parné vykurovanie
+Zaes 7983 31 12,64 26,40 53,50 - - - - 52,00 izolovanı oce¾ovı kotol, parné vykurovanie
+Zaes 7986 31 12,64 26,00 54,00 - - - - 61,00 oce¾ovı kotol, parné vykurovanie
+Zaces 7987 31 12,64 26,00 54,00 - - - - 61,30 na metanol, oce¾ovı kotol, parné vykurovanie
+Upps 9141 21 9,64 13,50 26,50 - - - - 40,00 vısypnı vozeò na prepravu hnojív, 2 nás. otvory priemeru 0,6 m
+Uadds 9348 31 12,74 23,00 49,00 - - - - 36,00 vısypnı vozeò na prepravu hnojív, 3 nás. otvory priemeru 0,6 m
+Uadgs 9329 31 16,52 26,00 54,00 - - - - 80,00 vısypnı vozeò na prepravu obilnín; 5 násypnıch otvorov priemeru 0,6 m
+Uagps 9332 31 14,84 23,50 57,70 - - - - 75,00 vısypnı vozeò na prepravu obilnín
+Ux 9613 82 14,84 23,50 - - - - - - spojovací voze,ò
+Uaaikk 9931 31 24,40 49,00 55,00 12,00 2,10 25,20 - - + maximálna rıchlos 80 km/h, 6 nápravovı hlbinnı vozeò
+Uaaik 9932 31 24,60 47,00 40,00 9,00 2,90 26,10 - - + maximálna rıchlos 80 km/h, 6 nápravovı hlbinnı vozeò
+Uaais 9945 31 23,82 50,00 110,00 7,40 2,98 - - - 8 nápravovı vaòovı vozeò
+Uaaikks 9946 31 30,68 70,00 55,00 12,00 2,40 28,80 - - 8 nápravovı hlbinnı vozeò
+Uaai 9950 31 27,65 64,70 85,00 9,00 2,30 20,70 - - + maximálna rıchlos 80 km/h, 10 nápravovı vaòovı vozeò
