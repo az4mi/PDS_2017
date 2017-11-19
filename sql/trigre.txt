@@ -4,3 +4,10 @@ BEGIN
     SELECT seq_id_spolocnost.nextval INTO :new.id_spolocnosti FROM DUAL;
 END;
 /
+
+CREATE OR REPLACE TRIGGER id_stanica BEFORE INSERT ON stanica
+FOR EACH ROW
+BEGIN
+    SELECT seq_id_stanica.nextval INTO :new.id_stanice FROM DUAL;
+END;
+/

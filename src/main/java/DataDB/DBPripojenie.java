@@ -33,8 +33,10 @@ public class DBPripojenie {
     public DBPripojenie() throws ClassNotFoundException, SQLException {
         Class.forName("oracle.jdbc.driver.OracleDriver");
         kodyTypu = new ArrayList<>(100);
-        naplnTypyVagonov();
+        //naplnTypyVagonov();
         //naplnVozne(100);
+        //naplnStanice();
+        //naplnKolaje();
     }
      
     public void naplnTypyVagonov() throws SQLException {
@@ -148,6 +150,73 @@ public class DBPripojenie {
         } catch (SQLException ex) {
             Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
         }
+        finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    public void naplnStanice() {
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(connString,meno,heslo);
+            Statement stmt = connection.createStatement();
+            Random rand = new Random();
+            
+            BufferedReader br = new BufferedReader(new FileReader("stanice_small.txt"));
+            String line;
+            while((line = br.readLine()) != null) {
+                line = line.trim();
+                if( line.length() > 2 ) {
+                    float sirka = ( rand.nextInt(10) + 50 + rand.nextFloat());
+                    float vyska = ( rand.nextInt(10) + 40 + rand.nextFloat());
+                    String sql = "INSERT INTO stanica (nazov,gps_sirka,gps_dlzka) VALUES('" + line + "'," + sirka + "," +  vyska + ")";
+                    stmt.executeUpdate(sql);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    public void naplnKolaje() {
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(connString,meno,heslo);
+            Random rand = new Random();
+            Statement stmt = connection.createStatement();
+            String sql = "SELECT id_stanice FROM stanica";
+            ResultSet rs = stmt.executeQuery(sql);
+            ArrayList<Integer> stanice = new ArrayList<>(10);
+            while(rs.next()){
+                int id = rs.getInt("id_stanice");
+                stanice.add(id);
+            }
+            for (int i = 0; i < stanice.size(); i++) {
+                int pocet = rand.nextInt(5) + 3;
+                for (int j = 1; j <= pocet; j++) {
+                    int dlzka = rand.nextInt(1000) + 400;
+                    sql = "INSERT INTO kolaj VALUES(" + j + "," + dlzka + "," + stanice.get(i) + ")";
+                    stmt.executeUpdate(sql);
+                }
+            } 
+        } catch (SQLException ex) {
+            Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
+        } 
         finally {
             try {
                 connection.close();

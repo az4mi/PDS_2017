@@ -1,6 +1,6 @@
 /*
 Created		18.10.2017
-Modified		17.11.2017
+Modified		18.11.2017
 Project		
 Model		
 Company		
@@ -16,7 +16,7 @@ Database		Oracle 9i
 Create table vozen (
 	id_vozna Number(4,0) NOT NULL ,
 	kod Number(4,0) NOT NULL ,
-	v_prvadzke Char (1) NOT NULL ,
+	v_prevadzke Char (1) NOT NULL ,
 	id_spolocnosti Integer NOT NULL ,
 primary key (id_vozna,kod) 
 ) 
@@ -57,22 +57,13 @@ primary key (cislo,id_stanice)
 ) 
 ;
 
-Create table vlak (
-	id_vlaku Integer NOT NULL ,
-	id_vozna Number(4,0) NOT NULL ,
-	kod Number(4,0) NOT NULL ,
-	popis Varchar2 (30) NOT NULL ,
-primary key (id_vlaku) 
-) 
-;
-
 Create table pohyb_Vozna_Vlak (
 	id_zaradenia Integer NOT NULL ,
 	id_vozna Number(4,0) NOT NULL ,
-	id_vlaku Integer NOT NULL ,
 	typ_pohybu Char (1) NOT NULL ,
 	id_snimaca Integer NOT NULL ,
 	kod Number(4,0) NOT NULL ,
+	id_vlaku Integer NOT NULL ,
 primary key (id_zaradenia) 
 ) 
 ;
@@ -106,7 +97,7 @@ primary key (id_pouzivatela)
 ) 
 ;
 
-Create table Pohyb (
+Create table pohyb (
 	id_pohybu Integer NOT NULL ,
 	id_presunu Integer,
 	id_zaradenia Integer,
@@ -129,6 +120,15 @@ Create table zaznam (
 ) 
 ;
 
+Create table vlak (
+	id_vlaku Integer NOT NULL ,
+	start Integer NOT NULL ,
+	ciel Integer NOT NULL ,
+	typ Number(2,0) NOT NULL ,
+primary key (id_vlaku) 
+) 
+;
+
 
 -- Create Foreign keys section
 
@@ -138,25 +138,25 @@ Alter table pohyb_Vozna_Vlak add  foreign key (id_vozna,kod) references vozen (i
 Alter table presun add  foreign key (id_vozna,kod) references vozen (id_vozna,kod)  on delete cascade
 ;
 
-Alter table vlak add  foreign key (id_vozna,kod) references vozen (id_vozna,kod)  on delete cascade
-;
-
 Alter table vozen add  foreign key (kod) references typ_vozna (kod)  on delete cascade
 ;
 
 Alter table kolaj add  foreign key (id_stanice) references stanica (id_stanice)  on delete cascade
 ;
 
+Alter table vlak add  foreign key (start) references stanica (id_stanice) 
+;
+
+Alter table vlak add  foreign key (ciel) references stanica (id_stanice) 
+;
+
 Alter table snimac add  foreign key (cislo,id_stanice) references kolaj (cislo,id_stanice)  on delete cascade
 ;
 
-Alter table pohyb_Vozna_Vlak add  foreign key (id_vlaku) references vlak (id_vlaku)  on delete cascade
+Alter table pohyb add  foreign key (id_zaradenia) references pohyb_Vozna_Vlak (id_zaradenia)  on delete cascade
 ;
 
-Alter table Pohyb add  foreign key (id_zaradenia) references pohyb_Vozna_Vlak (id_zaradenia)  on delete cascade
-;
-
-Alter table Pohyb add  foreign key (id_presunu) references presun (id_presunu)  on delete cascade
+Alter table pohyb add  foreign key (id_presunu) references presun (id_presunu)  on delete cascade
 ;
 
 Alter table presun add  foreign key (id_snimaca_z) references snimac (id_snimaca)  on delete cascade
@@ -172,6 +172,9 @@ Alter table zaznam add  foreign key (id_pouzivatela) references pozivatel (id_po
 ;
 
 Alter table vozen add  foreign key (id_spolocnosti) references spolocnost (id_spolocnosti)  on delete cascade
+;
+
+Alter table pohyb_Vozna_Vlak add  foreign key (id_vlaku) references vlak (id_vlaku) 
 ;
 
 
