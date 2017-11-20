@@ -1,5 +1,7 @@
 
-import DataDB.DBPripojenie;
+package main.java;
+
+import main.java.DataDB.DBPripojenie;
 import java.sql.SQLException;
 
 /*
