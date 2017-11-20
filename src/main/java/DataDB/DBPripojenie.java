@@ -27,8 +27,8 @@ public class DBPripojenie {
 
     private ArrayList<Integer> kodyTypu;
     private String connString = "jdbc:oracle:thin:@localhost:1521:xe";
-    private String meno ="polnik2";
-    private String heslo = "9504208252";
+    private String meno ="xxx";
+    private String heslo = "xxx";
     
     public DBPripojenie() throws ClassNotFoundException, SQLException {
         Class.forName("oracle.jdbc.driver.OracleDriver");
