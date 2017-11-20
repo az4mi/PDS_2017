@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.java.DataDB;
+package DataDB;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -37,7 +37,7 @@ public class DBPripojenie {
         //naplnVozne(100);
         //naplnStanice();
         //naplnKolaje();
-        naplnSmimace();
+        //naplnSmimace();
     }
      
     public void naplnTypyVagonov() throws SQLException {
