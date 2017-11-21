@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="main.java.GUI.GUI">
   <grid id="27dc6" binding="mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="657" height="416"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -22,7 +22,10 @@
                 <preferred-size width="400" height="200"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-3157555"/>
+              <foreground color="-12828863"/>
+            </properties>
             <border type="none"/>
             <children>
               <grid id="cb4c1" binding="tabItem1" layout-manager="GridLayoutManager" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -32,11 +35,11 @@
                 </constraints>
                 <properties>
                   <background color="-12828863"/>
-                  <foreground color="-4521972"/>
+                  <foreground color="-12828863"/>
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="b9f89" class="javax.swing.JButton" binding="pridanieVoznaDoSystemuButton" default-binding="true">
+                  <component id="b9f89" class="javax.swing.JButton" binding="btn1">
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -45,7 +48,7 @@
                       <text value="Pridanie vozna do systemu a urcenie jeho polohy"/>
                     </properties>
                   </component>
-                  <component id="52e0c" class="javax.swing.JButton" binding="vyhladanieNajblizsiehoVolnehoVoznaButton" default-binding="true">
+                  <component id="52e0c" class="javax.swing.JButton" binding="btn6">
                     <constraints>
                       <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -54,7 +57,7 @@
                       <text value="Vyhladanie najblizsieho volneho vozna"/>
                     </properties>
                   </component>
-                  <component id="d9efa" class="javax.swing.JButton" binding="zmenaPolohyVoznaVButton" default-binding="true">
+                  <component id="d9efa" class="javax.swing.JButton" binding="btn5">
                     <constraints>
                       <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -63,7 +66,7 @@
                       <text value="Zmena polohy vozna v stanici (kolaj -&gt; kolaj)"/>
                     </properties>
                   </component>
-                  <component id="ebbe2" class="javax.swing.JButton" binding="vyradenieVoznaZVlakuButton" default-binding="true">
+                  <component id="ebbe2" class="javax.swing.JButton" binding="btn4">
                     <constraints>
                       <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -72,7 +75,7 @@
                       <text value="Vyradenie vozna z vlaku"/>
                     </properties>
                   </component>
-                  <component id="9ca51" class="javax.swing.JButton" binding="zaradenieVoznaDoVlakuButton" default-binding="true">
+                  <component id="9ca51" class="javax.swing.JButton" binding="btn3">
                     <constraints>
                       <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -81,7 +84,7 @@
                       <text value="Zaradenie vozna do vlaku"/>
                     </properties>
                   </component>
-                  <component id="b12b4" class="javax.swing.JButton" binding="vyradenieVoznaZPrevadzkyButton" default-binding="true">
+                  <component id="b12b4" class="javax.swing.JButton" binding="btn2">
                     <constraints>
                       <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -92,10 +95,151 @@
                   </component>
                 </children>
               </grid>
-              <grid id="f6797" binding="tabItem2" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="f6797" binding="tabItem2" layout-manager="GridLayoutManager" row-count="9" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <tabbedpane title="Vystupy"/>
+                </constraints>
+                <properties>
+                  <background color="-12828863"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="8edf9" class="javax.swing.JButton" binding="btn7">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <text value="Zobrazenie akt. polohy voznov podla kriterii"/>
+                    </properties>
+                  </component>
+                  <component id="ba77f" class="javax.swing.JButton" binding="btn15">
+                    <constraints>
+                      <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <text value="Statistika o pracovnikoch a ich vykonoch"/>
+                    </properties>
+                  </component>
+                  <component id="236e9" class="javax.swing.JButton" binding="btn14">
+                    <constraints>
+                      <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <text value="Statistika o voznoch v stanici vratane historie"/>
+                    </properties>
+                  </component>
+                  <component id="165f9" class="javax.swing.JButton" binding="btn13">
+                    <constraints>
+                      <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <text value="Statistika o voznoch vo vlaku vratane historie"/>
+                    </properties>
+                  </component>
+                  <component id="f81d5" class="javax.swing.JButton" binding="btn12">
+                    <constraints>
+                      <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <text value="Vyhladanie skupin voznov podla kriterii"/>
+                    </properties>
+                  </component>
+                  <component id="2760d" class="javax.swing.JButton" binding="btn11">
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <text value="Vyhladanie vozna vratane historie vyskytu za obdobie"/>
+                    </properties>
+                  </component>
+                  <component id="8e978" class="javax.swing.JButton" binding="btn9">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <text value="Zoznam voznov vo vlakoch podla kriterii"/>
+                    </properties>
+                  </component>
+                  <component id="e838" class="javax.swing.JButton" binding="btn8">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <text value="Zoznam voznov v zel. stanici v zadanom case podla kriterii"/>
+                    </properties>
+                  </component>
+                  <component id="66a04" class="javax.swing.JButton" binding="btn10">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <text value="Vyhladanie polohy konkretneho vozna"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="87f34" binding="tabItem3" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <tabbedpane title="Zobrazenie"/>
+                </constraints>
+                <properties>
+                  <background color="-12828863"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="d9a26" class="javax.swing.JButton" binding="btn16">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <text value="Vypis pouzivatelov"/>
+                    </properties>
+                  </component>
+                  <component id="5abd8" class="javax.swing.JButton" binding="btn18">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <text value="Vypis typy voznov"/>
+                    </properties>
+                  </component>
+                  <component id="8b6c7" class="javax.swing.JButton" binding="btn17">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <text value="Vypis stanice"/>
+                    </properties>
+                  </component>
+                  <component id="25cfd" class="javax.swing.JButton" binding="btn19">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <text value="Vypis vlaky"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="75122" binding="tabItem4" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <tabbedpane title="Generator"/>
                 </constraints>
                 <properties>
                   <background color="-12828863"/>
@@ -107,14 +251,34 @@
           </tabbedpane>
         </children>
       </grid>
-      <grid id="93a0d" binding="outputPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="93a0d" binding="outputPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints border-constraint="Center"/>
         <properties>
-          <background color="-327775"/>
+          <background color="-12828863"/>
         </properties>
         <border type="none"/>
-        <children/>
+        <children>
+          <component id="750a8" class="javax.swing.JTextPane" binding="textArea">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-3157555"/>
+              <editable value="false"/>
+              <font name="Dialog" size="12"/>
+              <text value="aaa"/>
+            </properties>
+          </component>
+          <component id="9c9f6" class="javax.swing.JScrollBar" binding="scrollBar1" default-binding="true">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+          </component>
+        </children>
       </grid>
     </children>
   </grid>
