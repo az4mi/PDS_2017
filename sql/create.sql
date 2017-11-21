@@ -1,6 +1,6 @@
 /*
 Created		18.10.2017
-Modified		18.11.2017
+Modified		20.11.2017
 Project		
 Model		
 Company		
@@ -102,6 +102,7 @@ Create table pohyb (
 	id_presunu Integer,
 	id_zaradenia Integer,
 	datum_od Timestamp(6) NOT NULL ,
+	datum_do Timestamp(6),
 primary key (id_pohybu) 
 ) 
 ;
@@ -125,6 +126,8 @@ Create table vlak (
 	start Integer NOT NULL ,
 	ciel Integer NOT NULL ,
 	typ Number(2,0) NOT NULL ,
+	dat_vypravenia Timestamp(6) NOT NULL ,
+	dat_dorazenia Timestamp(6),
 primary key (id_vlaku) 
 ) 
 ;

@@ -11,3 +11,10 @@ BEGIN
     SELECT seq_id_stanica.nextval INTO :new.id_stanice FROM DUAL;
 END;
 /
+
+CREATE OR REPLACE TRIGGER id_snimac BEFORE INSERT ON snimac
+FOR EACH ROW
+BEGIN
+    SELECT seq_id_snimac.nextval INTO :new.id_snimaca FROM DUAL;
+END;
+/

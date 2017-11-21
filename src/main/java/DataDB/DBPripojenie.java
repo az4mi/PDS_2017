@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.java.DataDB;
+package DataDB;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -27,8 +27,8 @@ public class DBPripojenie {
 
     private ArrayList<Integer> kodyTypu;
     private String connString = "jdbc:oracle:thin:@localhost:1521:xe";
-    private String meno ="polnik2";
-    private String heslo = "9504208252";
+    private String meno ="xxx";
+    private String heslo = "xxx";
     
     public DBPripojenie() throws ClassNotFoundException, SQLException {
         Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -37,6 +37,7 @@ public class DBPripojenie {
         //naplnVozne(100);
         //naplnStanice();
         //naplnKolaje();
+        //naplnSmimace();
     }
      
     public void naplnTypyVagonov() throws SQLException {
@@ -214,6 +215,42 @@ public class DBPripojenie {
                     stmt.executeUpdate(sql);
                 }
             } 
+        } catch (SQLException ex) {
+            Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    public void naplnSmimace() {
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(connString,meno,heslo);
+            Random rand = new Random();
+            Statement stmt = connection.createStatement();
+            Statement stmtUpdate = connection.createStatement();
+            String sql = "SELECT cislo, id_stanice,GPS_SIRKA,GPS_DLZKA from stanica JOIN kolaj USING(id_stanice)";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()){
+                int cislo = rs.getInt("cislo");
+                int idStanice = rs.getInt("id_stanice");
+                float sirka = rs.getFloat("GPS_SIRKA");
+                float dlzka = rs.getFloat("GPS_DLZKA");
+                int pocet = rand.nextInt(2) + 1;
+                for (int i = 0; i < pocet; i++) {
+                    float newSirka = sirka + (float) (rand.nextFloat()/1000.0 - 0.00005);
+                    float newDlzka = dlzka + (float) (rand.nextFloat()/1000.0 - 0.00005);
+                    sql = "INSERT INTO snimac (gps_sirka,gps_dlzka,cislo,id_stanice) VALUES(" + newSirka + "," + newDlzka + "," + cislo + "," + idStanice + ")";
+                    stmtUpdate.executeUpdate(sql);
+                }               
+            }
+            int a = 0;
         } catch (SQLException ex) {
             Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
         } 
