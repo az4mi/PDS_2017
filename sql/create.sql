@@ -71,7 +71,7 @@ primary key (id_zaradenia)
 Create table presun (
 	id_presunu Integer NOT NULL ,
 	id_vozna Number(4,0) NOT NULL ,
-	id_snimaca_z Integer NOT NULL ,
+	id_snimaca_z Integer,
 	id_snimaca_na Integer NOT NULL ,
 	kod Number(4,0) NOT NULL ,
 primary key (id_presunu) 

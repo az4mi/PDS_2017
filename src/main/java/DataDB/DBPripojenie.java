@@ -26,25 +26,32 @@ import java.util.logging.Logger;
 public class DBPripojenie {
 
     private ArrayList<Integer> kodyTypu;
-    private String connString = "jdbc:oracle:thin:@localhost:1521:xe";
-    private String meno ="xxx";
-    private String heslo = "xxx";
+    private String connString = "jdbc:oracle:thin:@asterix.fri.uniza.sk:1521/orclpdb.fri.uniza.sk";
+    private String meno ="alfa_SP";
+    private String heslo = "vsetcimajua";
     
-    public DBPripojenie() throws ClassNotFoundException, SQLException {
-        Class.forName("oracle.jdbc.driver.OracleDriver");
-        kodyTypu = new ArrayList<>(100);
-        //naplnTypyVagonov();
-        //naplnVozne(100);
-        //naplnStanice();
-        //naplnKolaje();
-        //naplnSmimace();
+    public DBPripojenie() {
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            kodyTypu = new ArrayList<>(100);
+            //naplnTypyVagonov();
+            //naplnVozne(3);
+            //naplnStanice();
+            //naplnKolaje();
+            //naplnSmimace();
+            naplnPrvePohyby();
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
      
-    public void naplnTypyVagonov() throws SQLException {
+    public void naplnTypyVagonov() {
         Connection connection = null;
-        connection = DriverManager.getConnection(connString,meno,heslo);
         BufferedReader br;
         try {
+            connection = DriverManager.getConnection(connString,meno,heslo);
             br = new BufferedReader(new FileReader("typy.txt"));
             String line;
             try {
@@ -76,7 +83,7 @@ public class DBPripojenie {
                         poznamka = null;
                     }
                     Statement stmt = connection.createStatement();
-        
+                    System.out.println(kod);
                     String sql = "INSERT INTO TYP_VOZNA " +
                                "VALUES ('" + rad + "'," + kod + "," + interabilita + ","  + dlzka + "," + hmotnost + ","
                                + lozHmotnost + ","  + lozDlzka + ","  + lozSirka + ","  + lozPlocha + "," + lozVyska + ","  
@@ -85,12 +92,20 @@ public class DBPripojenie {
                 }
             } catch (IOException ex) {
                 Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
         }
         finally {
-            connection.close();
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     
@@ -98,7 +113,7 @@ public class DBPripojenie {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(connString,meno,heslo);
-            /*Statement stmt = connection.createStatement();
+            Statement stmt = connection.createStatement();
             String sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('AWT Rail SK')";
             stmt.executeUpdate(sql);
             sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('BF Logistics')";
@@ -118,9 +133,9 @@ public class DBPripojenie {
             sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('Petrolsped')";
             stmt.executeUpdate(sql);
             sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('OHL ŽS')";
-            stmt.executeUpdate(sql);*/
-            Statement stmt = connection.createStatement();
-            String sql = "SELECT id_spolocnosti FROM Spolocnost";
+            stmt.executeUpdate(sql);
+            stmt = connection.createStatement();
+            sql = "SELECT id_spolocnosti FROM Spolocnost";
             ResultSet rs = stmt.executeQuery(sql);
             ArrayList<Integer> spolocnosti = new ArrayList<>(10);
             while(rs.next()){
@@ -251,6 +266,46 @@ public class DBPripojenie {
                 }               
             }
             int a = 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        finally {
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    public void naplnPrvePohyby() {
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(connString,meno,heslo);
+            Random rand = new Random();
+            Statement stmt = connection.createStatement();
+            String sql = "SELECT id_vozna, kod FROM vozen";
+            ResultSet rs = stmt.executeQuery(sql);
+            ArrayList<Integer> idcka = new ArrayList<>(100);
+            ArrayList<Integer> kody = new ArrayList<>(100);
+            while(rs.next()){
+                int id = rs.getInt("id_vozna");
+                idcka.add(id);
+                int kod = rs.getInt("kod");
+                kody.add(kod);
+            }
+            sql = "SELECT id_snimaca FROM snimac";
+            rs = stmt.executeQuery(sql);
+            ArrayList<Integer> snimace = new ArrayList<>(100);
+            while(rs.next()){
+                int id = rs.getInt("id_snimaca");
+                snimace.add(id);
+            }
+            for (int i = 0; i < idcka.size(); i++) {
+                int idSnimaca = snimace.get( rand.nextInt(snimace.size()) );
+                sql = "INSERT INTO presun (id_vozna, id_snimaca_z, id_snimaca_na, kod) VALUES(" + idcka.get(i) + ",null," + idSnimaca + "," + kody.get(i) + ")";
+                stmt.executeUpdate(sql);
+            } 
         } catch (SQLException ex) {
             Logger.getLogger(DBPripojenie.class.getName()).log(Level.SEVERE, null, ex);
         } 
