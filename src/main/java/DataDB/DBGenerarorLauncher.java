@@ -12,6 +12,6 @@ package DataDB;
 public class DBGenerarorLauncher {
     
     public static void main( String[] args ) {
-        DBPripojenie pripojenie = new DBPripojenie();
+        DBGenerator pripojenie = new DBGenerator();
     }
 }

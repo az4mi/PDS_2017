@@ -1,0 +1,18 @@
+CREATE OR REPLACE TRIGGER trig_add_end_date AFTER INSERT ON pohyb
+REFERENCING NEW as novy
+FOR EACH ROW 
+DECLARE
+ idVozna INTEGER;
+ kodVozna INTEGER;
+BEGIN
+    SELECT nvl(id_vozna,-1), nvl(kod,-1) INTO idVozna,kodVozna FROM pohyb JOIN presun USING (id_presunu) WHERE id_pohybu = :novy.id_pohybu;
+    IF idVozna != -1 THEN
+        UPDATE pohyb SET datum_do = :novy.datum_od
+            WHERE EXISTS( SELECT 'x' FROM presun JOIN pohyb USING(id_presunu) 
+                            WHERE id_vozna = idVozna
+                                AND kod = kodVozna
+                                    AND datum_do IS NULL
+                                        AND id_pohybu != :novy.id_pohybu );
+    END IF;
+END;
+/

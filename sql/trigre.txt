@@ -25,3 +25,24 @@ BEGIN
     SELECT seq_id_presunu.nextval INTO :new.id_presunu FROM DUAL;
 END;
 /
+
+CREATE OR REPLACE TRIGGER id_vlaku BEFORE INSERT ON vlak
+FOR EACH ROW
+BEGIN
+    SELECT seq_id_vlaku.nextval INTO :new.id_vlaku FROM DUAL;
+END;
+/
+
+CREATE OR REPLACE TRIGGER id_pohybu BEFORE INSERT ON pohyb
+FOR EACH ROW
+BEGIN
+    SELECT seq_id_pohybu.nextval INTO :new.id_pohybu FROM DUAL;
+END;
+/
+
+CREATE OR REPLACE TRIGGER id_presunu BEFORE INSERT ON pohyb_vozna_vlak
+FOR EACH ROW
+BEGIN
+    SELECT seq_id_zaradenia.nextval INTO :new.id_zaradenia FROM DUAL;
+END;
+/

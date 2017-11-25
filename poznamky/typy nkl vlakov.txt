@@ -1,0 +1,13 @@
+1 - expresný nákladný vlak (Nex) : je vlak urèený na prepravu dôležitých a ¾ahkoskazite¾ných zásielok v medzištátnej a vnútroštátnej doprave, v medzištátnej preprave je jeho jazda organizovaná na základe zmlúv;
+
+2 - rýchly nákladný vlak (Rn) : vlak urèený na prepravu vozòových zásielok balíkov a kusových zásielok;
+
+3 - zrýchlený nákladný vlak (Zn): vlak urèený na prepravu dôležitých vozòových zásielok, ktoré nie sú prepravované Nex vlakmi;
+
+4 - vyrovnávkový nákladný vlak (Vn): vlak urèený na priamu dopravu prázdnych nákladných vozòov do miest hromadného nakladania, príp. na plnenie úloh vyrovnávky vozòov;
+
+5 - priebežný nákladný vlak (Pn): vlak urèený na priamu prepravu nákladu spravidla na väèšie vzdialenosti;
+
+6 - manipulaèný nákladný vlak (Mn): vlak urèený na rozvoz vozidiel z vlakotvorných (rozptylových) staníc do staníc medzi¾ahlých, na zvážanie vozidiel z medzi¾ahlých staníc do vlakotvorných (zberných) staníc a na vykonanie ïalších manipulaèných úkonov;
+
+7 - prestavovací vlak

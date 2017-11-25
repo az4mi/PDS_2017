@@ -1,6 +1,6 @@
 /*
 Created		18.10.2017
-Modified		20.11.2017
+Modified		23.11.2017
 Project		
 Model		
 Company		
@@ -123,7 +123,7 @@ Create table zaznam (
 
 Create table vlak (
 	id_vlaku Integer NOT NULL ,
-	start Integer NOT NULL ,
+	zaciatok Integer NOT NULL ,
 	ciel Integer NOT NULL ,
 	typ Number(2,0) NOT NULL ,
 	dat_vypravenia Timestamp(6) NOT NULL ,
@@ -147,7 +147,7 @@ Alter table vozen add  foreign key (kod) references typ_vozna (kod)  on delete c
 Alter table kolaj add  foreign key (id_stanice) references stanica (id_stanice)  on delete cascade
 ;
 
-Alter table vlak add  foreign key (start) references stanica (id_stanice) 
+Alter table vlak add  foreign key (zaciatok) references stanica (id_stanice) 
 ;
 
 Alter table vlak add  foreign key (ciel) references stanica (id_stanice) 
