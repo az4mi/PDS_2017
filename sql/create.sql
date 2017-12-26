@@ -13,14 +13,13 @@ Database		Oracle 9i
 -- Create Tables section
 
 
-Create table vozen (
-	id_vozna Number(4,0) NOT NULL ,
-	kod Number(4,0) NOT NULL ,
-	v_prevadzke Char (1) NOT NULL ,
-	id_spolocnosti Integer NOT NULL ,
-primary key (id_vozna,kod) 
-) 
-;
+CREATE TABLE vozen OF T_VOZEN;
+
+ALTER TABLE vozen ADD PRIMARY KEY(id_vozna, kod);
+/
+DROP TABLE vozen;
+/
+
 
 Create table typ_vozna (
 	rad Varchar2 (10) NOT NULL ,
@@ -128,14 +127,18 @@ Create table vlak (
 	typ Number(2,0) NOT NULL ,
 	dat_vypravenia Timestamp(6) NOT NULL ,
 	dat_dorazenia Timestamp(6),
-primary key (id_vlaku) 
+    vozne T_VOZNE,
+    primary key (id_vlaku) 
 ) 
+    nested table vozne store as nested_vozne return as locator
 ;
+
+
 
 
 -- Create Foreign keys section
 
-Alter table pohyb_Vozna_Vlak add  foreign key (id_vozna,kod) references vozen (id_vozna,kod)  on delete cascade
+Alter table pohyb_Vozna_Vlak add  foreign key (id_vozna,kod) references vozen (id_vozna,kod)
 ;
 
 Alter table presun add  foreign key (id_vozna,kod) references vozen (id_vozna,kod)  on delete cascade
@@ -179,5 +182,3 @@ Alter table vozen add  foreign key (id_spolocnosti) references spolocnost (id_sp
 
 Alter table pohyb_Vozna_Vlak add  foreign key (id_vlaku) references vlak (id_vlaku) 
 ;
-
-

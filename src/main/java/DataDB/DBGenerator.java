@@ -120,7 +120,7 @@ public class DBGenerator {
             connection = DriverManager.getConnection(connString,meno,heslo);
             Statement stmt = connection.createStatement();
             String sql;
-            /*sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('AWT Rail SK')";
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('AWT Rail SK')";
             stmt.executeUpdate(sql);
             sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('BF Logistics')";
             stmt.executeUpdate(sql);
@@ -139,7 +139,7 @@ public class DBGenerator {
             sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('Petrolsped')";
             stmt.executeUpdate(sql);
             sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('OHL ŽS')";
-            stmt.executeUpdate(sql);*/
+            stmt.executeUpdate(sql);
             sql = "SELECT id_spolocnosti FROM Spolocnost";
             ResultSet rs = stmt.executeQuery(sql);
             ArrayList<Integer> spolocnosti = new ArrayList<>(10);
@@ -161,9 +161,9 @@ public class DBGenerator {
                     int idSpol = rand.nextInt(spolocnosti.size());
                     double prst = rand.nextDouble();
                     if( prst < 0.03 ) {
-                        sql = "INSERT INTO vozen VALUES(" + (j + 1) + "," + kod + "," + "'N'" + "," + spolocnosti.get(idSpol) + ")";
+                        sql = "INSERT INTO vozen VALUES(T_VOZEN(" + (j + 1) + "," + kod + "," + "'N'" + "," + spolocnosti.get(idSpol) + "))";
                     } else {
-                        sql = "INSERT INTO vozen VALUES(" + (j + 1) + "," + kod + "," + "'A'" + "," + spolocnosti.get(idSpol) + ")";
+                        sql = "INSERT INTO vozen VALUES(T_VOZEN(" + (j + 1) + "," + kod + "," + "'A'" + "," + spolocnosti.get(idSpol) + "))";
                     }
                     stmt.executeUpdate(sql);
                 }
