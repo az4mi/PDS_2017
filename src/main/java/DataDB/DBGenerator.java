@@ -28,7 +28,6 @@ import java.util.logging.Logger;
  */
 public class DBGenerator {
 
-    private ArrayList<Integer> kodyTypu;
     private String connString = "jdbc:oracle:thin:@asterix.fri.uniza.sk:1521/orclpdb.fri.uniza.sk";
     private String meno ="XXX";
     private String heslo = "XXX";
@@ -36,7 +35,6 @@ public class DBGenerator {
     public DBGenerator() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            kodyTypu = new ArrayList<>(100);
             //naplnTypyVagonov();
             //naplnVozne(15);
             //naplnStanice();
@@ -64,7 +62,6 @@ public class DBGenerator {
                     String[] splitedLine = line.split(" ");
                     String rad = splitedLine[0];
                     int kod = Integer.parseInt(splitedLine[1]);
-                    kodyTypu.add(kod);
                     System.out.println(kod);
                     int interabilita = Integer.parseInt(splitedLine[2]);
                     double dlzka = Double.parseDouble(splitedLine[3].replaceAll(",", "."));
