@@ -6,9 +6,13 @@
 package DataDB;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -35,6 +39,7 @@ public class DBGenerator {
     public DBGenerator() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
+            //updateBlobs();
             //naplnTypyVagonov();
             //naplnVozne(15);
             //naplnStanice();
@@ -577,5 +582,21 @@ public class DBGenerator {
                 Logger.getLogger(DBGenerator.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+    
+    private void updateBlobs() {
+        try {
+            Connection connection = DriverManager.getConnection(connString,meno,heslo);
+            PreparedStatement pstmt = connection.prepareStatement ("UPDATE typ_vozna SET obrazok = ?");
+            File fBlob = new File ( "D:\\PDBSSem\\DBSem\\src\\main\\resources\\1.jpg" );
+            FileInputStream is = new FileInputStream ( fBlob );
+            pstmt.setBinaryStream (1, is, (int) fBlob.length() );
+            pstmt.execute ();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBGenerator.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(DBGenerator.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        
     }
 }
