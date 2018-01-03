@@ -5,16 +5,21 @@
  */
 package GUI;
 
+import core.DBmethods;
+
 /**
  *
  * @author Silent1
  */
 public class GUI extends javax.swing.JFrame {
 
+    private DBmethods dbmethods;
+    
     /**
      * Creates new form GUI
      */
     public GUI() {
+        dbmethods = new DBmethods();
         initComponents();
     }
 
@@ -51,12 +56,17 @@ public class GUI extends javax.swing.JFrame {
         txt_idVlaku_b = new javax.swing.JTextField();
         btn_vytvorPohyb = new javax.swing.JButton();
         btn_koniec = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtArea = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menu_Exit = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menu_createTrain = new javax.swing.JMenuItem();
         menu_vytvorPohybVoznaVlak = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        btn_zobrazVlak = new javax.swing.JMenuItem();
+        btn_zobrazPohybVoznaVlak = new javax.swing.JMenuItem();
 
         dialog_vytvorVlak.setMinimumSize(new java.awt.Dimension(400, 392));
         dialog_vytvorVlak.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -114,26 +124,8 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel10.setText("Id_vlaku:");
         dialog_vytvorPohybVoznaVlak.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
-
-        txt_typPohybu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_typPohybuActionPerformed(evt);
-            }
-        });
         dialog_vytvorPohybVoznaVlak.getContentPane().add(txt_typPohybu, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 70, -1));
-
-        txt_idSnimaca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_idSnimacaActionPerformed(evt);
-            }
-        });
         dialog_vytvorPohybVoznaVlak.getContentPane().add(txt_idSnimaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 70, -1));
-
-        txt_idVlaku_b.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_idVlaku_bActionPerformed(evt);
-            }
-        });
         dialog_vytvorPohybVoznaVlak.getContentPane().add(txt_idVlaku_b, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 70, -1));
 
         btn_vytvorPohyb.setText("Vytvor pohyb");
@@ -153,6 +145,12 @@ public class GUI extends javax.swing.JFrame {
         dialog_vytvorPohybVoznaVlak.getContentPane().add(btn_koniec, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, -1, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        txtArea.setEditable(false);
+        txtArea.setColumns(20);
+        txtArea.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        txtArea.setRows(5);
+        jScrollPane1.setViewportView(txtArea);
 
         jMenu1.setText("File");
 
@@ -186,17 +184,43 @@ public class GUI extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setText("Zobraz tabulku");
+
+        btn_zobrazVlak.setText("Vlak");
+        btn_zobrazVlak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_zobrazVlakActionPerformed(evt);
+            }
+        });
+        jMenu3.add(btn_zobrazVlak);
+
+        btn_zobrazPohybVoznaVlak.setText("Pohyb vozna vlak");
+        btn_zobrazPohybVoznaVlak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_zobrazPohybVoznaVlakActionPerformed(evt);
+            }
+        });
+        jMenu3.add(btn_zobrazPohybVoznaVlak);
+
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 649, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(193, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -208,7 +232,15 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_menu_ExitActionPerformed
 
     private void btn_createTrainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createTrainActionPerformed
-        // TODO add your handling code here:
+        
+        int    zaciatok  = Integer.parseInt(txt_zaciatok.getText());
+        int    ciel      = Integer.parseInt(txt_ciel.getText());
+        int    typ       = Integer.parseInt(txt_typ.getText());
+        String datVyp    = txt_datVypr.getText();
+        String datDor    = txt_datDor.getText();
+        
+        dbmethods.vytvorVlak(zaciatok, ciel, typ, datVyp, datDor);
+        
     }//GEN-LAST:event_btn_createTrainActionPerformed
 
     private void menu_createTrainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_createTrainActionPerformed
@@ -220,30 +252,32 @@ public class GUI extends javax.swing.JFrame {
         dialog_vytvorVlak.setVisible(false);
     }//GEN-LAST:event_btn_endTrainCreationActionPerformed
 
-    private void txt_typPohybuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_typPohybuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_typPohybuActionPerformed
-
-    private void txt_idSnimacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idSnimacaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_idSnimacaActionPerformed
-
-    private void txt_idVlaku_bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idVlaku_bActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_idVlaku_bActionPerformed
-
     private void btn_vytvorPohybActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vytvorPohybActionPerformed
-        // TODO add your handling code here:
+        
+        char   typPohybu = txt_typPohybu.getText().charAt(0);
+        int    idSnimaca = Integer.parseInt(txt_idSnimaca.getText());
+        int    idVlaku   = Integer.parseInt(txt_idVlaku_b.getText());
+        
+        dbmethods.vytvorPohybVoznaVlak(typPohybu, idSnimaca, idVlaku);
+        
     }//GEN-LAST:event_btn_vytvorPohybActionPerformed
 
     private void btn_koniecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_koniecActionPerformed
-        // TODO add your handling code here:
+        dialog_vytvorPohybVoznaVlak.setVisible(false);
     }//GEN-LAST:event_btn_koniecActionPerformed
 
     private void menu_vytvorPohybVoznaVlakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_vytvorPohybVoznaVlakActionPerformed
         dialog_vytvorPohybVoznaVlak.pack();
         dialog_vytvorPohybVoznaVlak.setVisible(true);
     }//GEN-LAST:event_menu_vytvorPohybVoznaVlakActionPerformed
+
+    private void btn_zobrazVlakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_zobrazVlakActionPerformed
+        txtArea.setText(dbmethods.zobrazVlak());
+    }//GEN-LAST:event_btn_zobrazVlakActionPerformed
+
+    private void btn_zobrazPohybVoznaVlakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_zobrazPohybVoznaVlakActionPerformed
+        txtArea.setText(dbmethods.zobrazPohybVoznaVlak());
+    }//GEN-LAST:event_btn_zobrazPohybVoznaVlakActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,6 +319,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_endTrainCreation;
     private javax.swing.JButton btn_koniec;
     private javax.swing.JButton btn_vytvorPohyb;
+    private javax.swing.JMenuItem btn_zobrazPohybVoznaVlak;
+    private javax.swing.JMenuItem btn_zobrazVlak;
     private javax.swing.JDialog dialog_vytvorPohybVoznaVlak;
     private javax.swing.JDialog dialog_vytvorVlak;
     private javax.swing.JLabel jLabel1;
@@ -299,10 +335,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem menu_Exit;
     private javax.swing.JMenuItem menu_createTrain;
     private javax.swing.JMenuItem menu_vytvorPohybVoznaVlak;
+    private javax.swing.JTextArea txtArea;
     private javax.swing.JTextField txt_ciel;
     private javax.swing.JTextField txt_datDor;
     private javax.swing.JTextField txt_datVypr;
