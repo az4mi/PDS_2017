@@ -2,8 +2,12 @@ package core;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by mi5ho on 03.01.2018.
@@ -54,7 +58,7 @@ public class DBmethods {
 
     }
 
-    public void vytvorPohybVoznaVlak(int pTypPohybu, int pIdSnimaca, int pIdVlaku) {
+    public void vytvorPohybVoznaVlak(char pTypPohybu, int pIdSnimaca, int pIdVlaku) {
 
         Connection connection = null;
         Statement stmt;
@@ -72,6 +76,73 @@ public class DBmethods {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    
+    public String zobrazVlak() {
+        
+        Connection connection = null;
+        Statement  stmt;
+        String     sql;
+        String     result = "";
+        
+        try {
+                
+            connection = DriverManager.getConnection(connString,meno,heslo);
+            stmt       = connection.createStatement();
+            
+            sql          = "SELECT id_vlaku, zaciatok, ciel, typ, dat_vypravenia, dat_dorazenia FROM vlak";
+            ResultSet rs = stmt.executeQuery(sql);
+            
+     
+            while(rs.next()){
+                
+                result += "Vlak\n"
+                        + " > id              = "+rs.getString("id_vlaku")+"\n"
+                        + " > zaciatok        = "+rs.getString("zaciatok")+"\n"
+                        + " > ciel            = "+rs.getString("ciel")+"\n"
+                        + " > typ             = "+rs.getString("typ")+"\n"
+                        + " > dat. vypravenia = "+rs.getString("dat_vypravenia")+"\n"
+                        + " > dat. dorazenia  = "+rs.getString("dat_dorazenia")+"\n\n";        
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return result;
+    }
+    
+    public String zobrazPohybVoznaVlak() {
+        
+        Connection connection = null;
+        Statement  stmt;
+        String     sql;
+        String     result = "";
+        
+        try {
+                
+            connection = DriverManager.getConnection(connString,meno,heslo);
+            stmt       = connection.createStatement();
+            
+            sql          = "SELECT id_zaradenia, typ_pohybu, id_snimaca, id_vlaku FROM pohyb_vozna_vlak";
+            ResultSet rs = stmt.executeQuery(sql);
+            
+     
+            while(rs.next()){
+                
+                result += "Pohyb vozna vlak\n"
+                        + " > id zaradenia = "+rs.getString("id_zaradenia")+"\n"
+                        + " > typ pohybu   = "+rs.getString("typ_pohybu")+"\n"
+                        + " > id snimaca   = "+rs.getString("id_snimaca")+"\n"
+                        + " > id vlaku     = "+rs.getString("id_vlaku")+"\n\n";
+                                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return result;
     }
 
 
