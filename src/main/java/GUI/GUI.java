@@ -56,6 +56,18 @@ public class GUI extends javax.swing.JFrame {
         txt_idVlaku_b = new javax.swing.JTextField();
         btn_vytvorPohyb = new javax.swing.JButton();
         btn_koniec = new javax.swing.JButton();
+        dialog_pridajVozen = new javax.swing.JDialog();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        txt_pridanieVozna_idSpolocnosti = new javax.swing.JTextField();
+        txt_pridanieVozna_kod = new javax.swing.JTextField();
+        txt_pridanieVozna_idVozna = new javax.swing.JTextField();
+        txt_pridanieVozna_idSnimaca = new javax.swing.JTextField();
+        btn_pridanieVozna_pridaj = new javax.swing.JButton();
+        btn_pridanieVozna_koniec = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -67,6 +79,13 @@ public class GUI extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         btn_zobrazVlak = new javax.swing.JMenuItem();
         btn_zobrazPohybVoznaVlak = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        menu_pridajVozen = new javax.swing.JMenuItem();
+        menu_vyradVozen = new javax.swing.JMenuItem();
+        menu_zaradVozenDoVlaku = new javax.swing.JMenuItem();
+        menu_vyradVozenZVlaku = new javax.swing.JMenuItem();
+        menu_zmenPolohuVozna = new javax.swing.JMenuItem();
+        menu_vyhladajVozen = new javax.swing.JMenuItem();
 
         dialog_vytvorVlak.setMinimumSize(new java.awt.Dimension(400, 392));
         dialog_vytvorVlak.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -144,6 +163,99 @@ public class GUI extends javax.swing.JFrame {
         });
         dialog_vytvorPohybVoznaVlak.getContentPane().add(btn_koniec, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, -1, -1));
 
+        dialog_pridajVozen.setMinimumSize(new java.awt.Dimension(400, 400));
+
+        jLabel11.setText("Pridanie vozna");
+
+        jLabel12.setText("ID spolocnosti:");
+
+        jLabel13.setText("Kod:");
+
+        jLabel14.setText("ID vozna:");
+
+        jLabel15.setText("ID snimaca:");
+
+        txt_pridanieVozna_kod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_pridanieVozna_kodActionPerformed(evt);
+            }
+        });
+
+        btn_pridanieVozna_pridaj.setText("Pridaj vozen");
+        btn_pridanieVozna_pridaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pridanieVozna_pridajActionPerformed(evt);
+            }
+        });
+
+        btn_pridanieVozna_koniec.setText("Koniec");
+        btn_pridanieVozna_koniec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pridanieVozna_koniecActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialog_pridajVozenLayout = new javax.swing.GroupLayout(dialog_pridajVozen.getContentPane());
+        dialog_pridajVozen.getContentPane().setLayout(dialog_pridajVozenLayout);
+        dialog_pridajVozenLayout.setHorizontalGroup(
+            dialog_pridajVozenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_pridajVozenLayout.createSequentialGroup()
+                .addGroup(dialog_pridajVozenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialog_pridajVozenLayout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(jLabel11))
+                    .addGroup(dialog_pridajVozenLayout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addGroup(dialog_pridajVozenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel15))
+                        .addGap(36, 36, 36)
+                        .addGroup(dialog_pridajVozenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_pridanieVozna_idSnimaca, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                            .addComponent(txt_pridanieVozna_idVozna)
+                            .addComponent(txt_pridanieVozna_kod)
+                            .addComponent(txt_pridanieVozna_idSpolocnosti))))
+                .addGap(133, 133, 133))
+            .addGroup(dialog_pridajVozenLayout.createSequentialGroup()
+                .addGroup(dialog_pridajVozenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialog_pridajVozenLayout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(btn_pridanieVozna_pridaj))
+                    .addGroup(dialog_pridajVozenLayout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(btn_pridanieVozna_koniec)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        dialog_pridajVozenLayout.setVerticalGroup(
+            dialog_pridajVozenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_pridajVozenLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jLabel11)
+                .addGap(45, 45, 45)
+                .addGroup(dialog_pridajVozenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txt_pridanieVozna_idSpolocnosti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dialog_pridajVozenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(txt_pridanieVozna_kod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dialog_pridajVozenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(txt_pridanieVozna_idVozna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dialog_pridajVozenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15)
+                    .addComponent(txt_pridanieVozna_idSnimaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btn_pridanieVozna_pridaj)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(btn_pridanieVozna_koniec)
+                .addContainerGap())
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txtArea.setEditable(false);
@@ -203,6 +315,58 @@ public class GUI extends javax.swing.JFrame {
         jMenu3.add(btn_zobrazPohybVoznaVlak);
 
         jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("PL/SQL ulohy");
+
+        menu_pridajVozen.setText("Pridaj vozen");
+        menu_pridajVozen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_pridajVozenActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menu_pridajVozen);
+
+        menu_vyradVozen.setText("Vyrad vozen");
+        menu_vyradVozen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_vyradVozenActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menu_vyradVozen);
+
+        menu_zaradVozenDoVlaku.setText("Zarad vozen do vlaku");
+        menu_zaradVozenDoVlaku.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_zaradVozenDoVlakuActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menu_zaradVozenDoVlaku);
+
+        menu_vyradVozenZVlaku.setText("Vyrad vozen z vlaku");
+        menu_vyradVozenZVlaku.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_vyradVozenZVlakuActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menu_vyradVozenZVlaku);
+
+        menu_zmenPolohuVozna.setText("Zmen polohu vozna v stanici");
+        menu_zmenPolohuVozna.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_zmenPolohuVoznaActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menu_zmenPolohuVozna);
+
+        menu_vyhladajVozen.setText("Vyhladaj najblizsi volny vozen");
+        menu_vyhladajVozen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_vyhladajVozenActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menu_vyhladajVozen);
+
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -279,6 +443,48 @@ public class GUI extends javax.swing.JFrame {
         txtArea.setText(dbmethods.zobrazPohybVoznaVlak());
     }//GEN-LAST:event_btn_zobrazPohybVoznaVlakActionPerformed
 
+    private void menu_pridajVozenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_pridajVozenActionPerformed
+        dialog_pridajVozen.pack();
+        dialog_pridajVozen.setVisible(true);
+    }//GEN-LAST:event_menu_pridajVozenActionPerformed
+
+    private void menu_vyradVozenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_vyradVozenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_vyradVozenActionPerformed
+
+    private void menu_zaradVozenDoVlakuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_zaradVozenDoVlakuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_zaradVozenDoVlakuActionPerformed
+
+    private void menu_vyradVozenZVlakuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_vyradVozenZVlakuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_vyradVozenZVlakuActionPerformed
+
+    private void menu_zmenPolohuVoznaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_zmenPolohuVoznaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_zmenPolohuVoznaActionPerformed
+
+    private void menu_vyhladajVozenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_vyhladajVozenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_vyhladajVozenActionPerformed
+
+    private void txt_pridanieVozna_kodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_pridanieVozna_kodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_pridanieVozna_kodActionPerformed
+
+    private void btn_pridanieVozna_pridajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pridanieVozna_pridajActionPerformed
+        int idSpolocnosti = Integer.parseInt(txt_pridanieVozna_idSpolocnosti.getText());
+        int kod           = Integer.parseInt(txt_pridanieVozna_kod.getText());
+        int idVozna       = Integer.parseInt(txt_pridanieVozna_idVozna.getText());
+        int idSnimaca     = Integer.parseInt(txt_pridanieVozna_idSnimaca.getText());
+        
+        dbmethods.pridajVozen(idSpolocnosti, kod, idVozna, idSnimaca);
+    }//GEN-LAST:event_btn_pridanieVozna_pridajActionPerformed
+
+    private void btn_pridanieVozna_koniecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pridanieVozna_koniecActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_pridanieVozna_koniecActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -318,13 +524,21 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_createTrain;
     private javax.swing.JButton btn_endTrainCreation;
     private javax.swing.JButton btn_koniec;
+    private javax.swing.JButton btn_pridanieVozna_koniec;
+    private javax.swing.JButton btn_pridanieVozna_pridaj;
     private javax.swing.JButton btn_vytvorPohyb;
     private javax.swing.JMenuItem btn_zobrazPohybVoznaVlak;
     private javax.swing.JMenuItem btn_zobrazVlak;
+    private javax.swing.JDialog dialog_pridajVozen;
     private javax.swing.JDialog dialog_vytvorPohybVoznaVlak;
     private javax.swing.JDialog dialog_vytvorVlak;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -336,17 +550,28 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem menu_Exit;
     private javax.swing.JMenuItem menu_createTrain;
+    private javax.swing.JMenuItem menu_pridajVozen;
+    private javax.swing.JMenuItem menu_vyhladajVozen;
+    private javax.swing.JMenuItem menu_vyradVozen;
+    private javax.swing.JMenuItem menu_vyradVozenZVlaku;
     private javax.swing.JMenuItem menu_vytvorPohybVoznaVlak;
+    private javax.swing.JMenuItem menu_zaradVozenDoVlaku;
+    private javax.swing.JMenuItem menu_zmenPolohuVozna;
     private javax.swing.JTextArea txtArea;
     private javax.swing.JTextField txt_ciel;
     private javax.swing.JTextField txt_datDor;
     private javax.swing.JTextField txt_datVypr;
     private javax.swing.JTextField txt_idSnimaca;
     private javax.swing.JTextField txt_idVlaku_b;
+    private javax.swing.JTextField txt_pridanieVozna_idSnimaca;
+    private javax.swing.JTextField txt_pridanieVozna_idSpolocnosti;
+    private javax.swing.JTextField txt_pridanieVozna_idVozna;
+    private javax.swing.JTextField txt_pridanieVozna_kod;
     private javax.swing.JTextField txt_typ;
     private javax.swing.JTextField txt_typPohybu;
     private javax.swing.JTextField txt_zaciatok;

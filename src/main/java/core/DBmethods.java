@@ -144,6 +144,26 @@ public class DBmethods {
         
         return result;
     }
+    
+    public void pridajVozen(int pIdSpolocnosti, int pKod, int pIdVozna, int pIdSnimaca) {
+        
+        Connection connection = null;
+        Statement stmt;
+
+        try {
+
+            connection = DriverManager.getConnection(connString,meno,heslo);
+            stmt       = connection.createStatement();
+
+            String sql;
+
+            sql = "execute pridaj_vozen("+pIdSpolocnosti+","+pKod+","+pIdVozna+","+pIdSnimaca+")";
+            stmt.execute(sql);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 
