@@ -10,10 +10,13 @@ public class DataGenerator {
     public static void main(String[] args) {
 
         DBmethods dbmethods = new DBmethods();
+        
+        //System.out.println(dbmethods.zobrazVlak());
+        System.out.println(dbmethods.zobrazPohybVoznaVlak());
 
 //        dbmethods.vytvorVlak(1,9,1,"22-08-17","");
 
-//        dbmethods.vytvorPohybVoznaVlak(1,1,61);
+//        dbmethods.vytvorPohybVoznaVlak('a',1,61);
 
     }
 
