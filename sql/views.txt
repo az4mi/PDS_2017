@@ -1,0 +1,14 @@
+
+
+-- zadanie 3
+--hotovy view ktory zobrazi zoznam vozòov vo vlakoch
+--bude uz potrebne na GUI len podla kriterii, ktore zadame dat... do toho selectu
+
+--select * from VIEW_VOZNE_VLAKU where ... kriteria... ;
+-- pozn. namiesto * budu vymenovane vsetky atributy, ktore chceme vypisat
+
+CREATE VIEW VIEW_VOZNE_VLAKU
+AS select v.id_vlaku,voz.id_vozna, typ.rad, typ.kod, typ.interabilita, typ.dlzka, typ.hmotnost from vlak v, table(v.vozne) vv
+join vozen voz on (voz.id_vozna = vv.id_vozna AND voz.kod = vv.kod)
+join typ_vozna typ on (typ.kod = vv.kod);
+
