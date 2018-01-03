@@ -1,6 +1,6 @@
-package main.java.generators;
+package generators;
 
-import main.java.core.DBmethods;
+import core.DBmethods;
 
 /**
  * Created by mi5ho on 03.01.2018.
