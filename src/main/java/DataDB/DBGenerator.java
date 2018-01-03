@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DataDB;
+package main.java.DataDB;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -33,8 +33,8 @@ import java.util.logging.Logger;
 public class DBGenerator {
 
     private String connString = "jdbc:oracle:thin:@asterix.fri.uniza.sk:1521/orclpdb.fri.uniza.sk";
-    private String meno ="XXX";
-    private String heslo = "XXX";
+    private String meno       = "alfa_sp";
+    private String heslo      = "vsetcimajua";
     
     public DBGenerator() {
         try {
