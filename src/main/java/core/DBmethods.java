@@ -1,5 +1,6 @@
 package core;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -485,17 +486,19 @@ public class DBmethods {
     public void pridajVozen(int pIdSpolocnosti, int pKod, int pIdVozna, int pIdSnimaca) {
         
         Connection connection = null;
-        Statement stmt;
+        CallableStatement stmt;
 
         try {
 
             connection = DriverManager.getConnection(connString,meno,heslo);
-            stmt       = connection.createStatement();
+            stmt       = connection.prepareCall("call pridaj_vozen(?,?,?,?)");
 
-            String sql;
-
-            sql = "execute pridaj_vozen("+pIdSpolocnosti+","+pKod+","+pIdVozna+","+pIdSnimaca+")";
-            stmt.execute(sql);
+            stmt.setInt(1, pIdSpolocnosti);
+            stmt.setInt(2, pKod);
+            stmt.setInt(3, pIdVozna);
+            stmt.setInt(4, pIdSnimaca);
+            
+            stmt.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -505,17 +508,17 @@ public class DBmethods {
     public void vyradVozen(int pKod, int pIdVozna) {
         
         Connection connection = null;
-        Statement stmt;
+        CallableStatement stmt;
 
         try {
 
             connection = DriverManager.getConnection(connString,meno,heslo);
-            stmt       = connection.createStatement();
+            stmt       = connection.prepareCall("call vyrad_vozen_z_prevadzky(?,?)");
 
-            String sql;
-
-            sql = "execute vyrad_vozen_z_prevadzky("+pKod+","+pIdVozna+")";
-            stmt.execute(sql);
+            stmt.setInt(1, pKod);
+            stmt.setInt(2, pIdVozna);
+            
+            stmt.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -525,17 +528,19 @@ public class DBmethods {
     public void zaradVozenDoVlaku(int pIdVlaku, int pIdVozna, int pKod, int pIdSnimaca) {
         
         Connection connection = null;
-        Statement stmt;
+        CallableStatement stmt;
 
         try {
 
             connection = DriverManager.getConnection(connString,meno,heslo);
-            stmt       = connection.createStatement();
+            stmt       = connection.prepareCall("call zarad_vozen_do_vlaku(?,?,?,?)");
 
-            String sql;
-
-            sql = "execute zarad_vozen_do_vlaku("+pIdVlaku+","+pIdVozna+","+pKod+","+pIdSnimaca+")";
-            stmt.execute(sql);
+            stmt.setInt(1, pIdVlaku);
+            stmt.setInt(2, pIdVozna);
+            stmt.setInt(3, pKod);
+            stmt.setInt(4, pIdSnimaca);
+            
+            stmt.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -545,17 +550,19 @@ public class DBmethods {
     public void vyradVozenZVlaku(int pIdVlaku, int pIdVozna, int pKod, int pIdSnimaca) {
         
         Connection connection = null;
-        Statement stmt;
+        CallableStatement stmt;
 
         try {
 
             connection = DriverManager.getConnection(connString,meno,heslo);
-            stmt       = connection.createStatement();
+            stmt       = connection.prepareCall("call vyrad_vozen_z_vlaku(?,?,?,?)");
 
-            String sql;
-
-            sql = "execute vyrad_vozen_z_vlaku("+pIdVlaku+","+pIdVozna+","+pKod+","+pIdSnimaca+")";
-            stmt.execute(sql);
+            stmt.setInt(1, pIdVlaku);
+            stmt.setInt(2, pIdVozna);
+            stmt.setInt(3, pKod);
+            stmt.setInt(4, pIdSnimaca);
+            
+            stmt.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -565,17 +572,21 @@ public class DBmethods {
     public void zmenPoholuVoznaVStanici(int pIdVozna, int pKod, int pIdSnimaca, String pPoznamka) {
         
         Connection connection = null;
-        Statement stmt;
+        CallableStatement stmt;
 
         try {
 
             connection = DriverManager.getConnection(connString,meno,heslo);
-            stmt       = connection.createStatement();
+            stmt       = connection.prepareCall("call presun_vozen(?,?,?,?)");
 
-            String sql;
-
-            sql = "execute presun_vozen("+pIdVozna+","+pKod+","+pIdSnimaca+","+pPoznamka+")";
-            stmt.execute(sql);
+            stmt.setInt(1, pIdVozna);
+            stmt.setInt(2, pKod);
+            stmt.setInt(3, pIdSnimaca);
+            stmt.setString(4, pPoznamka);
+            
+            
+            
+            stmt.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();
