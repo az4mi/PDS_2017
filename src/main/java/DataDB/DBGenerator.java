@@ -13,6 +13,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.sql.Blob;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -33,8 +34,8 @@ import java.util.logging.Logger;
 public class DBGenerator {
 
     private String connString = "jdbc:oracle:thin:@asterix.fri.uniza.sk:1521/orclpdb.fri.uniza.sk";
-    private String meno       = "alfa_sp";
-    private String heslo      = "vsetcimajua";
+    private String meno       = "XXX";
+    private String heslo      = "XXX";
     
     public DBGenerator() {
         try {
@@ -46,9 +47,7 @@ public class DBGenerator {
             //naplnKolaje();
             //naplnSmimace();
             //naplnPrvePohyby();
-            //naplnVlaky(20, 3);
-            //naplnePrvePresuny();
-            //naplnZaradenia();
+            //naplnPohyby(2);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DBGenerator.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -309,10 +308,10 @@ public class DBGenerator {
             }
             for (int i = 0; i < idcka.size(); i++) {
                 int idSnimaca = snimace.get( rand.nextInt(snimace.size()) );
-                sql = "INSERT INTO presun (id_vozna, id_snimaca_z, id_snimaca_na, kod) VALUES(" + idcka.get(i) + ",null," + idSnimaca + "," + kody.get(i) + ")";
+                sql = "INSERT INTO presun (id_snimaca_z, id_snimaca_na) VALUES( null, + " + idSnimaca + ")";
                 stmt.executeUpdate(sql);
             } 
-            sql = "SELECT id_presunu, id_vozna FROM presun";
+            sql = "SELECT id_presunu FROM presun";
             rs = stmt.executeQuery(sql);
             ArrayList<Integer> presuny = new ArrayList<>(1000);
             while(rs.next()){
@@ -320,10 +319,14 @@ public class DBGenerator {
                 presuny.add(id);
             }
             Timestamp timestamp = new Timestamp(2016, 1, 1, 12, 0, 0, 0);
-            PreparedStatement prepared = connection.prepareStatement("INSERT INTO pohyb (id_presunu, datum_od ) VALUES ( ?,? )");
+            PreparedStatement prepared = connection.prepareStatement("INSERT INTO pohyb (id_presunu, datum_od, id_vozna, kod ) VALUES ( ?,?,?,? )");
+            int i = 0;
             for (Integer presun : presuny) {
                 prepared.setInt(1, presun);
                 prepared.setTimestamp(2, timestamp);
+                prepared.setInt(3, idcka.get(i));
+                prepared.setInt(4, kody.get(i));
+                i++;
                 prepared.executeUpdate();
             }
         } catch (SQLException ex) {
@@ -338,240 +341,211 @@ public class DBGenerator {
         }
     }
     
-    public void naplnVlaky( int pocetStarych, int pocetAktualnych) {
+    public void naplnPohyby(int pocetCyklov) {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(connString,meno,heslo);
-            Random rand = new Random();
-            PreparedStatement preparedStmt = connection.prepareStatement("INSERT INTO vlak (zaciatok, ciel, typ, dat_vypravenia, dat_dorazenia) VALUES( ? , ? ,? ,? ,? )");
-            String sql = "SELECT id_stanice FROM stanica";
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            ArrayList<Integer> idcka = new ArrayList<>(100);
-            while(rs.next()){
-                int id = rs.getInt("id_stanice");
-                idcka.add(id);
-            }
-            for (int i = 0; i < pocetStarych; i++) {
-                int zaciatok = idcka.get( rand.nextInt(idcka.size()) );
-                int ciel = -1;
-                do
-                {
-                    ciel = idcka.get( rand.nextInt(idcka.size()) );
-                } while( zaciatok == ciel );
-                long casMinus = rand.nextLong();
-                if( casMinus < 0 ) {
-                    casMinus *= -1;
+            Random rand = new Random();   
+            for (int i = 0; i < pocetCyklov; i++) {
+                String sql = "SELECT id_snimaca_na, id_snimaca, id_pohybu, datum_od, id_vozna, kod FROM pohyb" +
+                                    "        LEFT JOIN presun pr USING(id_presunu) " +
+                                    "            LEFT JOIN pohyb_vozna_vlak pv USING(id_zaradenia)" +
+                                    "               WHERE datum_do IS NULL";
+                Statement stmt = connection.createStatement();
+                PreparedStatement preparedPresun = connection.prepareStatement("INSERT INTO presun (id_snimaca_z, id_snimaca_na) VALUES(?,?)");
+                PreparedStatement updatePohyb = connection.prepareStatement("UPDATE pohyb SET datum_do = ? WHERE datum_do IS NULL AND id_vozna = ? AND kod = ?");
+                PreparedStatement preparedPohyb = connection.prepareStatement("INSERT INTO pohyb (id_presunu, datum_od, id_vozna, kod) VALUES ( ?,?,?,? )");
+                PreparedStatement preparedStanica = connection.prepareStatement("SELECT id_stanice FROM snimac WHERE id_snimaca = ?");
+                PreparedStatement preparedSnimace = connection.prepareStatement("SELECT id_snimaca FROM snimac WHERE id_stanice = ?");
+                PreparedStatement preparedMax = connection.prepareStatement("SELECT max(id_presunu) as max FROM presun");
+                ResultSet rsPohyby = stmt.executeQuery(sql);
+                sql = "SELECT max(id_presunu) as max FROM presun";
+                while(rsPohyby.next()){
+                    double prst = rand.nextDouble();
+                    if(prst < 0.2) {
+                        Timestamp datum_do = rsPohyby.getTimestamp("datum_od");
+                        int id_vozna = rsPohyby.getInt("id_vozna");
+                        int kod = rsPohyby.getInt("kod");
+                        Integer id_snimaca_na = rsPohyby.getInt("id_snimaca_na");
+                        Integer id_snimaca = rsPohyby.getInt("id_snimaca");
+                        Calendar cal = Calendar.getInstance();
+                        cal.setTime(datum_do);
+                        int seconds = rand.nextInt(3600 * 24 * 3) + 1000;
+                        cal.add(Calendar.SECOND, seconds);
+                        datum_do = new Timestamp(cal.getTime().getTime());
+                        updatePohyb.setTimestamp(1, datum_do);
+                        updatePohyb.setInt(2, id_vozna);
+                        updatePohyb.setInt(3, kod);
+                        updatePohyb.executeUpdate();
+                        if(id_snimaca_na == 0) {
+                            preparedStanica.setInt(1, id_snimaca);
+                        } else {
+                            preparedStanica.setInt(1, id_snimaca_na);
+                        }
+                        ResultSet stanice = preparedStanica.executeQuery();
+                        stanice.next();
+                        int id_stanice = stanice.getInt("id_stanice");
+                        preparedSnimace.setInt(1, id_stanice);
+                        ResultSet snimace = preparedSnimace.executeQuery();
+                        ArrayList<Integer> id_snimacov = new ArrayList<>();
+                        while(snimace.next()) {
+                            id_snimacov.add(snimace.getInt("id_snimaca"));
+                        }
+                        int indexIdSnimaca = rand.nextInt(id_snimacov.size());
+                        int id_snimacaNovy = id_snimacov.get(indexIdSnimaca);
+                        if(id_snimaca_na == 0) {
+                            preparedPresun.setInt(1, id_snimaca);
+                        } else {
+                            preparedPresun.setInt(1, id_snimaca_na);
+                        }
+                        preparedPresun.setInt(2, id_snimacaNovy);
+                        preparedPresun.executeUpdate();
+                        ResultSet rsMax = preparedMax.executeQuery();
+                        rsMax.next();
+                        int max = rsMax.getInt(1);
+                        preparedPohyb.setInt(1, max);
+                        preparedPohyb.setTimestamp(2, datum_do);
+                        preparedPohyb.setInt(3, id_vozna);
+                        preparedPohyb.setInt(4, kod);
+                        preparedPohyb.executeUpdate();
+                    }                 
                 }
-                casMinus += 86400000 * 5;
-                long cin = 315360000;
-                long cin2 = 100;
-                long rok = cin * cin2;
-                casMinus %= rok;
-                long doba = rand.nextLong();
-                if( doba < 0 ) {
-                    doba *= -1;
+                PreparedStatement preparedVlak = connection.prepareStatement("INSERT INTO vlak (zaciatok, ciel, typ, dat_vypravenia, dat_dorazenia, vozne) VALUES( ? , ? ,? ,? ,?, T_VOZNE() )");
+                PreparedStatement preparedVlakMax = connection.prepareStatement("SELECT max(id_vlaku) as max FROM VLAK");
+                PreparedStatement preparedVozneStanica = connection.prepareStatement("SELECT id_vozna, kod, datum_od FROM pohyb" +
+                "        LEFT JOIN presun pr USING(id_presunu)" +
+                "            LEFT JOIN pohyb_vozna_vlak pv USING(id_zaradenia)" +
+                "                WHERE datum_do IS NULL" +
+                "                    AND ((SELECT id_stanice FROM snimac WHERE id_snimaca = pr.ID_SNIMACA_NA) = ?" +
+                "                        OR (SELECT id_stanice FROM snimac WHERE id_snimaca = pv.ID_SNIMACA) = ? ) ");
+                PreparedStatement preparedVozneStanicaCount = connection.prepareStatement("SELECT count(*) as rowcount FROM pohyb" +
+                "        LEFT JOIN presun pr USING(id_presunu)" +
+                "            LEFT JOIN pohyb_vozna_vlak pv USING(id_zaradenia)" +
+                "                WHERE datum_do IS NULL" +
+                "                    AND ((SELECT id_stanice FROM snimac WHERE id_snimaca = pr.ID_SNIMACA_NA) = ?" +
+                "                        OR (SELECT id_stanice FROM snimac WHERE id_snimaca = pv.ID_SNIMACA) = ? ) ");
+                sql = "SELECT id_stanice FROM stanica";
+                ResultSet rs = stmt.executeQuery(sql);
+                PreparedStatement preparedSnimaceStanica = connection.prepareStatement("SELECT id_snimaca FROM snimac WHERE id_stanice = ?");
+                
+                CallableStatement stmZarad = connection.prepareCall("{call zarad_vozen_do_vlaku_pom(?,?,?,?,?)}");
+                CallableStatement stmVyrad = connection.prepareCall("{call vyrad_vozen_z_vlaku_pom(?,?,?,?,?)}");
+                
+                ArrayList<Integer> idcka_stanic = new ArrayList<>(100);
+                while(rs.next()){
+                    int id = rs.getInt("id_stanice");
+                    idcka_stanic.add(id);
                 }
-                doba %= 86400000;
-                int typVlaku = rand.nextInt(7) + 1;
-                Timestamp casZ = new Timestamp(Calendar.getInstance().getTimeInMillis() - casMinus);
-                Timestamp casDo = new Timestamp(Calendar.getInstance().getTimeInMillis() - casMinus + doba);
-                preparedStmt.setInt(1, zaciatok);
-                preparedStmt.setInt(2, ciel);
-                preparedStmt.setInt(3, typVlaku);
-                preparedStmt.setTimestamp(4, casZ);
-                preparedStmt.setTimestamp(5, casDo);
-                preparedStmt.executeUpdate();
-            } 
-            preparedStmt = connection.prepareStatement("INSERT INTO vlak (zaciatok, ciel, typ, dat_vypravenia ) VALUES( ? , ? ,? ,? )");
-            for (int i = 0; i < pocetAktualnych; i++) {
-                int zaciatok = idcka.get( rand.nextInt(idcka.size()) );
-                int ciel = -1;
-                do
-                {
-                    ciel = idcka.get( rand.nextInt(idcka.size()) );
-                } while( zaciatok == ciel );
-                long doba = rand.nextLong();
-                if( doba < 0 ) {
-                    doba *= -1;
-                }
-                doba %= 86400000;
-                int typVlaku = rand.nextInt(7) + 1;
-                Timestamp casZ = new Timestamp(Calendar.getInstance().getTimeInMillis() - doba);
-                preparedStmt.setInt(1, zaciatok);
-                preparedStmt.setInt(2, ciel);
-                preparedStmt.setInt(3, typVlaku);
-                preparedStmt.setTimestamp(4, casZ);
-                preparedStmt.executeUpdate();
-            } 
-        } catch (SQLException ex) {
-            Logger.getLogger(DBGenerator.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        finally {
-            try {
-                connection.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(DBGenerator.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
-    
-    public void naplnePrvePresuny() {
-        Connection connection = null;
-        try {
-            connection = DriverManager.getConnection(connString,meno,heslo);
-            Random rand = new Random();
-            String sql = "SELECT * FROM presun JOIN snimac sn1 ON ( presun.ID_SNIMACA_NA = sn1.id_snimaca)";
-            Statement stmt = connection.createStatement();
-            Statement stmt2 = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            //ArrayList<Integer> idcka = new ArrayList<>(100);
-            PreparedStatement prepared = connection.prepareStatement("INSERT INTO pohyb (id_presunu, datum_od ) VALUES ( ?,? )");
-            while(rs.next()){
-                double prst = rand.nextDouble();
-                if( prst < 0.3 ) {
-                    int id_stanice = rs.getInt("id_stanice");
-                    int id_vozna = rs.getInt("id_vozna");
-                    int id_snimacaZ = rs.getInt("id_snimaca_na");
-                    int kod = rs.getInt("kod");
-                    int terajsia = rs.getInt("cislo");
-                    sql = "SELECT * FROM kolaj WHERE id_stanice = " + id_stanice;
-                    ResultSet rs2 = stmt2.executeQuery(sql);
-                    int count = rand.nextInt(5);
-                    int a = 0;
-                    int kolaj = -1;
-                    while(rs2.next()){                       
-                        if ( terajsia != rs2.getInt("cislo")) {
-                            kolaj = rs2.getInt("cislo");
-                            a++;
-                            if( a >= count ) {
-                                break;
+                for (int j = 0; j < idcka_stanic.size(); j++) {
+                    double prst = rand.nextDouble();
+                    if(prst < 0.2) {
+                        int zaciatok = idcka_stanic.get(j);
+                        int ciel;
+                        do
+                        {
+                            ciel = idcka_stanic.get( rand.nextInt(idcka_stanic.size()) );
+                        } while( zaciatok == ciel );
+                        preparedVozneStanica.setInt(1, zaciatok);
+                        preparedVozneStanica.setInt(2, zaciatok);
+                        ResultSet vozne = preparedVozneStanica.executeQuery();
+                        preparedVozneStanicaCount.setInt(1, zaciatok);
+                        preparedVozneStanicaCount.setInt(2, zaciatok);
+                        ResultSet count = preparedVozneStanicaCount.executeQuery();
+                        count.next();
+                        int rowcount = count.getInt("rowcount");
+                        ArrayList<Integer> zaradeneKody = new ArrayList<>();
+                        ArrayList<Integer> zaradeneId = new ArrayList<>();
+                        Timestamp maxTimestamp = null;
+                        int pocetVoznov = (int) (rowcount * ((rand.nextDouble() * 0.08) + 0.25));
+                        Timestamp prev = null;
+                        for (int k = 0; k < pocetVoznov; k++) {
+                            vozne.next();
+                            int id_vozna = vozne.getInt("id_vozna");
+                            int kod = vozne.getInt("kod");
+                            Timestamp cas = vozne.getTimestamp("datum_od");
+                            if( prev != null ) {
+                                if(!prev.equals(cas)) {
+                                    int a = 0;
+                                }
                             }
-                        } 
-                    }
-                    sql = "SELECT id_snimaca FROM snimac WHERE id_stanice = " + id_stanice + " AND cislo=" + kolaj;
-                    rs2 = stmt2.executeQuery(sql);
-                    ArrayList<Integer> snimaceId = new ArrayList<>();
-                    while(rs2.next()){      
-                        snimaceId.add( rs2.getInt("id_snimaca"));
-                    }
-                    sql = "INSERT INTO presun (id_vozna, id_snimaca_z, id_snimaca_na, kod) VALUES(" + id_vozna + "," + id_snimacaZ + "," + snimaceId.get(rand.nextInt(snimaceId.size())) + "," + kod + ")";
-                    stmt2.executeUpdate(sql);
-                    sql = "SELECT max(id_presunu) as max FROM presun";
-                    rs2 = stmt2.executeQuery(sql);
-                    rs2.next();
-                    int max = rs2.getInt(1);
-                    prepared.setInt(1, max);
-                    Timestamp stamp = new Timestamp(2016, rand.nextInt(4) + 2, rand.nextInt(25) + 2, rand.nextInt(20), rand.nextInt(60), count, max);
-                    Timestamp timestampOd = new Timestamp(2016, 1, 1, 12, 0, 0, 0);
-                    prepared.setTimestamp(2, stamp);
-                    prepared.executeUpdate();
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DBGenerator.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        finally {
-            try {
-                connection.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(DBGenerator.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
-    
-    public void naplnZaradenia() {
-        Connection connection = null;
-        try {
-            connection = DriverManager.getConnection(connString,meno,heslo);
-            Random rand = new Random();           
-            Statement stmt = connection.createStatement();
-            Statement stmt2 = connection.createStatement();
-            String sql = "SELECT id_vlaku,zaciatok, ciel, dat_vypravenia, dat_dorazenia FROM vlak";
-            ArrayList<Integer> vlaky = new ArrayList<>(100);
-            ArrayList<Integer> zaciatky = new ArrayList<>(100);
-            ArrayList<Integer> konce = new ArrayList<>(100);
-            ArrayList<Timestamp> vypravenia = new ArrayList<Timestamp>(100);
-            ArrayList<Timestamp> dorazenia = new ArrayList<Timestamp>(100);
-            ResultSet rs = stmt.executeQuery(sql);
-            while(rs.next()){
-                int id = rs.getInt("id_vlaku");
-                vlaky.add(id);
-                id = rs.getInt("zaciatok");
-                zaciatky.add(id);
-                id = rs.getInt("ciel");
-                konce.add(id);
-                Timestamp stamp = rs.getTimestamp("dat_vypravenia");
-                vypravenia.add(stamp);
-                stamp = rs.getTimestamp("dat_dorazenia");
-                dorazenia.add(stamp);            
-            }
-            PreparedStatement prepared = connection.prepareStatement("INSERT INTO pohyb (id_zaradenia, datum_od ) VALUES ( ?,? )");
-            for (int i = 0; i < vlaky.size(); i++) {
-                int pocetVoznov = rand.nextInt(4) + 4;
-                sql = "SELECT id_snimaca FROM stanica JOIN kolaj USING(id_stanice) JOIN snimac USING(id_stanice,cislo) WHERE id_stanice = " + zaciatky.get(i);
-                ArrayList<Integer> snimaceStart = new ArrayList<>(2);
-                rs = stmt.executeQuery(sql);
-                while(rs.next()){
-                    snimaceStart.add(rs.getInt(1));
-                }
-                sql = "SELECT id_snimaca FROM stanica JOIN kolaj USING(id_stanice) JOIN snimac USING(id_stanice,cislo) WHERE id_stanice = " + konce.get(i);
-                ArrayList<Integer> snimaceEnd = new ArrayList<>(2);
-                rs = stmt.executeQuery(sql);
-                while(rs.next()){
-                    snimaceEnd.add(rs.getInt(1));
-                }
-                sql = "SELECT id_pohybu, id1, kod1, id_snimaca_na FROM (\n" +
-                            "SELECT id_pohybu, p1.id_vozna as id1, p2.id_vozna, p1.kod as kod1, p2.kod, id_snimaca_na, datum_od, row_number() over ( partition by p1.kod, p1.id_vozna order by datum_od desc) as poradie\n" +
-                            "                            FROM presun p1 JOIN pohyb USING (id_presunu) LEFT JOIN pohyb_vozna_vlak p2 USING(id_zaradenia) \n" +
-                            "                            WHERE (typ_pohybu IS NULL OR typ_pohybu = 'V')\n" +
-                            "                                    AND( id_snimaca_na = 1" + snimaceStart.get(0) + " OR id_snimaca = " + snimaceStart.get(0) + " )" +
-                            "              ) WHERE poradie = 1";
-                rs = stmt.executeQuery(sql);
-                ArrayList<Integer> idcka = new ArrayList<>(100);
-                ArrayList<Integer> kody = new ArrayList<>(100);
-                ArrayList<Integer> snimace = new ArrayList<>(100);
-                while(rs.next()){
-                    int id = rs.getInt("id1");
-                    idcka.add(id);
-                    int kod = rs.getInt("kod1");
-                    kody.add(kod);
-                    int snimac = rs.getInt("id_snimaca_na");
-                    snimace.add(snimac);
-                }
-                if(idcka.size() < pocetVoznov ) {
-                    continue;
-                }
-                for (int j = 0; j < pocetVoznov; j++) {                                       
-                    int index = rand.nextInt(idcka.size());
-                    int id_vozna = idcka.remove(index);
-                    int kod = kody.remove(index);
-                    int snimac = snimace.remove(index);
-                    sql = "INSERT INTO pohyb_vozna_vlak (id_vozna,typ_pohybu,id_snimaca,kod,id_vlaku) VALUES (" + 
-                            id_vozna + ",'Z'," + snimac + "," + kod + "," + vlaky.get(i) + ")";
-                    stmt.executeUpdate(sql);
-                    sql = "SELECT max(id_zaradenia) FROM pohyb_vozna_vlak";
-                    rs = stmt.executeQuery(sql);
-                    rs.next();
-                    int id_zaradenia = rs.getInt(1);
-                    prepared.setInt(1, id_zaradenia);
-                    prepared.setTimestamp(2, vypravenia.get(i));
-                    prepared.executeUpdate();                    
-                    if( dorazenia.get(i) != null ) {
-                        sql = "INSERT INTO pohyb_vozna_vlak (id_vozna,typ_pohybu,id_snimaca,kod,id_vlaku) VALUES (" + 
-                            id_vozna + ",'V'," + snimaceEnd.get(0) + "," + kod + "," + vlaky.get(i) + ")";
-                        stmt.executeUpdate(sql);
-                        sql = "SELECT max(id_zaradenia) FROM pohyb_vozna_vlak";
-                        rs = stmt.executeQuery(sql);
-                        rs.next();
-                        id_zaradenia = rs.getInt(1);
-                        prepared.setInt(1, id_zaradenia);
-                        prepared.setTimestamp(2, dorazenia.get(i));
-                        prepared.executeUpdate();
+                            if(maxTimestamp == null) {
+                                maxTimestamp = cas;
+                            } else {
+                                if( cas.compareTo(maxTimestamp) > 0 ) {
+                                    maxTimestamp = cas;
+                                }
+                            }
+                            
+                            prev = cas;
+                            zaradeneKody.add(kod);
+                            zaradeneId.add(id_vozna);
+                        }
+                        Calendar cal = Calendar.getInstance();
+                        cal.setTime(maxTimestamp);
+                        cal.add(Calendar.MINUTE, rand.nextInt(180) + 180);
+                        Timestamp dat_vyrazenia = new Timestamp(cal.getTime().getTime());
+                        int typ = rand.nextInt(7) + 1;
+                        cal = Calendar.getInstance();
+                        cal.setTime(dat_vyrazenia);
+                        cal.add(Calendar.MINUTE, rand.nextInt(1440) + 720);
+                        Timestamp dat_dorazenia = new Timestamp(cal.getTime().getTime());
                         
+                        preparedVlak.setInt(1, zaciatok);
+                        preparedVlak.setInt(2, ciel);
+                        preparedVlak.setInt(3, typ);
+                        preparedVlak.setTimestamp(4, dat_vyrazenia);
+                        preparedVlak.setTimestamp(5, dat_dorazenia);
+                        preparedVlak.executeUpdate();
+                        ResultSet maxIDVlakuRS = preparedVlakMax.executeQuery();
+                        maxIDVlakuRS.next();
+                        preparedSnimaceStanica.setInt(1, zaciatok);
+                        ResultSet snimaceStanice = preparedSnimaceStanica.executeQuery();
+                        ArrayList<Integer> snimace = new ArrayList<>();
+                        while(snimaceStanice.next()){
+                            snimace.add(snimaceStanice.getInt(1));
+                        }
+                        int id_snimac_vlak = snimace.get(rand.nextInt(snimace.size()));
+                        int id_vlaku = maxIDVlakuRS.getInt("max");
+                        for (int k = 0; k < zaradeneId.size(); k++) {
+                            stmZarad.setInt(1, id_vlaku);
+                            stmZarad.setInt(2, zaradeneId.get(k));
+                            stmZarad.setInt(3, zaradeneKody.get(k));
+                            
+                            stmZarad.setInt(4, id_snimac_vlak);
+                            
+                            cal = Calendar.getInstance();
+                            cal.setTime(dat_vyrazenia);
+                            cal.add(Calendar.MINUTE, rand.nextInt(180) * -1);
+                            Timestamp dat_zaradenia = new Timestamp(cal.getTime().getTime());
+                            stmZarad.setTimestamp(5, dat_zaradenia);
+                            stmZarad.executeUpdate();
+                        }
+                        preparedSnimaceStanica.setInt(1, ciel);
+                        snimaceStanice = preparedSnimaceStanica.executeQuery();
+                        snimace = new ArrayList<>();
+                        while(snimaceStanice.next()){
+                            snimace.add(snimaceStanice.getInt(1));
+                        }
+                        id_snimac_vlak = snimace.get(rand.nextInt(snimace.size()));
+                        for (int k = 0; k < zaradeneId.size(); k++) {
+                            stmVyrad.setInt(1, id_vlaku);
+                            stmVyrad.setInt(2, zaradeneId.get(k));
+                            stmVyrad.setInt(3, zaradeneKody.get(k));
+                            
+                            stmVyrad.setInt(4, id_snimac_vlak);
+                            
+                            cal = Calendar.getInstance();
+                            cal.setTime(dat_dorazenia);
+                            cal.add(Calendar.MINUTE, rand.nextInt(100));
+                            Timestamp dat_zaradenia = new Timestamp(cal.getTime().getTime());
+                            stmVyrad.setTimestamp(5, dat_zaradenia);
+                            stmVyrad.executeUpdate();
+                        }
                     }
+                    
                 }
             }
+            
         } catch (SQLException ex) {
             Logger.getLogger(DBGenerator.class.getName()).log(Level.SEVERE, null, ex);
         } 
