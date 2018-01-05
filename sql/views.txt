@@ -1,14 +1,41 @@
 
+-- zadanie 1 
+--zobrazenie aktuálnej polohy vozòov pod¾a zadaných kritérií ( pod¾a typu vozòa, vlastník,
+-- v netbeanse bude podmienka na datum_do is null
+
+CREATE OR REPLACE VIEW VIEW_POLOHA_VOZNOV 
+AS select  st.nazov, st.gps_sirka, st.gps_dlzka,v.id_vozna,tv.*,v.v_prevadzke, v.id_spolocnosti,p.datum_od,p.datum_do,pvv.typ_pohybu from vozen v
+join typ_vozna tv on (v.kod = tv.kod)
+join pohyb p on (v.id_vozna=p.id_vozna and v.kod = p.kod)
+join pohyb_vozna_vlak pvv using(id_zaradenia)
+join snimac using(id_snimaca)
+join stanica st using(id_stanice);
+
+
+--zadanie 2 - zoznam vozòov v konkrétnej železniènej stanici v zadanom èase pod¾a zadaných kritérií
+pouzitie view VIEW_POLOHA_VOZNOV + ine kriteria... 
+
 
 -- zadanie 3
---hotovy view ktory zobrazi zoznam vozòov vo vlakoch
+--zobrazi zoznam vozòov vo vlakoch
 --bude uz potrebne na GUI len podla kriterii, ktore zadame dat... do toho selectu
 
---select * from VIEW_VOZNE_VLAKU where ... kriteria... ;
--- pozn. namiesto * budu vymenovane vsetky atributy, ktore chceme vypisat
+--select * from VIEW_VOZNE_VLAKU where ... kriteria... 
 
-CREATE VIEW VIEW_VOZNE_VLAKU
-AS select v.id_vlaku,voz.id_vozna, typ.rad, typ.kod, typ.interabilita, typ.dlzka, typ.hmotnost from vlak v, table(v.vozne) vv
+CREATE OR REPLACE VIEW VIEW_VOZNE_VLAKU
+AS select v.id_vlaku,v.zaciatok, v.ciel, v.typ, v.dat_vypravenia, voz.id_vozna,voz.id_spolocnosti, typ.* from vlak v, table(v.vozne) vv
 join vozen voz on (voz.id_vozna = vv.id_vozna AND voz.kod = vv.kod)
 join typ_vozna typ on (typ.kod = vv.kod);
+
+
+--zadanie 4
+--vyh¾adávanie aktuálnej polohy konkrétneho vozòa,
+pouzitie view VIEW_POLOHA_VOZNOV... s tym ze bude v kriteriach v netbeanse kod a id_vozna vlaku
+
+
+
+
+
+
+
 
