@@ -112,14 +112,49 @@ public class GUI extends javax.swing.JFrame {
         txt_zmenaPolohyVozna_poznamka = new javax.swing.JTextField();
         btn_zmenaPolohyVozna_Zmen = new javax.swing.JButton();
         btn_zmenaPolohyVozna_koniec = new javax.swing.JButton();
+        dialog_vytvorStanicu = new javax.swing.JDialog();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        txt_vytvorenieStanice_nazov = new javax.swing.JTextField();
+        txt_vytvorenieStanice_gpsSirka = new javax.swing.JTextField();
+        txt_vytvorenieStanice_gpsDlzka = new javax.swing.JTextField();
+        btn_vytvorStanicu_vytvor = new javax.swing.JButton();
+        btn_vytvorStanicu_koniec = new javax.swing.JButton();
+        dialog_zoznamVoznovVStanici = new javax.swing.JDialog();
+        jLabel35 = new javax.swing.JLabel();
+        radioBtn_zobrazVozneVStanici_vPrevadzke = new javax.swing.JRadioButton();
+        jLabel39 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
+        tabbedPane_panel = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menu_Exit = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menu_createTrain = new javax.swing.JMenuItem();
         menu_vytvorPohybVoznaVlak = new javax.swing.JMenuItem();
+        menu_vytvorZelStanicu = new javax.swing.JMenuItem();
+        menu_vytvorSnimac = new javax.swing.JMenuItem();
+        menu_vytvorPracovnika = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         menu_pridajVozen = new javax.swing.JMenuItem();
         menu_vyradVozen = new javax.swing.JMenuItem();
@@ -140,6 +175,8 @@ public class GUI extends javax.swing.JFrame {
         menu_zobrazPouzivatel = new javax.swing.JMenuItem();
         menu_zobrazZaznam = new javax.swing.JMenuItem();
         menu_zobrazPresun = new javax.swing.JMenuItem();
+        menu_vystupy = new javax.swing.JMenu();
+        menu_zoznamVoznovVStanici = new javax.swing.JMenuItem();
 
         dialog_vytvorVlak.setMinimumSize(new java.awt.Dimension(400, 392));
         dialog_vytvorVlak.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -626,6 +663,120 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(14, 14, 14))
         );
 
+        jLabel34.setText("Vytvorenie stanice");
+
+        jLabel36.setText("Nazov:");
+
+        jLabel37.setText("GPS sirka:");
+
+        jLabel38.setText("GPS dlzka:");
+
+        btn_vytvorStanicu_vytvor.setText("Vytvor stanicu");
+        btn_vytvorStanicu_vytvor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vytvorStanicu_vytvorActionPerformed(evt);
+            }
+        });
+
+        btn_vytvorStanicu_koniec.setText("Koniec");
+        btn_vytvorStanicu_koniec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vytvorStanicu_koniecActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialog_vytvorStanicuLayout = new javax.swing.GroupLayout(dialog_vytvorStanicu.getContentPane());
+        dialog_vytvorStanicu.getContentPane().setLayout(dialog_vytvorStanicuLayout);
+        dialog_vytvorStanicuLayout.setHorizontalGroup(
+            dialog_vytvorStanicuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_vytvorStanicuLayout.createSequentialGroup()
+                .addGroup(dialog_vytvorStanicuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialog_vytvorStanicuLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addGroup(dialog_vytvorStanicuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txt_vytvorenieStanice_nazov, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dialog_vytvorStanicuLayout.createSequentialGroup()
+                                .addGroup(dialog_vytvorStanicuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel36)
+                                    .addComponent(jLabel37)
+                                    .addComponent(jLabel38))
+                                .addGap(41, 41, 41)
+                                .addGroup(dialog_vytvorStanicuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txt_vytvorenieStanice_gpsSirka, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                                    .addComponent(txt_vytvorenieStanice_gpsDlzka)))))
+                    .addGroup(dialog_vytvorStanicuLayout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addGroup(dialog_vytvorStanicuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_vytvorStanicu_vytvor)
+                            .addComponent(jLabel34)))
+                    .addGroup(dialog_vytvorStanicuLayout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        .addComponent(btn_vytvorStanicu_koniec)))
+                .addContainerGap(62, Short.MAX_VALUE))
+        );
+        dialog_vytvorStanicuLayout.setVerticalGroup(
+            dialog_vytvorStanicuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_vytvorStanicuLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel34)
+                .addGap(18, 18, 18)
+                .addGroup(dialog_vytvorStanicuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel36)
+                    .addComponent(txt_vytvorenieStanice_nazov, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dialog_vytvorStanicuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel37)
+                    .addComponent(txt_vytvorenieStanice_gpsSirka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dialog_vytvorStanicuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel38)
+                    .addComponent(txt_vytvorenieStanice_gpsDlzka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btn_vytvorStanicu_vytvor)
+                .addGap(37, 37, 37)
+                .addComponent(btn_vytvorStanicu_koniec)
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+
+        jLabel35.setText("Zobraz vozne v stanici");
+
+        radioBtn_zobrazVozneVStanici_vPrevadzke.setText("V prevadzke");
+
+        jLabel39.setText("ID stanice:");
+
+        javax.swing.GroupLayout dialog_zoznamVoznovVStaniciLayout = new javax.swing.GroupLayout(dialog_zoznamVoznovVStanici.getContentPane());
+        dialog_zoznamVoznovVStanici.getContentPane().setLayout(dialog_zoznamVoznovVStaniciLayout);
+        dialog_zoznamVoznovVStaniciLayout.setHorizontalGroup(
+            dialog_zoznamVoznovVStaniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_zoznamVoznovVStaniciLayout.createSequentialGroup()
+                .addGroup(dialog_zoznamVoznovVStaniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialog_zoznamVoznovVStaniciLayout.createSequentialGroup()
+                        .addGap(289, 289, 289)
+                        .addComponent(jLabel35))
+                    .addGroup(dialog_zoznamVoznovVStaniciLayout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addGroup(dialog_zoznamVoznovVStaniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(dialog_zoznamVoznovVStaniciLayout.createSequentialGroup()
+                                .addComponent(jLabel39)
+                                .addGap(32, 32, 32)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(radioBtn_zobrazVozneVStanici_vPrevadzke))))
+                .addContainerGap(329, Short.MAX_VALUE))
+        );
+        dialog_zoznamVoznovVStaniciLayout.setVerticalGroup(
+            dialog_zoznamVoznovVStaniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_zoznamVoznovVStaniciLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel35)
+                .addGap(30, 30, 30)
+                .addComponent(radioBtn_zobrazVozneVStanici_vPrevadzke)
+                .addGap(18, 18, 18)
+                .addGroup(dialog_zoznamVoznovVStaniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel39)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(377, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txtArea.setEditable(false);
@@ -633,6 +784,186 @@ public class GUI extends javax.swing.JFrame {
         txtArea.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         txtArea.setRows(5);
         jScrollPane1.setViewportView(txtArea);
+
+        jButton1.setText("Vytvor stanicu");
+
+        jButton2.setText("Zobraz vsetky stanice");
+
+        jButton3.setText("Najdi stanicu");
+
+        jButton4.setText("Zrus stanicu");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(258, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4)
+                .addContainerGap(352, Short.MAX_VALUE))
+        );
+
+        tabbedPane_panel.addTab("Stanica", jPanel1);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 434, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 519, Short.MAX_VALUE)
+        );
+
+        tabbedPane_panel.addTab("Kolaj", jPanel2);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 434, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 519, Short.MAX_VALUE)
+        );
+
+        tabbedPane_panel.addTab("Snimac", jPanel3);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 434, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 519, Short.MAX_VALUE)
+        );
+
+        tabbedPane_panel.addTab("Vozen", jPanel4);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 434, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 519, Short.MAX_VALUE)
+        );
+
+        tabbedPane_panel.addTab("Vlak", jPanel5);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 434, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 519, Short.MAX_VALUE)
+        );
+
+        tabbedPane_panel.addTab("Pohyb", jPanel6);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 434, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 519, Short.MAX_VALUE)
+        );
+
+        tabbedPane_panel.addTab("Presun", jPanel7);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 434, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 519, Short.MAX_VALUE)
+        );
+
+        tabbedPane_panel.addTab("Pohyb vozna vlak", jPanel8);
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 434, Short.MAX_VALUE)
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 519, Short.MAX_VALUE)
+        );
+
+        tabbedPane_panel.addTab("Spolocnost", jPanel9);
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 434, Short.MAX_VALUE)
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 519, Short.MAX_VALUE)
+        );
+
+        tabbedPane_panel.addTab("Typ vozna", jPanel10);
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 434, Short.MAX_VALUE)
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 519, Short.MAX_VALUE)
+        );
+
+        tabbedPane_panel.addTab("Pouzivatel", jPanel11);
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 434, Short.MAX_VALUE)
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 519, Short.MAX_VALUE)
+        );
+
+        tabbedPane_panel.addTab("Zaznam", jPanel12);
 
         jMenu1.setText("File");
 
@@ -663,6 +994,20 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jMenu2.add(menu_vytvorPohybVoznaVlak);
+
+        menu_vytvorZelStanicu.setText("Vytvor zel. stanicu");
+        menu_vytvorZelStanicu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_vytvorZelStanicuActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menu_vytvorZelStanicu);
+
+        menu_vytvorSnimac.setText("Vytvor snimac");
+        jMenu2.add(menu_vytvorSnimac);
+
+        menu_vytvorPracovnika.setText("Vytvor pracovnika");
+        jMenu2.add(menu_vytvorPracovnika);
 
         jMenuBar1.add(jMenu2);
 
@@ -818,6 +1163,13 @@ public class GUI extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        menu_vystupy.setText("Vystupy");
+
+        menu_zoznamVoznovVStanici.setText("Zoznam voznov v stanici");
+        menu_vystupy.add(menu_zoznamVoznovVStanici);
+
+        jMenuBar1.add(menu_vystupy);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -825,15 +1177,19 @@ public class GUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(193, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(tabbedPane_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tabbedPane_panel)
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
 
@@ -1021,6 +1377,24 @@ public class GUI extends javax.swing.JFrame {
         txtArea.setText(dbmethods.zobrazPresun());
     }//GEN-LAST:event_menu_zobrazPresunActionPerformed
 
+    private void btn_vytvorStanicu_vytvorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vytvorStanicu_vytvorActionPerformed
+        
+        String nazov = txt_vytvorenieStanice_nazov.getText();
+        float  gpsSirka = Float.parseFloat(txt_vytvorenieStanice_gpsSirka.getText());
+        float  gpsDlzka = Float.parseFloat(txt_vytvorenieStanice_gpsDlzka.getText());
+        
+        dbmethods.vytvorStanicu(nazov, gpsSirka, gpsDlzka);
+    }//GEN-LAST:event_btn_vytvorStanicu_vytvorActionPerformed
+
+    private void btn_vytvorStanicu_koniecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vytvorStanicu_koniecActionPerformed
+        dialog_vytvorStanicu.setVisible(false);
+    }//GEN-LAST:event_btn_vytvorStanicu_koniecActionPerformed
+
+    private void menu_vytvorZelStanicuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_vytvorZelStanicuActionPerformed
+        dialog_vytvorStanicu.pack();
+        dialog_vytvorStanicu.setVisible(true);         
+    }//GEN-LAST:event_menu_vytvorZelStanicuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1067,6 +1441,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_vyradenieVoznaZVlaku_Koniec;
     private javax.swing.JButton btn_vyradenieVoznaZVlaku_Vyrad;
     private javax.swing.JButton btn_vytvorPohyb;
+    private javax.swing.JButton btn_vytvorStanicu_koniec;
+    private javax.swing.JButton btn_vytvorStanicu_vytvor;
     private javax.swing.JButton btn_zaradenieVoznaDoVlaku_Koniec;
     private javax.swing.JButton btn_zaradenieVoznaDoVlaku_Zarad;
     private javax.swing.JButton btn_zmenaPolohyVozna_Zmen;
@@ -1077,9 +1453,15 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JDialog dialog_vyradVozenZPrevadzky;
     private javax.swing.JDialog dialog_vyradVozenZVlaku;
     private javax.swing.JDialog dialog_vytvorPohybVoznaVlak;
+    private javax.swing.JDialog dialog_vytvorStanicu;
     private javax.swing.JDialog dialog_vytvorVlak;
     private javax.swing.JDialog dialog_zaradVozenDoVlaku;
     private javax.swing.JDialog dialog_zmenPoholuVozna;
+    private javax.swing.JDialog dialog_zoznamVoznovVStanici;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1107,6 +1489,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1118,14 +1506,31 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JMenuItem menu_Exit;
     private javax.swing.JMenuItem menu_createTrain;
     private javax.swing.JMenuItem menu_pridajVozen;
     private javax.swing.JMenuItem menu_vyhladajVozen;
     private javax.swing.JMenuItem menu_vyradVozen;
     private javax.swing.JMenuItem menu_vyradVozenZVlaku;
+    private javax.swing.JMenu menu_vystupy;
     private javax.swing.JMenuItem menu_vytvorPohybVoznaVlak;
+    private javax.swing.JMenuItem menu_vytvorPracovnika;
+    private javax.swing.JMenuItem menu_vytvorSnimac;
+    private javax.swing.JMenuItem menu_vytvorZelStanicu;
     private javax.swing.JMenuItem menu_zaradVozenDoVlaku;
     private javax.swing.JMenuItem menu_zmenPolohuVozna;
     private javax.swing.JMenuItem menu_zobrazKolaj;
@@ -1138,6 +1543,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem menu_zobrazTypVozna;
     private javax.swing.JMenuItem menu_zobrazVozen;
     private javax.swing.JMenuItem menu_zobrazZaznam;
+    private javax.swing.JMenuItem menu_zoznamVoznovVStanici;
+    private javax.swing.JRadioButton radioBtn_zobrazVozneVStanici_vPrevadzke;
+    private javax.swing.JTabbedPane tabbedPane_panel;
     private javax.swing.JTextArea txtArea;
     private javax.swing.JTextField txt_VyradenieVoznaZPrevadzky_ID;
     private javax.swing.JTextField txt_VyradenieVoznaZPrevadzky_Kod;
@@ -1156,6 +1564,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField txt_vyradenieVoznaZVlaku_idVlaku;
     private javax.swing.JTextField txt_vyradenieVoznaZVlaku_idVozna;
     private javax.swing.JTextField txt_vyradenieVoznaZVlaku_kod;
+    private javax.swing.JTextField txt_vytvorenieStanice_gpsDlzka;
+    private javax.swing.JTextField txt_vytvorenieStanice_gpsSirka;
+    private javax.swing.JTextField txt_vytvorenieStanice_nazov;
     private javax.swing.JTextField txt_zaciatok;
     private javax.swing.JTextField txt_zaradenieVoznaDoVlaku_idSnimaca;
     private javax.swing.JTextField txt_zaradenieVoznaDoVlaku_idVlaku;
