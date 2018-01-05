@@ -33,6 +33,40 @@ join typ_vozna typ on (typ.kod = vv.kod);
 pouzitie view VIEW_POLOHA_VOZNOV... s tym ze bude v kriteriach v netbeanse kod a id_vozna vlaku
 
 
+--zadanie 5
+--vyh¾adávanie konkrétneho vozòa vrátane histórie jeho výskytu za dané obdobie,
+
+CREATE OR REPLACE VIEW VIEW_HISTORIA_VOZNOV
+AS select p.id_pohybu, p.datum_od, p.datum_do, v.id_vozna, tv.* from pohyb p
+join vozen v on (p.id_vozna = v.id_vozna and p.kod = v.kod)
+join typ_vozna tv on (v.kod = tv.kod);
+-- select z view + where kriteria... kod = xxx, id_vozna = yyy.. + datumovy interval... 
+
+
+--zadanie 6
+--vyh¾adávanie skupín vozòov pod¾a rôznych kritérií,
+
+--select podla kriterii napr. hmotnost alebo dlzka... a zobrazenie kodov.. a obrazku do netbeansu
+select kod,obrazok from typ_vozna where kriteria...
+
+--zadanie 7
+--vypíšte štatistiky o vozòoch vo vlaku vrátane histórie,
+-- statistika o pocte presunov... alebo.. pocet zaradeni voznov vo vlakoch... 
+
+--zadanie 8
+--vypíšte štatistiky o vozòoch v staniciach vrátane histórie
+--pocet voznov v stanici... alebo neviem co... 
+
+--zadanie 9
+--vypíšte štatistiky o pracovníkoch a ich výkonoch z poh¾adu zadávania dát
+--zobrazi pocet pracovnikov, ktory zaevidovali doklady... 0,50,100,150,200
+-- alebo nejake rozdiely muzi vs zeny... pripadne nieco podla veku.. musime vymysliet ze co... 
+
+--zadanie 10
+--vypíšte informácie o automaticky zaevidovaných vozòoch èi vlakoch pod¾a vybraných kritérií.
+--waaat?? to si musime urcit... 
+
+
 
 
 
