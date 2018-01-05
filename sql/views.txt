@@ -1,0 +1,75 @@
+
+-- zadanie 1 
+--zobrazenie aktuálnej polohy vozòov pod¾a zadaných kritérií ( pod¾a typu vozòa, vlastník,
+-- v netbeanse bude podmienka na datum_do is null
+
+CREATE OR REPLACE VIEW VIEW_POLOHA_VOZNOV 
+AS select  st.nazov, st.gps_sirka, st.gps_dlzka,v.id_vozna,tv.*,v.v_prevadzke, v.id_spolocnosti,p.datum_od,p.datum_do,pvv.typ_pohybu from vozen v
+join typ_vozna tv on (v.kod = tv.kod)
+join pohyb p on (v.id_vozna=p.id_vozna and v.kod = p.kod)
+join pohyb_vozna_vlak pvv using(id_zaradenia)
+join snimac using(id_snimaca)
+join stanica st using(id_stanice);
+
+
+--zadanie 2 - zoznam vozòov v konkrétnej železniènej stanici v zadanom èase pod¾a zadaných kritérií
+pouzitie view VIEW_POLOHA_VOZNOV + ine kriteria... 
+
+
+-- zadanie 3
+--zobrazi zoznam vozòov vo vlakoch
+--bude uz potrebne na GUI len podla kriterii, ktore zadame dat... do toho selectu
+
+--select * from VIEW_VOZNE_VLAKU where ... kriteria... 
+
+CREATE OR REPLACE VIEW VIEW_VOZNE_VLAKU
+AS select v.id_vlaku,v.zaciatok, v.ciel, v.typ, v.dat_vypravenia, voz.id_vozna,voz.id_spolocnosti, typ.* from vlak v, table(v.vozne) vv
+join vozen voz on (voz.id_vozna = vv.id_vozna AND voz.kod = vv.kod)
+join typ_vozna typ on (typ.kod = vv.kod);
+
+
+--zadanie 4
+--vyh¾adávanie aktuálnej polohy konkrétneho vozòa,
+pouzitie view VIEW_POLOHA_VOZNOV... s tym ze bude v kriteriach v netbeanse kod a id_vozna vlaku
+
+
+--zadanie 5
+--vyh¾adávanie konkrétneho vozòa vrátane histórie jeho výskytu za dané obdobie,
+
+CREATE OR REPLACE VIEW VIEW_HISTORIA_VOZNOV
+AS select p.id_pohybu, p.datum_od, p.datum_do, v.id_vozna, tv.* from pohyb p
+join vozen v on (p.id_vozna = v.id_vozna and p.kod = v.kod)
+join typ_vozna tv on (v.kod = tv.kod);
+-- select z view + where kriteria... kod = xxx, id_vozna = yyy.. + datumovy interval... 
+
+
+--zadanie 6
+--vyh¾adávanie skupín vozòov pod¾a rôznych kritérií,
+
+--select podla kriterii napr. hmotnost alebo dlzka... a zobrazenie kodov.. a obrazku do netbeansu
+select kod,obrazok from typ_vozna where kriteria...
+
+--zadanie 7
+--vypíšte štatistiky o vozòoch vo vlaku vrátane histórie,
+-- statistika o pocte presunov... alebo.. pocet zaradeni voznov vo vlakoch... 
+
+--zadanie 8
+--vypíšte štatistiky o vozòoch v staniciach vrátane histórie
+--pocet voznov v stanici... alebo neviem co... 
+
+--zadanie 9
+--vypíšte štatistiky o pracovníkoch a ich výkonoch z poh¾adu zadávania dát
+--zobrazi pocet pracovnikov, ktory zaevidovali doklady... 0,50,100,150,200
+-- alebo nejake rozdiely muzi vs zeny... pripadne nieco podla veku.. musime vymysliet ze co... 
+
+--zadanie 10
+--vypíšte informácie o automaticky zaevidovaných vozòoch èi vlakoch pod¾a vybraných kritérií.
+--waaat?? to si musime urcit... 
+
+
+
+
+
+
+
+
