@@ -6,6 +6,8 @@
 package GUI;
 
 import core.DBmethods;
+import java.sql.Timestamp;
+import java.util.Calendar;
 
 /**
  *
@@ -126,7 +128,15 @@ public class GUI extends javax.swing.JFrame {
         jLabel35 = new javax.swing.JLabel();
         radioBtn_zobrazVozneVStanici_vPrevadzke = new javax.swing.JRadioButton();
         jLabel39 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txt_zobrazVozneVStanici_idStanice = new javax.swing.JTextField();
+        datePicker_ZobrazVozneVStanici_od = new org.jdesktop.swingx.JXDatePicker();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        datePicker_zobrazVozneVStanici_do = new org.jdesktop.swingx.JXDatePicker();
+        txt_zobrazVozneVStanici_casOd = new javax.swing.JTextField();
+        txt_zobrazVozneVStanici_casDo = new javax.swing.JTextField();
+        btn_zobrazVozneVStanici_zobraz = new javax.swing.JToggleButton();
+        btn_zobrazVozneVStanici_koniec = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         tabbedPane_panel = new javax.swing.JTabbedPane();
@@ -740,9 +750,37 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel35.setText("Zobraz vozne v stanici");
 
+        radioBtn_zobrazVozneVStanici_vPrevadzke.setSelected(true);
         radioBtn_zobrazVozneVStanici_vPrevadzke.setText("V prevadzke");
+        radioBtn_zobrazVozneVStanici_vPrevadzke.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBtn_zobrazVozneVStanici_vPrevadzkeActionPerformed(evt);
+            }
+        });
 
         jLabel39.setText("ID stanice:");
+
+        jLabel40.setText("Datum a cas od:");
+
+        jLabel41.setText("Datum a cas do:");
+
+        txt_zobrazVozneVStanici_casOd.setText("07:00");
+
+        txt_zobrazVozneVStanici_casDo.setText("22:00");
+
+        btn_zobrazVozneVStanici_zobraz.setText("Zobraz vozne");
+        btn_zobrazVozneVStanici_zobraz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_zobrazVozneVStanici_zobrazActionPerformed(evt);
+            }
+        });
+
+        btn_zobrazVozneVStanici_koniec.setText("Koniec");
+        btn_zobrazVozneVStanici_koniec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_zobrazVozneVStanici_koniecActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout dialog_zoznamVoznovVStaniciLayout = new javax.swing.GroupLayout(dialog_zoznamVoznovVStanici.getContentPane());
         dialog_zoznamVoznovVStanici.getContentPane().setLayout(dialog_zoznamVoznovVStaniciLayout);
@@ -751,30 +789,62 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(dialog_zoznamVoznovVStaniciLayout.createSequentialGroup()
                 .addGroup(dialog_zoznamVoznovVStaniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dialog_zoznamVoznovVStaniciLayout.createSequentialGroup()
-                        .addGap(289, 289, 289)
-                        .addComponent(jLabel35))
-                    .addGroup(dialog_zoznamVoznovVStaniciLayout.createSequentialGroup()
                         .addGap(102, 102, 102)
                         .addGroup(dialog_zoznamVoznovVStaniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(radioBtn_zobrazVozneVStanici_vPrevadzke)
                             .addGroup(dialog_zoznamVoznovVStaniciLayout.createSequentialGroup()
-                                .addComponent(jLabel39)
+                                .addGroup(dialog_zoznamVoznovVStaniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel39)
+                                    .addComponent(jLabel40)
+                                    .addComponent(jLabel41))
                                 .addGap(32, 32, 32)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(radioBtn_zobrazVozneVStanici_vPrevadzke))))
-                .addContainerGap(329, Short.MAX_VALUE))
+                                .addGroup(dialog_zoznamVoznovVStaniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txt_zobrazVozneVStanici_idStanice, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(dialog_zoznamVoznovVStaniciLayout.createSequentialGroup()
+                                        .addComponent(datePicker_zobrazVozneVStanici_do, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txt_zobrazVozneVStanici_casDo))
+                                    .addGroup(dialog_zoznamVoznovVStaniciLayout.createSequentialGroup()
+                                        .addComponent(datePicker_ZobrazVozneVStanici_od, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txt_zobrazVozneVStanici_casOd, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(dialog_zoznamVoznovVStaniciLayout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(btn_zobrazVozneVStanici_zobraz))
+                    .addGroup(dialog_zoznamVoznovVStaniciLayout.createSequentialGroup()
+                        .addGap(243, 243, 243)
+                        .addComponent(jLabel35))
+                    .addGroup(dialog_zoznamVoznovVStaniciLayout.createSequentialGroup()
+                        .addGap(265, 265, 265)
+                        .addComponent(btn_zobrazVozneVStanici_koniec)))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
         dialog_zoznamVoznovVStaniciLayout.setVerticalGroup(
             dialog_zoznamVoznovVStaniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dialog_zoznamVoznovVStaniciLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel35)
-                .addGap(30, 30, 30)
+                .addGap(29, 29, 29)
                 .addComponent(radioBtn_zobrazVozneVStanici_vPrevadzke)
                 .addGap(18, 18, 18)
                 .addGroup(dialog_zoznamVoznovVStaniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel39)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(377, Short.MAX_VALUE))
+                    .addComponent(txt_zobrazVozneVStanici_idStanice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dialog_zoznamVoznovVStaniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(datePicker_ZobrazVozneVStanici_od, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel40)
+                    .addComponent(txt_zobrazVozneVStanici_casOd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dialog_zoznamVoznovVStaniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(datePicker_zobrazVozneVStanici_do, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel41)
+                    .addComponent(txt_zobrazVozneVStanici_casDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btn_zobrazVozneVStanici_zobraz)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(btn_zobrazVozneVStanici_koniec)
+                .addGap(18, 18, 18))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1166,6 +1236,11 @@ public class GUI extends javax.swing.JFrame {
         menu_vystupy.setText("Vystupy");
 
         menu_zoznamVoznovVStanici.setText("Zoznam voznov v stanici");
+        menu_zoznamVoznovVStanici.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_zoznamVoznovVStaniciActionPerformed(evt);
+            }
+        });
         menu_vystupy.add(menu_zoznamVoznovVStanici);
 
         jMenuBar1.add(menu_vystupy);
@@ -1395,6 +1470,37 @@ public class GUI extends javax.swing.JFrame {
         dialog_vytvorStanicu.setVisible(true);         
     }//GEN-LAST:event_menu_vytvorZelStanicuActionPerformed
 
+    private void menu_zoznamVoznovVStaniciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_zoznamVoznovVStaniciActionPerformed
+        dialog_zoznamVoznovVStanici.pack();
+        dialog_zoznamVoznovVStanici.setVisible(true);
+    }//GEN-LAST:event_menu_zoznamVoznovVStaniciActionPerformed
+
+    private void radioBtn_zobrazVozneVStanici_vPrevadzkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBtn_zobrazVozneVStanici_vPrevadzkeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioBtn_zobrazVozneVStanici_vPrevadzkeActionPerformed
+
+    private void btn_zobrazVozneVStanici_zobrazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_zobrazVozneVStanici_zobrazActionPerformed
+        Calendar cal = Calendar.getInstance();
+        
+        boolean vPrevadzke = radioBtn_zobrazVozneVStanici_vPrevadzke.isSelected();
+        int     idStanice  = Integer.parseInt(txt_zobrazVozneVStanici_idStanice.getText());
+        
+        datePicker_ZobrazVozneVStanici_od.getDate().setHours(Integer.parseInt(txt_zobrazVozneVStanici_casOd.getText().substring(0, 2)));
+        datePicker_ZobrazVozneVStanici_od.getDate().setMinutes(Integer.parseInt(txt_zobrazVozneVStanici_casOd.getText().substring(3, 5)));
+        
+        datePicker_zobrazVozneVStanici_do.getDate().setHours(Integer.parseInt(txt_zobrazVozneVStanici_casDo.getText().substring(0, 2)));
+        datePicker_zobrazVozneVStanici_do.getDate().setMinutes(Integer.parseInt(txt_zobrazVozneVStanici_casDo.getText().substring(3, 5)));
+        
+        Timestamp ts_od = new Timestamp(datePicker_ZobrazVozneVStanici_od.getDate().getTime());
+        Timestamp ts_do = new Timestamp(datePicker_zobrazVozneVStanici_do.getDate().getTime());
+        
+        txtArea.setText(dbmethods.zoznamVoznovVStanici(vPrevadzke, idStanice, ts_od, ts_do));
+    }//GEN-LAST:event_btn_zobrazVozneVStanici_zobrazActionPerformed
+
+    private void btn_zobrazVozneVStanici_koniecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_zobrazVozneVStanici_koniecActionPerformed
+        dialog_zoznamVoznovVStanici.setVisible(false);
+    }//GEN-LAST:event_btn_zobrazVozneVStanici_koniecActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1449,6 +1555,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_zmenaPolohyVozna_koniec;
     private javax.swing.JMenuItem btn_zobrazPohybVoznaVlak;
     private javax.swing.JMenuItem btn_zobrazVlak;
+    private javax.swing.JButton btn_zobrazVozneVStanici_koniec;
+    private javax.swing.JToggleButton btn_zobrazVozneVStanici_zobraz;
+    private org.jdesktop.swingx.JXDatePicker datePicker_ZobrazVozneVStanici_od;
+    private org.jdesktop.swingx.JXDatePicker datePicker_zobrazVozneVStanici_do;
     private javax.swing.JDialog dialog_pridajVozen;
     private javax.swing.JDialog dialog_vyradVozenZPrevadzky;
     private javax.swing.JDialog dialog_vyradVozenZVlaku;
@@ -1496,6 +1606,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1519,7 +1631,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JMenuItem menu_Exit;
     private javax.swing.JMenuItem menu_createTrain;
     private javax.swing.JMenuItem menu_pridajVozen;
@@ -1576,5 +1687,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField txt_zmenaPolohyVozna_idVozna;
     private javax.swing.JTextField txt_zmenaPolohyVozna_kod;
     private javax.swing.JTextField txt_zmenaPolohyVozna_poznamka;
+    private javax.swing.JTextField txt_zobrazVozneVStanici_casDo;
+    private javax.swing.JTextField txt_zobrazVozneVStanici_casOd;
+    private javax.swing.JTextField txt_zobrazVozneVStanici_idStanice;
     // End of variables declaration//GEN-END:variables
 }

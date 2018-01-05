@@ -619,16 +619,7 @@ public class DBmethods {
     * Vystupy
     */
     
-    public String zoznamVoznovVStanici(boolean pVPrevadzke, int pIdStanice, int    pDenOd,
-                                                                            int    pMesiacOd,
-                                                                            int    pRokOd,
-                                                                            int    pHodinaOd,
-                                                                            int    pMinutaOd,                     
-                                                                            int    pDenDo,
-                                                                            int    pMesiacDo,
-                                                                            int    pRokDo,
-                                                                            int    pHodinaDo,
-                                                                            int    pMinutaDo) {
+    public String zoznamVoznovVStanici(boolean pVPrevadzke, int pIdStanice, Timestamp pOd, Timestamp pDo) {
         
         Connection connection = null;
         Statement  stmt;
@@ -646,31 +637,27 @@ public class DBmethods {
                 
             connection   = DriverManager.getConnection(connString,meno,heslo);
             stmt         = connection.createStatement();          
-            sql          = "SELECT * from ZOZNAM_VOZNOV_V_STANICI"
+            sql          = "SELECT id_vozna, kod, nazov, datum_od, datum_do from ZOZNAM_VOZNOV_V_STANICI"
                          + " where "
                          + " v_prevadzke = '"+vPrevadzke+"' and "
-                         + " id_stanice = '"+pIdStanice+"' and "
-                         + " extract(day from datum_od) >= "+pDenOd+" and "
-                         + " extract(month from datum_od) >= "+pMesiacOd+" and "
-                         + " extract(year from datum_od) >= "+pRokOd+" and "
-                         + " extract(hour from datum_od) >= "+pHodinaOd+" and "
-                         + " extract(minute from datum_od) >= "+pMinutaOd+" and "
-                         + " extract(day from datum_do) <= "+pDenDo+" and "
-                         + " extract(month from datum_do) <= "+pMesiacDo+" and "
-                         + " extract(year from datum_do) <= "+pRokDo+" and "
-                         + " extract(hour from datum_do) <= "+pHodinaDo+" and "
-                         + " extract(minute from datum_do) <= "+pMinutaDo+";";
+                         + " id_stanice = "+pIdStanice+" and "
+                         + " datum_od >= to_timestamp('"+pOd.toString()+"', 'YYYY-MM-DD HH24:MI:SS.FF') and "
+                         + " datum_do <= to_timestamp('"+pDo.toString()+"', 'YYYY-MM-DD HH24:MI:SS.FF')";
+              
+            System.out.println(sql);
                     
             ResultSet rs = stmt.executeQuery(sql);
+                     
      
             while(rs.next()){
                 
+                System.out.println("row");
                 result += "Vozen\n"
                         + " > ID vozna      = "+rs.getString("id_vozna")+"\n"
                         + " > Kod           = "+rs.getString("kod")+"\n"
                         + " > Nazov stanice = "+rs.getString("nazov")+"\n"
                         + " > Cas od        = "+rs.getString("datum_od")+"\n"
-                        + " > Cas do        = "+rs.getString("datum_do")+"\n";
+                        + " > Cas do        = "+rs.getString("datum_do")+"\n\n";
                                 
             }
             
@@ -679,6 +666,7 @@ public class DBmethods {
         }
         
         return result;
+        
     }
     
 
