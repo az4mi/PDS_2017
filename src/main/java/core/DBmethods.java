@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +26,27 @@ public class DBmethods {
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
         } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void vytvorStanicu(String pNazov, float pGpsSirka, float pGpsDlzka) {
+        
+        Connection connection = null;
+        Statement stmt;
+
+        try {
+
+            connection = DriverManager.getConnection(connString,meno,heslo);
+            stmt       = connection.createStatement();
+
+            String sql;      
+
+            sql = "INSERT INTO stanica (nazov, gps_sirka, gps_dlzka) VALUES('"+pNazov+"',"+pGpsSirka+","+pGpsDlzka+")";
+            stmt.executeUpdate(sql);
+
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -593,6 +615,71 @@ public class DBmethods {
         }
     }
 
-
+    /***************************************************************************
+    * Vystupy
+    */
+    
+    public String zoznamVoznovVStanici(boolean pVPrevadzke, int pIdStanice, int    pDenOd,
+                                                                            int    pMesiacOd,
+                                                                            int    pRokOd,
+                                                                            int    pHodinaOd,
+                                                                            int    pMinutaOd,                     
+                                                                            int    pDenDo,
+                                                                            int    pMesiacDo,
+                                                                            int    pRokDo,
+                                                                            int    pHodinaDo,
+                                                                            int    pMinutaDo) {
+        
+        Connection connection = null;
+        Statement  stmt;
+        String     sql;
+        String     result = "";
+        
+        String vPrevadzke;
+        if(pVPrevadzke) {
+            vPrevadzke = "A";
+        } else {
+            vPrevadzke = "N";
+        }
+        
+        try {
+                
+            connection   = DriverManager.getConnection(connString,meno,heslo);
+            stmt         = connection.createStatement();          
+            sql          = "SELECT * from ZOZNAM_VOZNOV_V_STANICI"
+                         + " where "
+                         + " v_prevadzke = '"+vPrevadzke+"' and "
+                         + " id_stanice = '"+pIdStanice+"' and "
+                         + " extract(day from datum_od) >= "+pDenOd+" and "
+                         + " extract(month from datum_od) >= "+pMesiacOd+" and "
+                         + " extract(year from datum_od) >= "+pRokOd+" and "
+                         + " extract(hour from datum_od) >= "+pHodinaOd+" and "
+                         + " extract(minute from datum_od) >= "+pMinutaOd+" and "
+                         + " extract(day from datum_do) <= "+pDenDo+" and "
+                         + " extract(month from datum_do) <= "+pMesiacDo+" and "
+                         + " extract(year from datum_do) <= "+pRokDo+" and "
+                         + " extract(hour from datum_do) <= "+pHodinaDo+" and "
+                         + " extract(minute from datum_do) <= "+pMinutaDo+";";
+                    
+            ResultSet rs = stmt.executeQuery(sql);
+     
+            while(rs.next()){
+                
+                result += "Vozen\n"
+                        + " > ID vozna      = "+rs.getString("id_vozna")+"\n"
+                        + " > Kod           = "+rs.getString("kod")+"\n"
+                        + " > Nazov stanice = "+rs.getString("nazov")+"\n"
+                        + " > Cas od        = "+rs.getString("datum_od")+"\n"
+                        + " > Cas do        = "+rs.getString("datum_do")+"\n";
+                                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return result;
+    }
+    
 
 }
