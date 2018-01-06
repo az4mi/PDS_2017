@@ -1505,6 +1505,223 @@
         </Component>
       </SubComponents>
     </Container>
+    <Container class="javax.swing.JDialog" name="dialog_zobrazenieAktualnejPolohyVoznov">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="223" max="-2" attributes="0"/>
+                          <Component id="jLabel56" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="slider_zobrazenieAktualnejPolohyVoznov_hmotnostOd" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel59" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="radioButton_zobrazenieAktualnejPolohyVoznov_mimoPrevadzky" min="-2" max="-2" attributes="0"/>
+                                      <Component id="radioButton_zobrazenieAktualnejPolohyVoznov_vPrevadzke" min="-2" max="-2" attributes="0"/>
+                                      <Component id="radioButton_zobrazenieAktualnejPolohyVoznov_vsetky" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="slider_zobrazenieAktualnejPolohyVoznov_hmotnostDo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel60" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel61" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel63" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel62" min="-2" max="-2" attributes="0"/>
+                                      <Component id="slider_zobrazenieAktualnejPolohyVoznov_dlzkaDo" min="-2" max="-2" attributes="0"/>
+                                      <Component id="slider_zobrazenieAktualnejPolohyVoznov_dlzkaOd" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel57" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel58" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txt_zobrazenieAktualnejPolohyVoznov_idSpolocnosti" pref="94" max="32767" attributes="0"/>
+                                      <Component id="txt_zobrazenieAktualnejPolohyVoznov_kod" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="317" max="-2" attributes="0"/>
+                          <Component id="btn_zobrazenieAktualnejPolohyVoznov_zobraz" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="109" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="btn_zobrazenieAktualnejPolohyVoznov_koniec" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="323" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="jLabel56" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel57" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_zobrazenieAktualnejPolohyVoznov_idSpolocnosti" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel58" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_zobrazenieAktualnejPolohyVoznov_kod" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="radioButton_zobrazenieAktualnejPolohyVoznov_vPrevadzke" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel59" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="radioButton_zobrazenieAktualnejPolohyVoznov_mimoPrevadzky" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="radioButton_zobrazenieAktualnejPolohyVoznov_vsetky" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jLabel60" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel62" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="slider_zobrazenieAktualnejPolohyVoznov_dlzkaOd" min="-2" max="-2" attributes="0"/>
+                              <Component id="slider_zobrazenieAktualnejPolohyVoznov_hmotnostOd" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="jLabel61" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jLabel63" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="slider_zobrazenieAktualnejPolohyVoznov_hmotnostDo" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="slider_zobrazenieAktualnejPolohyVoznov_dlzkaDo" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="27" max="32767" attributes="0"/>
+                  <Component id="btn_zobrazenieAktualnejPolohyVoznov_zobraz" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="btn_zobrazenieAktualnejPolohyVoznov_koniec" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel56">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Zobrazenie aktualnej polohy voznov podla kriterii"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel57">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="ID spolocnosti (nepovinne):"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel58">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Kod [typ vozna] (nepovinne):"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSlider" name="slider_zobrazenieAktualnejPolohyVoznov_hmotnostOd">
+        </Component>
+        <Component class="javax.swing.JSlider" name="slider_zobrazenieAktualnejPolohyVoznov_hmotnostDo">
+        </Component>
+        <Component class="javax.swing.JSlider" name="slider_zobrazenieAktualnejPolohyVoznov_dlzkaOd">
+        </Component>
+        <Component class="javax.swing.JSlider" name="slider_zobrazenieAktualnejPolohyVoznov_dlzkaDo">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel59">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Stav vozna:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioButton_zobrazenieAktualnejPolohyVoznov_vPrevadzke">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroup_zobrazenieAktualnejPolohyVoznov_stav"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="V prevadzke"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioButton_zobrazenieAktualnejPolohyVoznov_mimoPrevadzky">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroup_zobrazenieAktualnejPolohyVoznov_stav"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Mimo prevadzky"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioButton_zobrazenieAktualnejPolohyVoznov_vsetky">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroup_zobrazenieAktualnejPolohyVoznov_stav"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Vsetky"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel60">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Hmotnost od:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel61">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Hmotnost do:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel62">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Dlzka od:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel63">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Dlzka do:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_zobrazenieAktualnejPolohyVoznov_zobraz">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Zobraz vozne"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_zobrazenieAktualnejPolohyVoznov_zobrazActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_zobrazenieAktualnejPolohyVoznov_koniec">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Koniec"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_zobrazenieAktualnejPolohyVoznov_koniecActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txt_zobrazenieAktualnejPolohyVoznov_idSpolocnosti">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txt_zobrazenieAktualnejPolohyVoznov_kod">
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup_zobrazenieAktualnejPolohyVoznov_stav">
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu1">
@@ -1726,6 +1943,14 @@
             <Property name="text" type="java.lang.String" value="Vystupy"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menu_zobrazenieAktualnejPolohyVoznov">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Zobrazenie aktualnej polohy voznov"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_zobrazenieAktualnejPolohyVoznovActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menu_zoznamVoznovVStanici">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Zoznam voznov v stanici"/>

@@ -726,7 +726,7 @@ public class DBmethods {
         return result;    
     }
 	
-	public String zobrazAktualnuPolohuVozna(int pIdVozna, int pKodVozna) {
+    public String zobrazAktualnuPolohuVozna(int pIdVozna, int pKodVozna) {
         
         Connection connection = null;
         Statement  stmt;
@@ -976,4 +976,74 @@ public class DBmethods {
 
             return result;
         }
+        
+    public String zobrazenieAktualnejPolohyVoznov(String pIdSpolocnosti, String pKod, int pHmotnostOd, int pHmotnostDo, int pDlzkaOd, int pDlzkaDo, int pVPrevadzke) {
+        
+        Connection connection = null;
+        Statement  stmt;
+        String     sql;
+        String     result = "";
+        
+        String podmienka_idSpolocnosti = "";
+        String podmienka_kod           = "";
+        String podmienka_vPrevadzke    = "";
+        
+        if(!pIdSpolocnosti.isEmpty() && !pIdSpolocnosti.equals("") && !pIdSpolocnosti.equals(" ")) {
+            podmienka_idSpolocnosti = " id_spolocnosti = "+pIdSpolocnosti+" and ";
+        }
+        
+        if(!pKod.isEmpty() && !pKod.equals("") && !pKod.equals(" ")) {
+            podmienka_kod = " kod = "+pKod+" and ";
+        }
+        
+        if        (pVPrevadzke == 0) {
+            podmienka_vPrevadzke = " v_prevadzke = 'N' and ";
+        } else if (pVPrevadzke == 1) {
+            podmienka_vPrevadzke = " v_prevadzke = 'A' and ";
+        }
+
+        try {
+
+            connection   = DriverManager.getConnection(connString,meno,heslo);
+            stmt         = connection.createStatement();          
+            sql          = "select id_vozna, kod, rad, v_prevadzke, interabilita, dlzka, hmotnost, poznamka, nazov_spolocnosti, id_spolocnosti, gps_sirka, gps_dlzka, nazov from VIEW_POLOHA_VOZNOV"
+                         + " where "
+                         + " hmotnost >= "+pHmotnostOd+" and "
+			 + " hmotnost <= "+pHmotnostDo+" and "
+                         + " dlzka >= "+pDlzkaOd+" and "
+                         + " dlzka <= "+pDlzkaDo+" and "
+                         + podmienka_idSpolocnosti
+                         + podmienka_kod
+                         + podmienka_vPrevadzke
+                         + " datum_do is null";
+            
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()){
+
+                result += "Vozen\n"
+                        + " > ID vozna             = "+rs.getString("id_vozna")+"\n"                     
+                        + " > Patriaci spolocnosti = "+rs.getString("nazov_spolocnosti")+"\n"
+                        + " > ID spolocnosti       = "+rs.getString("id_spolocnosti")+"\n"
+                        + " > Rad                  = "+rs.getString("rad")+"\n"
+                        + " > Kod                  = "+rs.getString("kod")+"\n"
+                        + " > V prevadzke          = "+rs.getString("v_prevadzke")+"\n"
+                        + " > Interabilita         = "+rs.getString("interabilita")+"\n"
+                        + " > Dlzka                = "+rs.getString("dlzka")+"\n"
+                        + " > Hmotnost [t]         = "+rs.getString("hmotnost")+"\n"
+                        + " > Poznamka             = "+rs.getString("poznamka")+"\n"
+                        + " > Aktualna poloha vozna\n"
+                        + "    > Nazov miesta = "+rs.getString("nazov")+"\n"
+                        + "    > GPS sirka    = "+rs.getString("gps_sirka")+"\n"
+                        + "    > GPS dlzka    = "+rs.getString("gps_dlzka")+"\n\n";
+                            
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return result;
+    }
 }

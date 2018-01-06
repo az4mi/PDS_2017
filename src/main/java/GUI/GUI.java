@@ -171,6 +171,27 @@ public class GUI extends javax.swing.JFrame {
         txt_zobrazenieHistorieVyskytuVozna_kodVozna = new javax.swing.JTextField();
         btn_zobrazenieHistorieVyskytuVozna_Zobraz = new javax.swing.JButton();
         btn_zobrazenieHistorieVyskytuVozna_koniec = new javax.swing.JButton();
+        dialog_zobrazenieAktualnejPolohyVoznov = new javax.swing.JDialog();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        slider_zobrazenieAktualnejPolohyVoznov_hmotnostOd = new javax.swing.JSlider();
+        slider_zobrazenieAktualnejPolohyVoznov_hmotnostDo = new javax.swing.JSlider();
+        slider_zobrazenieAktualnejPolohyVoznov_dlzkaOd = new javax.swing.JSlider();
+        slider_zobrazenieAktualnejPolohyVoznov_dlzkaDo = new javax.swing.JSlider();
+        jLabel59 = new javax.swing.JLabel();
+        radioButton_zobrazenieAktualnejPolohyVoznov_vPrevadzke = new javax.swing.JRadioButton();
+        radioButton_zobrazenieAktualnejPolohyVoznov_mimoPrevadzky = new javax.swing.JRadioButton();
+        radioButton_zobrazenieAktualnejPolohyVoznov_vsetky = new javax.swing.JRadioButton();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
+        jLabel63 = new javax.swing.JLabel();
+        btn_zobrazenieAktualnejPolohyVoznov_zobraz = new javax.swing.JButton();
+        btn_zobrazenieAktualnejPolohyVoznov_koniec = new javax.swing.JButton();
+        txt_zobrazenieAktualnejPolohyVoznov_idSpolocnosti = new javax.swing.JTextField();
+        txt_zobrazenieAktualnejPolohyVoznov_kod = new javax.swing.JTextField();
+        buttonGroup_zobrazenieAktualnejPolohyVoznov_stav = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         tabbedPane_panel = new javax.swing.JTabbedPane();
@@ -222,6 +243,7 @@ public class GUI extends javax.swing.JFrame {
         menu_zobrazZaznam = new javax.swing.JMenuItem();
         menu_zobrazPresun = new javax.swing.JMenuItem();
         menu_vystupy = new javax.swing.JMenu();
+        menu_zobrazenieAktualnejPolohyVoznov = new javax.swing.JMenuItem();
         menu_zoznamVoznovVStanici = new javax.swing.JMenuItem();
         menu_zoznamVoznovVoVlakoch = new javax.swing.JMenuItem();
         menu_zobrazenieAktualnejPolohyVozna = new javax.swing.JMenuItem();
@@ -1132,6 +1154,138 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
+        jLabel56.setText("Zobrazenie aktualnej polohy voznov podla kriterii");
+
+        jLabel57.setText("ID spolocnosti (nepovinne):");
+
+        jLabel58.setText("Kod [typ vozna] (nepovinne):");
+
+        jLabel59.setText("Stav vozna:");
+
+        buttonGroup_zobrazenieAktualnejPolohyVoznov_stav.add(radioButton_zobrazenieAktualnejPolohyVoznov_vPrevadzke);
+        radioButton_zobrazenieAktualnejPolohyVoznov_vPrevadzke.setText("V prevadzke");
+
+        buttonGroup_zobrazenieAktualnejPolohyVoznov_stav.add(radioButton_zobrazenieAktualnejPolohyVoznov_mimoPrevadzky);
+        radioButton_zobrazenieAktualnejPolohyVoznov_mimoPrevadzky.setText("Mimo prevadzky");
+
+        buttonGroup_zobrazenieAktualnejPolohyVoznov_stav.add(radioButton_zobrazenieAktualnejPolohyVoznov_vsetky);
+        radioButton_zobrazenieAktualnejPolohyVoznov_vsetky.setText("Vsetky");
+
+        jLabel60.setText("Hmotnost od:");
+
+        jLabel61.setText("Hmotnost do:");
+
+        jLabel62.setText("Dlzka od:");
+
+        jLabel63.setText("Dlzka do:");
+
+        btn_zobrazenieAktualnejPolohyVoznov_zobraz.setText("Zobraz vozne");
+        btn_zobrazenieAktualnejPolohyVoznov_zobraz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_zobrazenieAktualnejPolohyVoznov_zobrazActionPerformed(evt);
+            }
+        });
+
+        btn_zobrazenieAktualnejPolohyVoznov_koniec.setText("Koniec");
+        btn_zobrazenieAktualnejPolohyVoznov_koniec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_zobrazenieAktualnejPolohyVoznov_koniecActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialog_zobrazenieAktualnejPolohyVoznovLayout = new javax.swing.GroupLayout(dialog_zobrazenieAktualnejPolohyVoznov.getContentPane());
+        dialog_zobrazenieAktualnejPolohyVoznov.getContentPane().setLayout(dialog_zobrazenieAktualnejPolohyVoznovLayout);
+        dialog_zobrazenieAktualnejPolohyVoznovLayout.setHorizontalGroup(
+            dialog_zobrazenieAktualnejPolohyVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createSequentialGroup()
+                .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addComponent(jLabel56))
+                    .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(slider_zobrazenieAktualnejPolohyVoznov_hmotnostOd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createSequentialGroup()
+                                .addComponent(jLabel59)
+                                .addGap(18, 18, 18)
+                                .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(radioButton_zobrazenieAktualnejPolohyVoznov_mimoPrevadzky)
+                                    .addComponent(radioButton_zobrazenieAktualnejPolohyVoznov_vPrevadzke)
+                                    .addComponent(radioButton_zobrazenieAktualnejPolohyVoznov_vsetky)))
+                            .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createSequentialGroup()
+                                .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(slider_zobrazenieAktualnejPolohyVoznov_hmotnostDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel60)
+                                    .addComponent(jLabel61))
+                                .addGap(116, 116, 116)
+                                .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel63)
+                                    .addComponent(jLabel62)
+                                    .addComponent(slider_zobrazenieAktualnejPolohyVoznov_dlzkaDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(slider_zobrazenieAktualnejPolohyVoznov_dlzkaOd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createSequentialGroup()
+                                .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel57)
+                                    .addComponent(jLabel58))
+                                .addGap(40, 40, 40)
+                                .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txt_zobrazenieAktualnejPolohyVoznov_idSpolocnosti, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                                    .addComponent(txt_zobrazenieAktualnejPolohyVoznov_kod)))))
+                    .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createSequentialGroup()
+                        .addGap(317, 317, 317)
+                        .addComponent(btn_zobrazenieAktualnejPolohyVoznov_zobraz)))
+                .addContainerGap(109, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialog_zobrazenieAktualnejPolohyVoznovLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btn_zobrazenieAktualnejPolohyVoznov_koniec)
+                .addGap(323, 323, 323))
+        );
+        dialog_zobrazenieAktualnejPolohyVoznovLayout.setVerticalGroup(
+            dialog_zobrazenieAktualnejPolohyVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel56)
+                .addGap(31, 31, 31)
+                .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel57)
+                    .addComponent(txt_zobrazenieAktualnejPolohyVoznov_idSpolocnosti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel58)
+                    .addComponent(txt_zobrazenieAktualnejPolohyVoznov_kod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioButton_zobrazenieAktualnejPolohyVoznov_vPrevadzke)
+                    .addComponent(jLabel59))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(radioButton_zobrazenieAktualnejPolohyVoznov_mimoPrevadzky)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(radioButton_zobrazenieAktualnejPolohyVoznov_vsetky)
+                .addGap(44, 44, 44)
+                .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createSequentialGroup()
+                        .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel60)
+                            .addComponent(jLabel62))
+                        .addGap(18, 18, 18)
+                        .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(slider_zobrazenieAktualnejPolohyVoznov_dlzkaOd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(slider_zobrazenieAktualnejPolohyVoznov_hmotnostOd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel61))
+                    .addComponent(jLabel63))
+                .addGap(18, 18, 18)
+                .addGroup(dialog_zobrazenieAktualnejPolohyVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(slider_zobrazenieAktualnejPolohyVoznov_hmotnostDo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(slider_zobrazenieAktualnejPolohyVoznov_dlzkaDo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(btn_zobrazenieAktualnejPolohyVoznov_zobraz)
+                .addGap(34, 34, 34)
+                .addComponent(btn_zobrazenieAktualnejPolohyVoznov_koniec)
+                .addGap(24, 24, 24))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txtArea.setEditable(false);
@@ -1538,6 +1692,14 @@ public class GUI extends javax.swing.JFrame {
 
         menu_vystupy.setText("Vystupy");
 
+        menu_zobrazenieAktualnejPolohyVoznov.setText("Zobrazenie aktualnej polohy voznov");
+        menu_zobrazenieAktualnejPolohyVoznov.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_zobrazenieAktualnejPolohyVoznovActionPerformed(evt);
+            }
+        });
+        menu_vystupy.add(menu_zobrazenieAktualnejPolohyVoznov);
+
         menu_zoznamVoznovVStanici.setText("Zoznam voznov v stanici");
         menu_zoznamVoznovVStanici.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1908,6 +2070,67 @@ public class GUI extends javax.swing.JFrame {
         txtArea.setText(dbmethods.zobrazHistoriuVyskytuVoznaZaObdobie(idVozna, kod, ts_od, ts_do));
     }//GEN-LAST:event_btn_zobrazenieHistorieVyskytuVozna_ZobrazActionPerformed
 
+    private void menu_zobrazenieAktualnejPolohyVoznovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_zobrazenieAktualnejPolohyVoznovActionPerformed
+        
+        dialog_zobrazenieAktualnejPolohyVoznov.pack();
+        dialog_zobrazenieAktualnejPolohyVoznov.setVisible(true);
+        
+        slider_zobrazenieAktualnejPolohyVoznov_hmotnostOd.setMinimum(0);
+        slider_zobrazenieAktualnejPolohyVoznov_hmotnostOd.setMaximum(90);
+        slider_zobrazenieAktualnejPolohyVoznov_hmotnostOd.setMinorTickSpacing(1);
+        slider_zobrazenieAktualnejPolohyVoznov_hmotnostOd.setMajorTickSpacing(15);
+        slider_zobrazenieAktualnejPolohyVoznov_hmotnostOd.setPaintLabels(true);
+        slider_zobrazenieAktualnejPolohyVoznov_hmotnostOd.setValue(10);
+        
+        slider_zobrazenieAktualnejPolohyVoznov_hmotnostDo.setMinimum(0);
+        slider_zobrazenieAktualnejPolohyVoznov_hmotnostDo.setMaximum(90);
+        slider_zobrazenieAktualnejPolohyVoznov_hmotnostDo.setMinorTickSpacing(1);
+        slider_zobrazenieAktualnejPolohyVoznov_hmotnostDo.setMajorTickSpacing(15);
+        slider_zobrazenieAktualnejPolohyVoznov_hmotnostDo.setPaintLabels(true);
+        slider_zobrazenieAktualnejPolohyVoznov_hmotnostDo.setValue(70);
+        
+        slider_zobrazenieAktualnejPolohyVoznov_dlzkaOd.setMinimum(0);
+        slider_zobrazenieAktualnejPolohyVoznov_dlzkaOd.setMaximum(70);
+        slider_zobrazenieAktualnejPolohyVoznov_dlzkaOd.setMinorTickSpacing(1);
+        slider_zobrazenieAktualnejPolohyVoznov_dlzkaOd.setMajorTickSpacing(15);
+        slider_zobrazenieAktualnejPolohyVoznov_dlzkaOd.setPaintLabels(true);
+        slider_zobrazenieAktualnejPolohyVoznov_dlzkaOd.setValue(10);
+        
+        slider_zobrazenieAktualnejPolohyVoznov_dlzkaDo.setMinimum(0);
+        slider_zobrazenieAktualnejPolohyVoznov_dlzkaDo.setMaximum(70);
+        slider_zobrazenieAktualnejPolohyVoznov_dlzkaDo.setMinorTickSpacing(1);
+        slider_zobrazenieAktualnejPolohyVoznov_dlzkaDo.setMajorTickSpacing(15);
+        slider_zobrazenieAktualnejPolohyVoznov_dlzkaDo.setPaintLabels(true);
+        slider_zobrazenieAktualnejPolohyVoznov_dlzkaDo.setValue(50);
+        
+        buttonGroup_zobrazenieAktualnejPolohyVoznov_stav.setSelected(radioButton_zobrazenieAktualnejPolohyVoznov_vsetky.getModel(), true);
+        
+    }//GEN-LAST:event_menu_zobrazenieAktualnejPolohyVoznovActionPerformed
+
+    private void btn_zobrazenieAktualnejPolohyVoznov_koniecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_zobrazenieAktualnejPolohyVoznov_koniecActionPerformed
+        dialog_zobrazenieAktualnejPolohyVoznov.setVisible(false);
+    }//GEN-LAST:event_btn_zobrazenieAktualnejPolohyVoznov_koniecActionPerformed
+
+    private void btn_zobrazenieAktualnejPolohyVoznov_zobrazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_zobrazenieAktualnejPolohyVoznov_zobrazActionPerformed
+        
+        String idSpolocnosti = txt_zobrazenieAktualnejPolohyVoznov_idSpolocnosti.getText();
+        String kod           = txt_zobrazenieAktualnejPolohyVoznov_kod.getText();
+        int    hmotnostOd    = slider_zobrazenieAktualnejPolohyVoznov_hmotnostOd.getValue();
+        int    hmotnostDo    = slider_zobrazenieAktualnejPolohyVoznov_hmotnostDo.getValue();
+        int    dlzkaOd       = slider_zobrazenieAktualnejPolohyVoznov_dlzkaOd.getValue();
+        int    dlzkaDo       = slider_zobrazenieAktualnejPolohyVoznov_dlzkaDo.getValue();
+        int    vPrevadzke    = -1;
+        
+        if (radioButton_zobrazenieAktualnejPolohyVoznov_mimoPrevadzky.isSelected()) {
+            vPrevadzke = 0;
+        } else if (radioButton_zobrazenieAktualnejPolohyVoznov_vPrevadzke.isSelected()) {
+            vPrevadzke = 1;
+        }
+        
+        txtArea.setText(dbmethods.zobrazenieAktualnejPolohyVoznov(idSpolocnosti, kod, hmotnostOd, hmotnostDo, dlzkaOd, dlzkaDo, vPrevadzke));
+        
+    }//GEN-LAST:event_btn_zobrazenieAktualnejPolohyVoznov_zobrazActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1966,10 +2189,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JToggleButton btn_zobrazVozneVStanici_zobraz;
     private javax.swing.JButton btn_zobrazenieAktualnejPolohyVozna_koniec;
     private javax.swing.JButton btn_zobrazenieAktualnejPolohyVozna_zobraz;
+    private javax.swing.JButton btn_zobrazenieAktualnejPolohyVoznov_koniec;
+    private javax.swing.JButton btn_zobrazenieAktualnejPolohyVoznov_zobraz;
     private javax.swing.JButton btn_zobrazenieHistorieVyskytuVozna_Zobraz;
     private javax.swing.JButton btn_zobrazenieHistorieVyskytuVozna_koniec;
     private javax.swing.JButton btn_zoznamVoznovVoVlakoch_koniec;
     private javax.swing.JButton btn_zoznamVoznovVoVlakoch_zobraz;
+    private javax.swing.ButtonGroup buttonGroup_zobrazenieAktualnejPolohyVoznov_stav;
     private org.jdesktop.swingx.JXDatePicker datePicker_ZobrazVozneVStanici_od;
     private org.jdesktop.swingx.JXDatePicker datePicker_zobrazVozneVStanici_do;
     private org.jdesktop.swingx.JXDatePicker datePicker_zobrazenieHistorieVyskytuVozna_do;
@@ -1984,6 +2210,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JDialog dialog_vytvorVlak;
     private javax.swing.JDialog dialog_zaradVozenDoVlaku;
     private javax.swing.JDialog dialog_zmenPoholuVozna;
+    private javax.swing.JDialog dialog_zobrazenieAktualnejPolohyVoznov;
     private javax.swing.JDialog dialog_zobrazenieHistorieVyskytuVozna;
     private javax.swing.JDialog dialog_zobrazeniePolohyVozna;
     private javax.swing.JDialog dialog_zoznamVoznovVStanici;
@@ -2043,7 +2270,15 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -2090,11 +2325,19 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem menu_zobrazVozen;
     private javax.swing.JMenuItem menu_zobrazZaznam;
     private javax.swing.JMenuItem menu_zobrazenieAktualnejPolohyVozna;
+    private javax.swing.JMenuItem menu_zobrazenieAktualnejPolohyVoznov;
     private javax.swing.JMenuItem menu_zobrazenieHistorieVyskytuVozna;
     private javax.swing.JMenuItem menu_zoznamVoznovVStanici;
     private javax.swing.JMenuItem menu_zoznamVoznovVoVlakoch;
     private javax.swing.JRadioButton radioBtn_zobrazVozneVStanici_vPrevadzke;
+    private javax.swing.JRadioButton radioButton_zobrazenieAktualnejPolohyVoznov_mimoPrevadzky;
+    private javax.swing.JRadioButton radioButton_zobrazenieAktualnejPolohyVoznov_vPrevadzke;
+    private javax.swing.JRadioButton radioButton_zobrazenieAktualnejPolohyVoznov_vsetky;
     private javax.swing.JSlider slider_ZoznamVoznovVoVlakoch_hmotnostOd;
+    private javax.swing.JSlider slider_zobrazenieAktualnejPolohyVoznov_dlzkaDo;
+    private javax.swing.JSlider slider_zobrazenieAktualnejPolohyVoznov_dlzkaOd;
+    private javax.swing.JSlider slider_zobrazenieAktualnejPolohyVoznov_hmotnostDo;
+    private javax.swing.JSlider slider_zobrazenieAktualnejPolohyVoznov_hmotnostOd;
     private javax.swing.JSlider slider_zoznamVoznovVoVlakoch_hmotnostDo;
     private javax.swing.JTabbedPane tabbedPane_panel;
     private javax.swing.JTable tabulkaVystupy;
@@ -2133,6 +2376,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField txt_zobrazVozneVStanici_idStanice;
     private javax.swing.JTextField txt_zobrazenieAktualnejPolohyVozna_idVozna;
     private javax.swing.JTextField txt_zobrazenieAktualnejPolohyVozna_kodVozna;
+    private javax.swing.JTextField txt_zobrazenieAktualnejPolohyVoznov_idSpolocnosti;
+    private javax.swing.JTextField txt_zobrazenieAktualnejPolohyVoznov_kod;
     private javax.swing.JTextField txt_zobrazenieHistorieVyskytuVozna_idVozna;
     private javax.swing.JTextField txt_zobrazenieHistorieVyskytuVozna_kodVozna;
     private javax.swing.JTextField txt_zoznamVoznovVoVlakoch_idVlaku;
