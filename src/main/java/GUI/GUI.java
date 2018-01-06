@@ -1780,6 +1780,7 @@ public class GUI extends javax.swing.JFrame {
         int idVozna  = Integer.parseInt(txt_zobrazenieAktualnejPolohyVozna_idVozna.getText());
         int kodVozna = Integer.parseInt(txt_zobrazenieAktualnejPolohyVozna_kodVozna.getText());
         txtArea.setText(dbmethods.zobrazAktualnuPolohuVozna(idVozna,kodVozna));
+		tabulkaVystupy.setModel(dbmethods.tableModelAktualnaPolohuVozna(idVozna, kodVozna));
     }//GEN-LAST:event_btn_zobrazenieAktualnejPolohyVozna_zobrazActionPerformed
 
     /**

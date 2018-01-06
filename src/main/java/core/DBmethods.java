@@ -725,7 +725,42 @@ public class DBmethods {
         
         return result;    
     }
-    
+	
+	public String zobrazAktualnuPolohuVozna(int pIdVozna, int pKodVozna) {
+        
+        Connection connection = null;
+        Statement  stmt;
+        String     sql;
+        String     result = "";
+
+        try {
+
+            connection   = DriverManager.getConnection(connString,meno,heslo);
+            stmt         = connection.createStatement();          
+            sql          = "select id_vozna, kod, poznamka, gps_sirka, gps_dlzka, datum_do from VIEW_POLOHA_VOZNOV"
+                         + " where id_vozna = "+pIdVozna+" and "
+                         + " kod = "+pKodVozna+" and "
+                         + " datum_do is null";
+            
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()){
+
+                result += "Vozen\n"
+                        + " > ID vozna  = "+rs.getString("id_vozna")+"\n"
+                        + " > Kod       = "+rs.getString("kod")+"\n"
+                        + " > Poznamka  = "+rs.getString("poznamka")+"\n"
+                        + " > GPS sirka = "+rs.getString("gps_sirka")+"\n"
+                        + " > GPS dlzka = "+rs.getString("gps_dlzka")+"\n\n";
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return result;
+    }
 	
 	public DefaultTableModel zobrazVsetkyStanice(){
 		try {
@@ -821,8 +856,35 @@ public class DBmethods {
 		return null;
 	}
 	
+	public DefaultTableModel tableModelAktualnaPolohuVozna(int pIdVozna, int pKodVozna) {
+        
+        Connection connection = null;
+        Statement  stmt;
+        String     sql;
+        String     result = "";
+
+        try {
+
+            connection   = DriverManager.getConnection(connString,meno,heslo);
+            stmt         = connection.createStatement();          
+            sql          = "select id_vozna, kod, poznamka, gps_sirka, gps_dlzka, datum_do from VIEW_POLOHA_VOZNOV"
+                         + " where id_vozna = "+pIdVozna+" and "
+                         + " kod = "+pKodVozna+" and "
+                         + " datum_do is null";
+            
+            ResultSet rs = stmt.executeQuery(sql);
+			
+			return buildTableModel(rs);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
 	
-	public DefaultTableModel buildTableModel(ResultSet rs) throws SQLException {
+	
+	private DefaultTableModel buildTableModel(ResultSet rs) throws SQLException {
 
 		ResultSetMetaData metaData = rs.getMetaData();
 
@@ -844,40 +906,5 @@ public class DBmethods {
 		}
 		return new DefaultTableModel(data, columnNames);
 	}
-        
-        public String zobrazAktualnuPolohuVozna(int pIdVozna, int pKodVozna) {
-            
-            Connection connection = null;
-            Statement  stmt;
-            String     sql;
-            String     result = "";
-
-            try {
-
-                connection   = DriverManager.getConnection(connString,meno,heslo);
-                stmt         = connection.createStatement();          
-                sql          = "select id_vozna, kod, poznamka, gps_sirka, gps_dlzka, datum_do from VIEW_POLOHA_VOZNOV"
-                             + " where id_vozna = "+pIdVozna+" and "
-                             + " kod = "+pKodVozna+" and "
-                             + " datum_do is null";
-                
-                ResultSet rs = stmt.executeQuery(sql);
-
-                while(rs.next()){
-
-                    result += "Vozen\n"
-                            + " > ID vozna  = "+rs.getString("id_vozna")+"\n"
-                            + " > Kod       = "+rs.getString("kod")+"\n"
-                            + " > Poznamka  = "+rs.getString("poznamka")+"\n"
-                            + " > GPS sirka = "+rs.getString("gps_sirka")+"\n"
-                            + " > GPS dlzka = "+rs.getString("gps_dlzka")+"\n\n";
-
-                }
-
-            } catch (SQLException ex) {
-                Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            return result;
-        }
+       
 }
