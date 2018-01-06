@@ -191,7 +191,7 @@ public class GUI extends javax.swing.JFrame {
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabulkaVystupy = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menu_Exit = new javax.swing.JMenuItem();
@@ -1325,7 +1325,7 @@ public class GUI extends javax.swing.JFrame {
 
         tabbedPane_panel.addTab("Zaznam", jPanel12);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabulkaVystupy.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -1336,7 +1336,7 @@ public class GUI extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tabulkaVystupy);
 
         jMenu1.setText("File");
 
@@ -1827,6 +1827,7 @@ public class GUI extends javax.swing.JFrame {
         Timestamp ts_do = new Timestamp(datePicker_zobrazVozneVStanici_do.getDate().getTime());
         
         txtArea.setText(dbmethods.zoznamVoznovVStanici(vPrevadzke, idStanice, ts_od, ts_do));
+		tabulkaVystupy.setModel(dbmethods.tableModelVoznovVStanici(vPrevadzke, idStanice, ts_od, ts_do));
     }//GEN-LAST:event_btn_zobrazVozneVStanici_zobrazActionPerformed
 
     private void btn_zobrazVozneVStanici_koniecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_zobrazVozneVStanici_koniecActionPerformed
@@ -1860,6 +1861,7 @@ public class GUI extends javax.swing.JFrame {
         Timestamp ts_do      = new Timestamp(datePicker_zoznamVoznovVoVlakoch_do.getDate().getTime());
         
         txtArea.setText(dbmethods.zoznamVoznovVoVlakoch(idVlaku, hmotnostOd, hmotnostDo, ts_od, ts_do));
+		tabulkaVystupy.setModel(dbmethods.tableModelVoznovVoVlakoch(idVlaku, hmotnostOd, hmotnostDo, ts_od, ts_do));
     }//GEN-LAST:event_btn_zoznamVoznovVoVlakoch_zobrazActionPerformed
 
     private void btn_zoznamVoznovVoVlakoch_koniecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_zoznamVoznovVoVlakoch_koniecActionPerformed
@@ -1867,7 +1869,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_zoznamVoznovVoVlakoch_koniecActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-		jTable1.setModel(dbmethods.zobrazVsetkyStanice());
+		tabulkaVystupy.setModel(dbmethods.zobrazVsetkyStanice());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void menu_zobrazenieAktualnejPolohyVoznaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_zobrazenieAktualnejPolohyVoznaActionPerformed
@@ -1884,6 +1886,7 @@ public class GUI extends javax.swing.JFrame {
         int idVozna  = Integer.parseInt(txt_zobrazenieAktualnejPolohyVozna_idVozna.getText());
         int kodVozna = Integer.parseInt(txt_zobrazenieAktualnejPolohyVozna_kodVozna.getText());
         txtArea.setText(dbmethods.zobrazAktualnuPolohuVozna(idVozna,kodVozna));
+		tabulkaVystupy.setModel(dbmethods.tableModelAktualnaPolohuVozna(idVozna, kodVozna));
     }//GEN-LAST:event_btn_zobrazenieAktualnejPolohyVozna_zobrazActionPerformed
 
     private void menu_zobrazenieHistorieVyskytuVoznaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_zobrazenieHistorieVyskytuVoznaActionPerformed
@@ -2063,7 +2066,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JMenuItem menu_Exit;
     private javax.swing.JMenuItem menu_createTrain;
     private javax.swing.JMenuItem menu_pridajVozen;
@@ -2095,6 +2097,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JSlider slider_ZoznamVoznovVoVlakoch_hmotnostOd;
     private javax.swing.JSlider slider_zoznamVoznovVoVlakoch_hmotnostDo;
     private javax.swing.JTabbedPane tabbedPane_panel;
+    private javax.swing.JTable tabulkaVystupy;
     private javax.swing.JTextArea txtArea;
     private javax.swing.JTextField txt_VyradenieVoznaZPrevadzky_ID;
     private javax.swing.JTextField txt_VyradenieVoznaZPrevadzky_Kod;
