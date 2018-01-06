@@ -670,5 +670,59 @@ public class DBmethods {
         
     }
     
+    public String zoznamVoznovVoVlakoch(String pIdVlaku, int pHmotnostOd, int pHmotnostDo, Timestamp pDatumOd, Timestamp pDatumDo) {
+        
+        Connection connection = null;
+        Statement  stmt;
+        String     sql;
+        String     result = "";
+        
+        String volitelnaPodmienka = "";
+        if(!pIdVlaku.isEmpty() && !pIdVlaku.equals("") && !pIdVlaku.equals(" ")) {
+            volitelnaPodmienka = " and id_vlaku = "+pIdVlaku;
+        }
+        
+        try {
+                
+            connection   = DriverManager.getConnection(connString,meno,heslo);
+            stmt         = connection.createStatement();          
+            sql          = "select id_vozna, nazov_spolocnosti, rad, kod, interabilita, hmotnost, poznamka, id_vlaku, dat_vypravenia, zaciatok, ciel\n"
+                         + " from VIEW_VOZNE_VLAKU "
+                         + " where "
+                         + " hmotnost >= "+pHmotnostOd+" and "
+                         + " hmotnost <= "+pHmotnostDo+" and "
+                         + " dat_vypravenia >= to_timestamp('"+pDatumOd.toString()+"', 'YYYY-MM-DD HH24:MI:SS.FF') and "
+                         + " dat_vypravenia <= to_timestamp('"+pDatumDo.toString()+"', 'YYYY-MM-DD HH24:MI:SS.FF')"
+                         + volitelnaPodmienka;
+                  
+            System.out.println(sql);        
+            
+            ResultSet rs = stmt.executeQuery(sql);
+                     
+     
+            while(rs.next()){
+                               
+                result += "Vozen\n"
+                        + " > ID vozna             = "+rs.getString("id_vozna")+"\n"                     
+                        + " > Patriaci spolocnosti = "+rs.getString("nazov_spolocnosti")+"\n"
+                        + " > Rad                  = "+rs.getString("rad")+"\n"
+                        + " > Kod                  = "+rs.getString("kod")+"\n"
+                        + " > Interabilita         = "+rs.getString("interabilita")+"\n"
+                        + " > Hmotnost [t]         = "+rs.getString("hmotnost")+"\n"
+                        + " > Poznamka             = "+rs.getString("poznamka")+"\n"
+                        + " > ID vlaku             = "+rs.getString("id_vlaku")+"\n"
+                        + " > Datum vypravenia     = "+rs.getString("dat_vypravenia")+"\n"
+                        + " > Zaciatok             = "+rs.getString("zaciatok")+"\n"
+                        + " > Ciel                 = "+rs.getString("ciel")+"\n\n";
+                                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return result;    
+    }
+    
 
 }

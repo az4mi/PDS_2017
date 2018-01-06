@@ -137,6 +137,20 @@ public class GUI extends javax.swing.JFrame {
         txt_zobrazVozneVStanici_casDo = new javax.swing.JTextField();
         btn_zobrazVozneVStanici_zobraz = new javax.swing.JToggleButton();
         btn_zobrazVozneVStanici_koniec = new javax.swing.JButton();
+        dialog_zoznamVoznovVoVlakoch = new javax.swing.JDialog();
+        jLabel42 = new javax.swing.JLabel();
+        slider_ZoznamVoznovVoVlakoch_hmotnostOd = new javax.swing.JSlider();
+        slider_zoznamVoznovVoVlakoch_hmotnostDo = new javax.swing.JSlider();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        datePicker_zoznamVoznovVoVlakoch_od = new org.jdesktop.swingx.JXDatePicker();
+        jLabel45 = new javax.swing.JLabel();
+        datePicker_zoznamVoznovVoVlakoch_do = new org.jdesktop.swingx.JXDatePicker();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        txt_zoznamVoznovVoVlakoch_idVlaku = new javax.swing.JTextField();
+        btn_zoznamVoznovVoVlakoch_zobraz = new javax.swing.JButton();
+        btn_zoznamVoznovVoVlakoch_koniec = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         tabbedPane_panel = new javax.swing.JTabbedPane();
@@ -187,6 +201,7 @@ public class GUI extends javax.swing.JFrame {
         menu_zobrazPresun = new javax.swing.JMenuItem();
         menu_vystupy = new javax.swing.JMenu();
         menu_zoznamVoznovVStanici = new javax.swing.JMenuItem();
+        menu_zoznamVoznovVoVlakoch = new javax.swing.JMenuItem();
 
         dialog_vytvorVlak.setMinimumSize(new java.awt.Dimension(400, 392));
         dialog_vytvorVlak.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -847,6 +862,100 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
+        jLabel42.setText("Zoznam voznov vo vlakoch podla kriterii");
+
+        jLabel43.setText("Hmotnost od:");
+
+        jLabel44.setText("Hmotnost do:");
+
+        jLabel45.setText("Datum vypravenia od:");
+
+        jLabel46.setText("Datum vypravenia do:");
+
+        jLabel47.setText("ID vlaku:");
+
+        btn_zoznamVoznovVoVlakoch_zobraz.setText("Zobraz vozne");
+        btn_zoznamVoznovVoVlakoch_zobraz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_zoznamVoznovVoVlakoch_zobrazActionPerformed(evt);
+            }
+        });
+
+        btn_zoznamVoznovVoVlakoch_koniec.setText("Koniec");
+        btn_zoznamVoznovVoVlakoch_koniec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_zoznamVoznovVoVlakoch_koniecActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialog_zoznamVoznovVoVlakochLayout = new javax.swing.GroupLayout(dialog_zoznamVoznovVoVlakoch.getContentPane());
+        dialog_zoznamVoznovVoVlakoch.getContentPane().setLayout(dialog_zoznamVoznovVoVlakochLayout);
+        dialog_zoznamVoznovVoVlakochLayout.setHorizontalGroup(
+            dialog_zoznamVoznovVoVlakochLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_zoznamVoznovVoVlakochLayout.createSequentialGroup()
+                .addGroup(dialog_zoznamVoznovVoVlakochLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialog_zoznamVoznovVoVlakochLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(dialog_zoznamVoznovVoVlakochLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel42)
+                            .addGroup(dialog_zoznamVoznovVoVlakochLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(slider_zoznamVoznovVoVlakoch_hmotnostDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(dialog_zoznamVoznovVoVlakochLayout.createSequentialGroup()
+                                    .addGap(8, 8, 8)
+                                    .addComponent(jLabel44))
+                                .addComponent(slider_ZoznamVoznovVoVlakoch_hmotnostOd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(dialog_zoznamVoznovVoVlakochLayout.createSequentialGroup()
+                                    .addGap(8, 8, 8)
+                                    .addGroup(dialog_zoznamVoznovVoVlakochLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel47)
+                                        .addComponent(jLabel43)
+                                        .addComponent(txt_zoznamVoznovVoVlakoch_idVlaku, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(dialog_zoznamVoznovVoVlakochLayout.createSequentialGroup()
+                                    .addGap(9, 9, 9)
+                                    .addGroup(dialog_zoznamVoznovVoVlakochLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(btn_zoznamVoznovVoVlakoch_zobraz)
+                                        .addGroup(dialog_zoznamVoznovVoVlakochLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(datePicker_zoznamVoznovVoVlakoch_od, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel45)
+                                            .addComponent(datePicker_zoznamVoznovVoVlakoch_do, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel46)))))))
+                    .addGroup(dialog_zoznamVoznovVoVlakochLayout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(btn_zoznamVoznovVoVlakoch_koniec)))
+                .addContainerGap(78, Short.MAX_VALUE))
+        );
+        dialog_zoznamVoznovVoVlakochLayout.setVerticalGroup(
+            dialog_zoznamVoznovVoVlakochLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_zoznamVoznovVoVlakochLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel42)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel47)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_zoznamVoznovVoVlakoch_idVlaku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jLabel43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(slider_ZoznamVoznovVoVlakoch_hmotnostOd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel44)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(slider_zoznamVoznovVoVlakoch_hmotnostDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(jLabel45)
+                .addGap(18, 18, 18)
+                .addComponent(datePicker_zoznamVoznovVoVlakoch_od, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel46)
+                .addGap(18, 18, 18)
+                .addComponent(datePicker_zoznamVoznovVoVlakoch_do, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_zoznamVoznovVoVlakoch_zobraz)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addComponent(btn_zoznamVoznovVoVlakoch_koniec)
+                .addGap(18, 18, 18))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txtArea.setEditable(false);
@@ -1243,6 +1352,14 @@ public class GUI extends javax.swing.JFrame {
         });
         menu_vystupy.add(menu_zoznamVoznovVStanici);
 
+        menu_zoznamVoznovVoVlakoch.setText("Zoznam voznov vo vlakoch");
+        menu_zoznamVoznovVoVlakoch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_zoznamVoznovVoVlakochActionPerformed(evt);
+            }
+        });
+        menu_vystupy.add(menu_zoznamVoznovVoVlakoch);
+
         jMenuBar1.add(menu_vystupy);
 
         setJMenuBar(jMenuBar1);
@@ -1501,6 +1618,39 @@ public class GUI extends javax.swing.JFrame {
         dialog_zoznamVoznovVStanici.setVisible(false);
     }//GEN-LAST:event_btn_zobrazVozneVStanici_koniecActionPerformed
 
+    private void menu_zoznamVoznovVoVlakochActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_zoznamVoznovVoVlakochActionPerformed
+        dialog_zoznamVoznovVoVlakoch.pack();
+        dialog_zoznamVoznovVoVlakoch.setVisible(true);
+        
+        slider_ZoznamVoznovVoVlakoch_hmotnostOd.setMinimum(0);
+        slider_ZoznamVoznovVoVlakoch_hmotnostOd.setMaximum(90);
+        slider_ZoznamVoznovVoVlakoch_hmotnostOd.setMinorTickSpacing(1);
+        slider_ZoznamVoznovVoVlakoch_hmotnostOd.setMajorTickSpacing(15);
+        slider_ZoznamVoznovVoVlakoch_hmotnostOd.setPaintLabels(true);
+        
+        slider_zoznamVoznovVoVlakoch_hmotnostDo.setMinimum(0);
+        slider_zoznamVoznovVoVlakoch_hmotnostDo.setMaximum(90);
+        slider_zoznamVoznovVoVlakoch_hmotnostDo.setMinorTickSpacing(1);
+        slider_zoznamVoznovVoVlakoch_hmotnostDo.setMajorTickSpacing(15);
+        slider_zoznamVoznovVoVlakoch_hmotnostDo.setPaintLabels(true);
+        
+    }//GEN-LAST:event_menu_zoznamVoznovVoVlakochActionPerformed
+
+    private void btn_zoznamVoznovVoVlakoch_zobrazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_zoznamVoznovVoVlakoch_zobrazActionPerformed
+        
+        String    idVlaku    = txt_zoznamVoznovVoVlakoch_idVlaku.getText();
+        int       hmotnostOd = slider_ZoznamVoznovVoVlakoch_hmotnostOd.getValue();
+        int       hmotnostDo = slider_zoznamVoznovVoVlakoch_hmotnostDo.getValue();
+        Timestamp ts_od      = new Timestamp(datePicker_zoznamVoznovVoVlakoch_od.getDate().getTime());
+        Timestamp ts_do      = new Timestamp(datePicker_zoznamVoznovVoVlakoch_do.getDate().getTime());
+        
+        txtArea.setText(dbmethods.zoznamVoznovVoVlakoch(idVlaku, hmotnostOd, hmotnostDo, ts_od, ts_do));
+    }//GEN-LAST:event_btn_zoznamVoznovVoVlakoch_zobrazActionPerformed
+
+    private void btn_zoznamVoznovVoVlakoch_koniecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_zoznamVoznovVoVlakoch_koniecActionPerformed
+        dialog_zoznamVoznovVoVlakoch.setVisible(false);
+    }//GEN-LAST:event_btn_zoznamVoznovVoVlakoch_koniecActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1557,8 +1707,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem btn_zobrazVlak;
     private javax.swing.JButton btn_zobrazVozneVStanici_koniec;
     private javax.swing.JToggleButton btn_zobrazVozneVStanici_zobraz;
+    private javax.swing.JButton btn_zoznamVoznovVoVlakoch_koniec;
+    private javax.swing.JButton btn_zoznamVoznovVoVlakoch_zobraz;
     private org.jdesktop.swingx.JXDatePicker datePicker_ZobrazVozneVStanici_od;
     private org.jdesktop.swingx.JXDatePicker datePicker_zobrazVozneVStanici_do;
+    private org.jdesktop.swingx.JXDatePicker datePicker_zoznamVoznovVoVlakoch_do;
+    private org.jdesktop.swingx.JXDatePicker datePicker_zoznamVoznovVoVlakoch_od;
     private javax.swing.JDialog dialog_pridajVozen;
     private javax.swing.JDialog dialog_vyradVozenZPrevadzky;
     private javax.swing.JDialog dialog_vyradVozenZVlaku;
@@ -1568,6 +1722,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JDialog dialog_zaradVozenDoVlaku;
     private javax.swing.JDialog dialog_zmenPoholuVozna;
     private javax.swing.JDialog dialog_zoznamVoznovVStanici;
+    private javax.swing.JDialog dialog_zoznamVoznovVoVlakoch;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -1608,6 +1763,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1655,7 +1816,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem menu_zobrazVozen;
     private javax.swing.JMenuItem menu_zobrazZaznam;
     private javax.swing.JMenuItem menu_zoznamVoznovVStanici;
+    private javax.swing.JMenuItem menu_zoznamVoznovVoVlakoch;
     private javax.swing.JRadioButton radioBtn_zobrazVozneVStanici_vPrevadzke;
+    private javax.swing.JSlider slider_ZoznamVoznovVoVlakoch_hmotnostOd;
+    private javax.swing.JSlider slider_zoznamVoznovVoVlakoch_hmotnostDo;
     private javax.swing.JTabbedPane tabbedPane_panel;
     private javax.swing.JTextArea txtArea;
     private javax.swing.JTextField txt_VyradenieVoznaZPrevadzky_ID;
@@ -1690,5 +1854,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField txt_zobrazVozneVStanici_casDo;
     private javax.swing.JTextField txt_zobrazVozneVStanici_casOd;
     private javax.swing.JTextField txt_zobrazVozneVStanici_idStanice;
+    private javax.swing.JTextField txt_zoznamVoznovVoVlakoch_idVlaku;
     // End of variables declaration//GEN-END:variables
 }

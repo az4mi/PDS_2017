@@ -1,6 +1,6 @@
 
 -- zadanie 1 
---zobrazenie aktuálnej polohy vozòov pod¾a zadaných kritérií ( pod¾a typu vozòa, vlastník,
+--zobrazenie aktuï¿½lnej polohy vozï¿½ov podï¿½a zadanï¿½ch kritï¿½riï¿½ ( podï¿½a typu vozï¿½a, vlastnï¿½k,
 -- v netbeanse bude podmienka na datum_do is null
 
 CREATE OR REPLACE VIEW VIEW_POLOHA_VOZNOV 
@@ -12,12 +12,12 @@ join snimac using(id_snimaca)
 join stanica st using(id_stanice);
 
 
---zadanie 2 - zoznam vozòov v konkrétnej železniènej stanici v zadanom èase pod¾a zadaných kritérií
+--zadanie 2 - zoznam vozï¿½ov v konkrï¿½tnej ï¿½elezniï¿½nej stanici v zadanom ï¿½ase podï¿½a zadanï¿½ch kritï¿½riï¿½
 pouzitie view VIEW_POLOHA_VOZNOV + ine kriteria... 
 
 
 -- zadanie 3
---zobrazi zoznam vozòov vo vlakoch
+--zobrazi zoznam vozï¿½ov vo vlakoch
 --bude uz potrebne na GUI len podla kriterii, ktore zadame dat... do toho selectu
 
 --select * from VIEW_VOZNE_VLAKU where ... kriteria... 
@@ -27,14 +27,23 @@ AS select v.id_vlaku,v.zaciatok, v.ciel, v.typ, v.dat_vypravenia, voz.id_vozna,v
 join vozen voz on (voz.id_vozna = vv.id_vozna AND voz.kod = vv.kod)
 join typ_vozna typ on (typ.kod = vv.kod);
 
+// upravene
+select id_vlaku,stOd.nazov as zaciatok, stDo.nazov as ciel, typ, dat_vypravenia, id_vozna, id_spolocnosti, nazov_spolocnosti, rad, kod, interabilita, dlzka, hmotnost, loz_hmotnost, loz_plocha, loz_objem, poznamka from (
+select v.id_vlaku,v.zaciatok, v.ciel, v.typ, v.dat_vypravenia, voz.id_vozna,voz.id_spolocnosti,spol.nazov as nazov_spolocnosti, typ.* from vlak v, table(v.vozne) vv
+join vozen voz on (voz.id_vozna = vv.id_vozna AND voz.kod = vv.kod)
+join spolocnost spol on (spol.id_spolocnosti = voz.id_spolocnosti)
+join typ_vozna typ on (typ.kod = vv.kod))
+join stanica stOd on (stOd.id_stanice = zaciatok)
+join stanica stDo on (stDo.id_stanice = ciel)
+
 
 --zadanie 4
---vyh¾adávanie aktuálnej polohy konkrétneho vozòa,
+--vyhï¿½adï¿½vanie aktuï¿½lnej polohy konkrï¿½tneho vozï¿½a,
 pouzitie view VIEW_POLOHA_VOZNOV... s tym ze bude v kriteriach v netbeanse kod a id_vozna vlaku
 
 
 --zadanie 5
---vyh¾adávanie konkrétneho vozòa vrátane histórie jeho výskytu za dané obdobie,
+--vyhï¿½adï¿½vanie konkrï¿½tneho vozï¿½a vrï¿½tane histï¿½rie jeho vï¿½skytu za danï¿½ obdobie,
 
 CREATE OR REPLACE VIEW VIEW_HISTORIA_VOZNOV
 AS select p.id_pohybu, p.datum_od, p.datum_do, v.id_vozna, tv.* from pohyb p
@@ -44,26 +53,26 @@ join typ_vozna tv on (v.kod = tv.kod);
 
 
 --zadanie 6
---vyh¾adávanie skupín vozòov pod¾a rôznych kritérií,
+--vyhï¿½adï¿½vanie skupï¿½n vozï¿½ov podï¿½a rï¿½znych kritï¿½riï¿½,
 
 --select podla kriterii napr. hmotnost alebo dlzka... a zobrazenie kodov.. a obrazku do netbeansu
 select kod,obrazok from typ_vozna where kriteria...
 
 --zadanie 7
---vypíšte štatistiky o vozòoch vo vlaku vrátane histórie,
+--vypï¿½te ï¿½tatistiky o vozï¿½och vo vlaku vrï¿½tane histï¿½rie,
 -- statistika o pocte presunov... alebo.. pocet zaradeni voznov vo vlakoch... 
 
 --zadanie 8
---vypíšte štatistiky o vozòoch v staniciach vrátane histórie
+--vypï¿½te ï¿½tatistiky o vozï¿½och v staniciach vrï¿½tane histï¿½rie
 --pocet voznov v stanici... alebo neviem co... 
 
 --zadanie 9
---vypíšte štatistiky o pracovníkoch a ich výkonoch z poh¾adu zadávania dát
+--vypï¿½te ï¿½tatistiky o pracovnï¿½koch a ich vï¿½konoch z pohï¿½adu zadï¿½vania dï¿½t
 --zobrazi pocet pracovnikov, ktory zaevidovali doklady... 0,50,100,150,200
 -- alebo nejake rozdiely muzi vs zeny... pripadne nieco podla veku.. musime vymysliet ze co... 
 
 --zadanie 10
---vypíšte informácie o automaticky zaevidovaných vozòoch èi vlakoch pod¾a vybraných kritérií.
+--vypï¿½te informï¿½cie o automaticky zaevidovanï¿½ch vozï¿½och ï¿½i vlakoch podï¿½a vybranï¿½ch kritï¿½riï¿½.
 --waaat?? to si musime urcit... 
 
 
