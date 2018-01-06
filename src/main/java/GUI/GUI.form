@@ -1276,6 +1276,103 @@
         </Component>
       </SubComponents>
     </Container>
+    <Container class="javax.swing.JDialog" name="dialog_zobrazeniePolohyVozna">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
+                  <Component id="btn_zobrazenieAktualnejPolohyVozna_koniec" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="85" max="32767" attributes="0"/>
+                  <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                  <Component id="btn_zobrazenieAktualnejPolohyVozna_zobraz" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel49" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel50" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="txt_zobrazenieAktualnejPolohyVozna_kodVozna" pref="90" max="32767" attributes="0"/>
+                      <Component id="txt_zobrazenieAktualnejPolohyVozna_idVozna" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel49" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_zobrazenieAktualnejPolohyVozna_idVozna" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel50" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_zobrazenieAktualnejPolohyVozna_kodVozna" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="45" max="32767" attributes="0"/>
+                  <Component id="btn_zobrazenieAktualnejPolohyVozna_zobraz" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="btn_zobrazenieAktualnejPolohyVozna_koniec" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel48">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Zobrazenie aktualnej polohy vozna"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel49">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="ID vozna:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txt_zobrazenieAktualnejPolohyVozna_idVozna">
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_zobrazenieAktualnejPolohyVozna_zobraz">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Zobraz polohu"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_zobrazenieAktualnejPolohyVozna_zobrazActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_zobrazenieAktualnejPolohyVozna_koniec">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Koniec"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_zobrazenieAktualnejPolohyVozna_koniecActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel50">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Kod vozna:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txt_zobrazenieAktualnejPolohyVozna_kodVozna">
+        </Component>
+      </SubComponents>
+    </Container>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu1">
@@ -1511,6 +1608,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_zoznamVoznovVoVlakochActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menu_zobrazenieAktualnejPolohyVozna">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Zobrazenie aktualnej polohy vozna"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_zobrazenieAktualnejPolohyVoznaActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
