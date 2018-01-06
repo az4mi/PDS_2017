@@ -1253,7 +1253,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel47">
           <Properties>
-            <Property name="text" type="java.lang.String" value="ID vlaku:"/>
+            <Property name="text" type="java.lang.String" value="ID vlaku (nepovinne):"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_zoznamVoznovVoVlakoch_idVlaku">

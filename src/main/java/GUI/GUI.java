@@ -872,7 +872,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel46.setText("Datum vypravenia do:");
 
-        jLabel47.setText("ID vlaku:");
+        jLabel47.setText("ID vlaku (nepovinne):");
 
         btn_zoznamVoznovVoVlakoch_zobraz.setText("Zobraz vozne");
         btn_zoznamVoznovVoVlakoch_zobraz.addActionListener(new java.awt.event.ActionListener() {
