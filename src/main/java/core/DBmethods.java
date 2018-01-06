@@ -4,12 +4,14 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
-import java.util.ArrayList;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * Created by mi5ho on 03.01.2018.
@@ -724,5 +726,49 @@ public class DBmethods {
         return result;    
     }
     
+	
+	public DefaultTableModel zobrazVsetkyStanice(){
+		try {
+			Connection connection = null;
+			Statement  stmt;
+			String     sql;
+			String     result = "";
+			
+			
+			connection = DriverManager.getConnection(connString,meno,heslo);
+			stmt       = connection.createStatement();
+			
+			sql          = "SELECT id_stanice, nazov, gps_sirka, gps_dlzka FROM stanica";
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			return buildTableModel(rs);
+		} catch (SQLException ex) {
+			Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return null;
+	}
+	
+	
+	public DefaultTableModel buildTableModel(ResultSet rs) throws SQLException {
 
+		ResultSetMetaData metaData = rs.getMetaData();
+
+		// names of columns
+		Vector<String> columnNames = new Vector<String>();
+		int columnCount = metaData.getColumnCount();
+		for (int column = 1; column <= columnCount; column++) {
+		    columnNames.add(metaData.getColumnName(column));
+		}
+
+		// data of the table
+		Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+		while (rs.next()) {
+			Vector<Object> vector = new Vector<Object>();
+			for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
+				vector.add(rs.getObject(columnIndex));
+			}
+			data.add(vector);
+		}
+		return new DefaultTableModel(data, columnNames);
+	} 
 }
