@@ -637,27 +637,28 @@ public class DBmethods {
                 
             connection   = DriverManager.getConnection(connString,meno,heslo);
             stmt         = connection.createStatement();          
-            sql          = "SELECT id_vozna, kod, nazov, datum_od, datum_do from ZOZNAM_VOZNOV_V_STANICI"
+            sql          = "SELECT id_vozna, id_spolocnosti, kod, nazov_spolocnosti, datum_od, datum_do, nazov_stanice from ZOZNAM_VOZNOV_V_STANICI"
                          + " where "
                          + " v_prevadzke = '"+vPrevadzke+"' and "
                          + " id_stanice = "+pIdStanice+" and "
                          + " datum_od >= to_timestamp('"+pOd.toString()+"', 'YYYY-MM-DD HH24:MI:SS.FF') and "
-                         + " datum_do <= to_timestamp('"+pDo.toString()+"', 'YYYY-MM-DD HH24:MI:SS.FF')";
-              
-            System.out.println(sql);
+                         + " (datum_do is null OR datum_do <= to_timestamp('"+pDo.toString()+"', 'YYYY-MM-DD HH24:MI:SS.FF'))";
+                  
                     
             ResultSet rs = stmt.executeQuery(sql);
                      
      
             while(rs.next()){
-                
-                System.out.println("row");
+                               
                 result += "Vozen\n"
-                        + " > ID vozna      = "+rs.getString("id_vozna")+"\n"
-                        + " > Kod           = "+rs.getString("kod")+"\n"
-                        + " > Nazov stanice = "+rs.getString("nazov")+"\n"
-                        + " > Cas od        = "+rs.getString("datum_od")+"\n"
-                        + " > Cas do        = "+rs.getString("datum_do")+"\n\n";
+                        + " > V prevadzke          = "+vPrevadzke+"\n"   
+                        + " > ID vozna             = "+rs.getString("id_vozna")+"\n"                     
+                        + " > Patriaci spolocnosti = "+rs.getString("nazov_spolocnosti")+"\n"
+                        + " > ID spolocnosti       = "+rs.getString("id_spolocnosti")+"\n"
+                        + " > Kod                  = "+rs.getString("kod")+"\n"
+                        + " > Nazov stanice        = "+rs.getString("nazov_stanice")+"\n"
+                        + " > Cas od               = "+rs.getString("datum_od")+"\n"
+                        + " > Cas do               = "+rs.getString("datum_do")+"\n\n";
                                 
             }
             
