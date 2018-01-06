@@ -23,9 +23,12 @@ pouzitie view VIEW_POLOHA_VOZNOV + ine kriteria...
 --select * from VIEW_VOZNE_VLAKU where ... kriteria... 
 
 CREATE OR REPLACE VIEW VIEW_VOZNE_VLAKU
-AS select v.id_vlaku,v.zaciatok, v.ciel, v.typ, v.dat_vypravenia, voz.id_vozna,voz.id_spolocnosti, typ.* from vlak v, table(v.vozne) vv
+AS select id_vlaku,stOd.nazov as zaciatok, stDo.nazov as ciel, typ, dat_vypravenia, id_vozna, id_spolocnosti, rad, kod, interabilita, dlzka, hmotnost, loz_hmotnost, loz_plocha, loz_objem, poznamka from (
+select v.id_vlaku,v.zaciatok, v.ciel, v.typ, v.dat_vypravenia, voz.id_vozna,voz.id_spolocnosti, typ.* from vlak v, table(v.vozne) vv
 join vozen voz on (voz.id_vozna = vv.id_vozna AND voz.kod = vv.kod)
-join typ_vozna typ on (typ.kod = vv.kod);
+join typ_vozna typ on (typ.kod = vv.kod))
+join stanica stOd on (stOd.id_stanice = zaciatok)
+join stanica stDo on (stDo.id_stanice = ciel);
 
 
 --zadanie 4
