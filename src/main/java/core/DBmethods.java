@@ -748,6 +748,79 @@ public class DBmethods {
 		return null;
 	}
 	
+	public DefaultTableModel tableModelVoznovVStanici(boolean pVPrevadzke, int pIdStanice, Timestamp pOd, Timestamp pDo) {
+        
+		try {
+			Connection connection = null;
+			Statement  stmt;
+			String     sql;
+			String     result = "";
+			
+			String vPrevadzke;
+			if(pVPrevadzke) {
+				vPrevadzke = "A";
+			} else {
+				vPrevadzke = "N";
+			}
+	
+			connection   = DriverManager.getConnection(connString,meno,heslo);
+			stmt         = connection.createStatement();
+			sql          = "SELECT id_vozna, id_spolocnosti, kod, nazov_spolocnosti, datum_od, datum_do, nazov_stanice from ZOZNAM_VOZNOV_V_STANICI"
+					+ " where "
+					+ " v_prevadzke = '"+vPrevadzke+"' and "
+					+ " id_stanice = "+pIdStanice+" and "
+					+ " datum_od >= to_timestamp('"+pOd.toString()+"', 'YYYY-MM-DD HH24:MI:SS.FF') and "
+					+ " (datum_do is null OR datum_do <= to_timestamp('"+pDo.toString()+"', 'YYYY-MM-DD HH24:MI:SS.FF'))";
+			
+			
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			return buildTableModel(rs);
+			
+		} catch (SQLException ex) {
+			Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return null;
+	}
+	
+	public DefaultTableModel tableModelVoznovVoVlakoch(String pIdVlaku, int pHmotnostOd, int pHmotnostDo, Timestamp pDatumOd, Timestamp pDatumDo) {
+        
+		try {
+			Connection connection = null;
+			Statement  stmt;
+			String     sql;
+			String     result = "";
+			
+			String volitelnaPodmienka = "";
+			if(!pIdVlaku.isEmpty() && !pIdVlaku.equals("") && !pIdVlaku.equals(" ")) {
+				volitelnaPodmienka = " and id_vlaku = "+pIdVlaku;
+			}
+			
+			
+			
+			connection   = DriverManager.getConnection(connString,meno,heslo);
+			stmt         = connection.createStatement();
+			sql          = "select id_vozna, nazov_spolocnosti, rad, kod, interabilita, hmotnost, poznamka, id_vlaku, dat_vypravenia, zaciatok, ciel\n"
+					+ " from VIEW_VOZNE_VLAKU "
+					+ " where "
+					+ " hmotnost >= "+pHmotnostOd+" and "
+					+ " hmotnost <= "+pHmotnostDo+" and "
+					+ " dat_vypravenia >= to_timestamp('"+pDatumOd.toString()+"', 'YYYY-MM-DD HH24:MI:SS.FF') and "
+					+ " dat_vypravenia <= to_timestamp('"+pDatumDo.toString()+"', 'YYYY-MM-DD HH24:MI:SS.FF')"
+					+ volitelnaPodmienka;
+			
+			System.out.println(sql);
+			
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			return buildTableModel(rs);
+			
+		} catch (SQLException ex) {
+			Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return null;
+	}
+	
 	
 	public DefaultTableModel buildTableModel(ResultSet rs) throws SQLException {
 
