@@ -159,6 +159,18 @@ public class GUI extends javax.swing.JFrame {
         btn_zobrazenieAktualnejPolohyVozna_koniec = new javax.swing.JButton();
         jLabel50 = new javax.swing.JLabel();
         txt_zobrazenieAktualnejPolohyVozna_kodVozna = new javax.swing.JTextField();
+        dialog_zobrazenieHistorieVyskytuVozna = new javax.swing.JDialog();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
+        datePicker_zobrazenieHistorieVyskytuVozna_od = new org.jdesktop.swingx.JXDatePicker();
+        datePicker_zobrazenieHistorieVyskytuVozna_do = new org.jdesktop.swingx.JXDatePicker();
+        txt_zobrazenieHistorieVyskytuVozna_idVozna = new javax.swing.JTextField();
+        txt_zobrazenieHistorieVyskytuVozna_kodVozna = new javax.swing.JTextField();
+        btn_zobrazenieHistorieVyskytuVozna_Zobraz = new javax.swing.JButton();
+        btn_zobrazenieHistorieVyskytuVozna_koniec = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         tabbedPane_panel = new javax.swing.JTabbedPane();
@@ -213,6 +225,7 @@ public class GUI extends javax.swing.JFrame {
         menu_zoznamVoznovVStanici = new javax.swing.JMenuItem();
         menu_zoznamVoznovVoVlakoch = new javax.swing.JMenuItem();
         menu_zobrazenieAktualnejPolohyVozna = new javax.swing.JMenuItem();
+        menu_zobrazenieHistorieVyskytuVozna = new javax.swing.JMenuItem();
 
         dialog_vytvorVlak.setMinimumSize(new java.awt.Dimension(400, 392));
         dialog_vytvorVlak.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1034,6 +1047,91 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(43, 43, 43))
         );
 
+        jLabel51.setText("Zobrazenie historie vyskytu vozna za obdobie");
+
+        jLabel52.setText("ID vozna:");
+
+        jLabel53.setText("Kod:");
+
+        jLabel54.setText("Datum od:");
+
+        jLabel55.setText("Datum do:");
+
+        btn_zobrazenieHistorieVyskytuVozna_Zobraz.setText("Zobraz historiu vyskytu");
+        btn_zobrazenieHistorieVyskytuVozna_Zobraz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_zobrazenieHistorieVyskytuVozna_ZobrazActionPerformed(evt);
+            }
+        });
+
+        btn_zobrazenieHistorieVyskytuVozna_koniec.setText("Koniec");
+        btn_zobrazenieHistorieVyskytuVozna_koniec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_zobrazenieHistorieVyskytuVozna_koniecActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialog_zobrazenieHistorieVyskytuVoznaLayout = new javax.swing.GroupLayout(dialog_zobrazenieHistorieVyskytuVozna.getContentPane());
+        dialog_zobrazenieHistorieVyskytuVozna.getContentPane().setLayout(dialog_zobrazenieHistorieVyskytuVoznaLayout);
+        dialog_zobrazenieHistorieVyskytuVoznaLayout.setHorizontalGroup(
+            dialog_zobrazenieHistorieVyskytuVoznaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_zobrazenieHistorieVyskytuVoznaLayout.createSequentialGroup()
+                .addGroup(dialog_zobrazenieHistorieVyskytuVoznaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialog_zobrazenieHistorieVyskytuVoznaLayout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addGroup(dialog_zobrazenieHistorieVyskytuVoznaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(dialog_zobrazenieHistorieVyskytuVoznaLayout.createSequentialGroup()
+                                .addComponent(jLabel55)
+                                .addGap(18, 18, 18)
+                                .addComponent(datePicker_zobrazenieHistorieVyskytuVozna_do, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(dialog_zobrazenieHistorieVyskytuVoznaLayout.createSequentialGroup()
+                                .addGroup(dialog_zobrazenieHistorieVyskytuVoznaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel54)
+                                    .addComponent(jLabel52)
+                                    .addComponent(jLabel53))
+                                .addGap(18, 18, 18)
+                                .addGroup(dialog_zobrazenieHistorieVyskytuVoznaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(datePicker_zobrazenieHistorieVyskytuVozna_od, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(dialog_zobrazenieHistorieVyskytuVoznaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txt_zobrazenieHistorieVyskytuVozna_idVozna, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                                        .addComponent(txt_zobrazenieHistorieVyskytuVozna_kodVozna, javax.swing.GroupLayout.Alignment.LEADING))))
+                            .addComponent(jLabel51)))
+                    .addGroup(dialog_zobrazenieHistorieVyskytuVoznaLayout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(btn_zobrazenieHistorieVyskytuVozna_koniec))
+                    .addGroup(dialog_zobrazenieHistorieVyskytuVoznaLayout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addComponent(btn_zobrazenieHistorieVyskytuVozna_Zobraz)))
+                .addContainerGap(78, Short.MAX_VALUE))
+        );
+        dialog_zobrazenieHistorieVyskytuVoznaLayout.setVerticalGroup(
+            dialog_zobrazenieHistorieVyskytuVoznaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_zobrazenieHistorieVyskytuVoznaLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel51)
+                .addGap(18, 18, 18)
+                .addGroup(dialog_zobrazenieHistorieVyskytuVoznaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel52)
+                    .addComponent(txt_zobrazenieHistorieVyskytuVozna_idVozna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dialog_zobrazenieHistorieVyskytuVoznaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel53)
+                    .addComponent(txt_zobrazenieHistorieVyskytuVozna_kodVozna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dialog_zobrazenieHistorieVyskytuVoznaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel54)
+                    .addComponent(datePicker_zobrazenieHistorieVyskytuVozna_od, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dialog_zobrazenieHistorieVyskytuVoznaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel55)
+                    .addComponent(datePicker_zobrazenieHistorieVyskytuVozna_do, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(btn_zobrazenieHistorieVyskytuVozna_Zobraz)
+                .addGap(63, 63, 63)
+                .addComponent(btn_zobrazenieHistorieVyskytuVozna_koniec)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txtArea.setEditable(false);
@@ -1464,6 +1562,14 @@ public class GUI extends javax.swing.JFrame {
         });
         menu_vystupy.add(menu_zobrazenieAktualnejPolohyVozna);
 
+        menu_zobrazenieHistorieVyskytuVozna.setText("Zobrazenie historie vyskytu vozna");
+        menu_zobrazenieHistorieVyskytuVozna.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_zobrazenieHistorieVyskytuVoznaActionPerformed(evt);
+            }
+        });
+        menu_vystupy.add(menu_zobrazenieHistorieVyskytuVozna);
+
         jMenuBar1.add(menu_vystupy);
 
         setJMenuBar(jMenuBar1);
@@ -1780,6 +1886,25 @@ public class GUI extends javax.swing.JFrame {
         txtArea.setText(dbmethods.zobrazAktualnuPolohuVozna(idVozna,kodVozna));
     }//GEN-LAST:event_btn_zobrazenieAktualnejPolohyVozna_zobrazActionPerformed
 
+    private void menu_zobrazenieHistorieVyskytuVoznaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_zobrazenieHistorieVyskytuVoznaActionPerformed
+        dialog_zobrazenieHistorieVyskytuVozna.pack();
+        dialog_zobrazenieHistorieVyskytuVozna.setVisible(true);
+    }//GEN-LAST:event_menu_zobrazenieHistorieVyskytuVoznaActionPerformed
+
+    private void btn_zobrazenieHistorieVyskytuVozna_koniecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_zobrazenieHistorieVyskytuVozna_koniecActionPerformed
+        dialog_zobrazenieHistorieVyskytuVozna.setVisible(false);
+    }//GEN-LAST:event_btn_zobrazenieHistorieVyskytuVozna_koniecActionPerformed
+
+    private void btn_zobrazenieHistorieVyskytuVozna_ZobrazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_zobrazenieHistorieVyskytuVozna_ZobrazActionPerformed
+        
+        int       idVozna = Integer.parseInt(txt_zobrazenieHistorieVyskytuVozna_idVozna.getText());
+        int       kod     = Integer.parseInt(txt_zobrazenieHistorieVyskytuVozna_kodVozna.getText());
+        Timestamp ts_od   = new Timestamp(datePicker_zobrazenieHistorieVyskytuVozna_od.getDate().getTime());
+        Timestamp ts_do   = new Timestamp(datePicker_zobrazenieHistorieVyskytuVozna_do.getDate().getTime());
+        
+        txtArea.setText(dbmethods.zobrazHistoriuVyskytuVoznaZaObdobie(idVozna, kod, ts_od, ts_do));
+    }//GEN-LAST:event_btn_zobrazenieHistorieVyskytuVozna_ZobrazActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1838,10 +1963,14 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JToggleButton btn_zobrazVozneVStanici_zobraz;
     private javax.swing.JButton btn_zobrazenieAktualnejPolohyVozna_koniec;
     private javax.swing.JButton btn_zobrazenieAktualnejPolohyVozna_zobraz;
+    private javax.swing.JButton btn_zobrazenieHistorieVyskytuVozna_Zobraz;
+    private javax.swing.JButton btn_zobrazenieHistorieVyskytuVozna_koniec;
     private javax.swing.JButton btn_zoznamVoznovVoVlakoch_koniec;
     private javax.swing.JButton btn_zoznamVoznovVoVlakoch_zobraz;
     private org.jdesktop.swingx.JXDatePicker datePicker_ZobrazVozneVStanici_od;
     private org.jdesktop.swingx.JXDatePicker datePicker_zobrazVozneVStanici_do;
+    private org.jdesktop.swingx.JXDatePicker datePicker_zobrazenieHistorieVyskytuVozna_do;
+    private org.jdesktop.swingx.JXDatePicker datePicker_zobrazenieHistorieVyskytuVozna_od;
     private org.jdesktop.swingx.JXDatePicker datePicker_zoznamVoznovVoVlakoch_do;
     private org.jdesktop.swingx.JXDatePicker datePicker_zoznamVoznovVoVlakoch_od;
     private javax.swing.JDialog dialog_pridajVozen;
@@ -1852,6 +1981,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JDialog dialog_vytvorVlak;
     private javax.swing.JDialog dialog_zaradVozenDoVlaku;
     private javax.swing.JDialog dialog_zmenPoholuVozna;
+    private javax.swing.JDialog dialog_zobrazenieHistorieVyskytuVozna;
     private javax.swing.JDialog dialog_zobrazeniePolohyVozna;
     private javax.swing.JDialog dialog_zoznamVoznovVStanici;
     private javax.swing.JDialog dialog_zoznamVoznovVoVlakoch;
@@ -1905,6 +2035,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1953,6 +2088,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem menu_zobrazVozen;
     private javax.swing.JMenuItem menu_zobrazZaznam;
     private javax.swing.JMenuItem menu_zobrazenieAktualnejPolohyVozna;
+    private javax.swing.JMenuItem menu_zobrazenieHistorieVyskytuVozna;
     private javax.swing.JMenuItem menu_zoznamVoznovVStanici;
     private javax.swing.JMenuItem menu_zoznamVoznovVoVlakoch;
     private javax.swing.JRadioButton radioBtn_zobrazVozneVStanici_vPrevadzke;
@@ -1994,6 +2130,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField txt_zobrazVozneVStanici_idStanice;
     private javax.swing.JTextField txt_zobrazenieAktualnejPolohyVozna_idVozna;
     private javax.swing.JTextField txt_zobrazenieAktualnejPolohyVozna_kodVozna;
+    private javax.swing.JTextField txt_zobrazenieHistorieVyskytuVozna_idVozna;
+    private javax.swing.JTextField txt_zobrazenieHistorieVyskytuVozna_kodVozna;
     private javax.swing.JTextField txt_zoznamVoznovVoVlakoch_idVlaku;
     // End of variables declaration//GEN-END:variables
 }

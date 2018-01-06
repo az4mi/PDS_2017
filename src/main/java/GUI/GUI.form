@@ -1373,6 +1373,138 @@
         </Component>
       </SubComponents>
     </Container>
+    <Container class="javax.swing.JDialog" name="dialog_zobrazenieHistorieVyskytuVozna">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel55" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="datePicker_zobrazenieHistorieVyskytuVozna_do" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel54" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel52" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel53" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="datePicker_zobrazenieHistorieVyskytuVozna_od" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="txt_zobrazenieHistorieVyskytuVozna_idVozna" alignment="0" pref="99" max="32767" attributes="0"/>
+                                          <Component id="txt_zobrazenieHistorieVyskytuVozna_kodVozna" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Component id="jLabel51" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="btn_zobrazenieHistorieVyskytuVozna_koniec" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
+                          <Component id="btn_zobrazenieHistorieVyskytuVozna_Zobraz" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="78" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="jLabel51" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel52" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_zobrazenieHistorieVyskytuVozna_idVozna" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel53" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_zobrazenieHistorieVyskytuVozna_kodVozna" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel54" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="datePicker_zobrazenieHistorieVyskytuVozna_od" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel55" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="datePicker_zobrazenieHistorieVyskytuVozna_do" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  <Component id="btn_zobrazenieHistorieVyskytuVozna_Zobraz" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                  <Component id="btn_zobrazenieHistorieVyskytuVozna_koniec" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="24" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel51">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Zobrazenie historie vyskytu vozna za obdobie"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel52">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="ID vozna:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel53">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Kod:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel54">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Datum od:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel55">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Datum do:"/>
+          </Properties>
+        </Component>
+        <Component class="org.jdesktop.swingx.JXDatePicker" name="datePicker_zobrazenieHistorieVyskytuVozna_od">
+        </Component>
+        <Component class="org.jdesktop.swingx.JXDatePicker" name="datePicker_zobrazenieHistorieVyskytuVozna_do">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txt_zobrazenieHistorieVyskytuVozna_idVozna">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txt_zobrazenieHistorieVyskytuVozna_kodVozna">
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_zobrazenieHistorieVyskytuVozna_Zobraz">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Zobraz historiu vyskytu"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_zobrazenieHistorieVyskytuVozna_ZobrazActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_zobrazenieHistorieVyskytuVozna_koniec">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Koniec"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_zobrazenieHistorieVyskytuVozna_koniecActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu1">
@@ -1616,6 +1748,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_zobrazenieAktualnejPolohyVoznaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menu_zobrazenieHistorieVyskytuVozna">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Zobrazenie historie vyskytu vozna"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_zobrazenieHistorieVyskytuVoznaActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
