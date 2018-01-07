@@ -23,6 +23,9 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         dbmethods = new DBmethods();
         initComponents();
+        
+        dialog_prihlasenie.pack();
+        dialog_prihlasenie.setVisible(true);
     }
 
     /**
@@ -192,6 +195,16 @@ public class GUI extends javax.swing.JFrame {
         txt_zobrazenieAktualnejPolohyVoznov_idSpolocnosti = new javax.swing.JTextField();
         txt_zobrazenieAktualnejPolohyVoznov_kod = new javax.swing.JTextField();
         buttonGroup_zobrazenieAktualnejPolohyVoznov_stav = new javax.swing.ButtonGroup();
+        dialog_prihlasenie = new javax.swing.JDialog();
+        jLabel64 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
+        jLabel67 = new javax.swing.JLabel();
+        txt_prihlasenie_meno = new javax.swing.JTextField();
+        txt_prihlasenie_priezvisko = new javax.swing.JTextField();
+        txt_prihlasenie_heslo = new javax.swing.JPasswordField();
+        btn_prihlasenie_prihlas = new javax.swing.JButton();
+        btn_prihlasenie_koniec = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         tabbedPane_panel = new javax.swing.JTabbedPane();
@@ -215,6 +228,7 @@ public class GUI extends javax.swing.JFrame {
         tabulkaVystupy = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        menu_odhlasenie = new javax.swing.JMenuItem();
         menu_Exit = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menu_createTrain = new javax.swing.JMenuItem();
@@ -1286,12 +1300,86 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
+        jLabel64.setText("Prihlasenie pouzivatela");
+
+        jLabel65.setText("Meno:");
+
+        jLabel66.setText("Priezvisko:");
+
+        jLabel67.setText("Heslo:");
+
+        btn_prihlasenie_prihlas.setText("Prihlas");
+        btn_prihlasenie_prihlas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_prihlasenie_prihlasActionPerformed(evt);
+            }
+        });
+
+        btn_prihlasenie_koniec.setText("Koniec");
+        btn_prihlasenie_koniec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_prihlasenie_koniecActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialog_prihlasenieLayout = new javax.swing.GroupLayout(dialog_prihlasenie.getContentPane());
+        dialog_prihlasenie.getContentPane().setLayout(dialog_prihlasenieLayout);
+        dialog_prihlasenieLayout.setHorizontalGroup(
+            dialog_prihlasenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_prihlasenieLayout.createSequentialGroup()
+                .addGroup(dialog_prihlasenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialog_prihlasenieLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addGroup(dialog_prihlasenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel66)
+                            .addComponent(jLabel65)
+                            .addComponent(jLabel67))
+                        .addGap(36, 36, 36)
+                        .addGroup(dialog_prihlasenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_prihlasenie_meno)
+                            .addComponent(txt_prihlasenie_priezvisko)
+                            .addComponent(txt_prihlasenie_heslo, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)))
+                    .addGroup(dialog_prihlasenieLayout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addGroup(dialog_prihlasenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_prihlasenie_koniec)
+                            .addComponent(btn_prihlasenie_prihlas)))
+                    .addGroup(dialog_prihlasenieLayout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(jLabel64)))
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
+        dialog_prihlasenieLayout.setVerticalGroup(
+            dialog_prihlasenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_prihlasenieLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel64)
+                .addGap(26, 26, 26)
+                .addGroup(dialog_prihlasenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel65)
+                    .addComponent(txt_prihlasenie_meno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(dialog_prihlasenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel66)
+                    .addComponent(txt_prihlasenie_priezvisko, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(dialog_prihlasenieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel67)
+                    .addComponent(txt_prihlasenie_heslo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addComponent(btn_prihlasenie_prihlas)
+                .addGap(38, 38, 38)
+                .addComponent(btn_prihlasenie_koniec)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txtArea.setEditable(false);
         txtArea.setColumns(20);
         txtArea.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         txtArea.setRows(5);
+        txtArea.setPreferredSize(new java.awt.Dimension(140, 200));
         jScrollPane1.setViewportView(txtArea);
 
         jButton1.setText("Vytvor stanicu");
@@ -1331,7 +1419,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         tabbedPane_panel.addTab("Stanica", jPanel1);
@@ -1344,7 +1432,7 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 206, Short.MAX_VALUE)
+            .addGap(0, 287, Short.MAX_VALUE)
         );
 
         tabbedPane_panel.addTab("Kolaj", jPanel2);
@@ -1357,7 +1445,7 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 206, Short.MAX_VALUE)
+            .addGap(0, 287, Short.MAX_VALUE)
         );
 
         tabbedPane_panel.addTab("Snimac", jPanel3);
@@ -1370,7 +1458,7 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 206, Short.MAX_VALUE)
+            .addGap(0, 287, Short.MAX_VALUE)
         );
 
         tabbedPane_panel.addTab("Vozen", jPanel4);
@@ -1383,7 +1471,7 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 206, Short.MAX_VALUE)
+            .addGap(0, 287, Short.MAX_VALUE)
         );
 
         tabbedPane_panel.addTab("Vlak", jPanel5);
@@ -1396,7 +1484,7 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 206, Short.MAX_VALUE)
+            .addGap(0, 287, Short.MAX_VALUE)
         );
 
         tabbedPane_panel.addTab("Pohyb", jPanel6);
@@ -1409,7 +1497,7 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 206, Short.MAX_VALUE)
+            .addGap(0, 287, Short.MAX_VALUE)
         );
 
         tabbedPane_panel.addTab("Presun", jPanel7);
@@ -1422,7 +1510,7 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 206, Short.MAX_VALUE)
+            .addGap(0, 287, Short.MAX_VALUE)
         );
 
         tabbedPane_panel.addTab("Pohyb vozna vlak", jPanel8);
@@ -1435,7 +1523,7 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 206, Short.MAX_VALUE)
+            .addGap(0, 287, Short.MAX_VALUE)
         );
 
         tabbedPane_panel.addTab("Spolocnost", jPanel9);
@@ -1448,7 +1536,7 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 206, Short.MAX_VALUE)
+            .addGap(0, 287, Short.MAX_VALUE)
         );
 
         tabbedPane_panel.addTab("Typ vozna", jPanel10);
@@ -1461,7 +1549,7 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 206, Short.MAX_VALUE)
+            .addGap(0, 287, Short.MAX_VALUE)
         );
 
         tabbedPane_panel.addTab("Pouzivatel", jPanel11);
@@ -1474,7 +1562,7 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 206, Short.MAX_VALUE)
+            .addGap(0, 287, Short.MAX_VALUE)
         );
 
         tabbedPane_panel.addTab("Zaznam", jPanel12);
@@ -1493,6 +1581,14 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tabulkaVystupy);
 
         jMenu1.setText("File");
+
+        menu_odhlasenie.setText("Odhlas");
+        menu_odhlasenie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_odhlasenieActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_odhlasenie);
 
         menu_Exit.setText("Exit");
         menu_Exit.addActionListener(new java.awt.event.ActionListener() {
@@ -1746,7 +1842,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(tabbedPane_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE))
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );
@@ -1754,11 +1850,11 @@ public class GUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tabbedPane_panel)
-                    .addComponent(jScrollPane1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(tabbedPane_panel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -2132,6 +2228,35 @@ public class GUI extends javax.swing.JFrame {
         tabulkaVystupy.setModel(dbmethods.tableModelAktualnaPolohyVoznov(idSpolocnosti, kod, hmotnostOd, hmotnostDo, dlzkaOd, dlzkaDo, vPrevadzke));
     }//GEN-LAST:event_btn_zobrazenieAktualnejPolohyVoznov_zobrazActionPerformed
 
+    private void btn_prihlasenie_prihlasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prihlasenie_prihlasActionPerformed
+        
+        String meno       = txt_prihlasenie_meno.getText();
+        String priezvisko = txt_prihlasenie_priezvisko.getText();
+        String heslo      = txt_prihlasenie_heslo.getText();
+        
+        boolean result = dbmethods.prihlasenie(meno, priezvisko, heslo);
+        
+        if (result) {
+            dialog_prihlasenie.setVisible(false);
+            this.setVisible(true);
+        }
+    }//GEN-LAST:event_btn_prihlasenie_prihlasActionPerformed
+
+    private void menu_odhlasenieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_odhlasenieActionPerformed
+        
+        this.setVisible(false);
+        txt_prihlasenie_meno.setText("");
+        txt_prihlasenie_priezvisko.setText("");
+        txt_prihlasenie_heslo.setText("");
+        
+        dialog_prihlasenie.pack();
+        dialog_prihlasenie.setVisible(true);
+    }//GEN-LAST:event_menu_odhlasenieActionPerformed
+
+    private void btn_prihlasenie_koniecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prihlasenie_koniecActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btn_prihlasenie_koniecActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2161,8 +2286,8 @@ public class GUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUI().setVisible(true);
+            public void run() {                         
+                new GUI();//.setVisible(true);
             }
         });
     }
@@ -2175,6 +2300,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_koniec;
     private javax.swing.JButton btn_pridanieVozna_koniec;
     private javax.swing.JButton btn_pridanieVozna_pridaj;
+    private javax.swing.JButton btn_prihlasenie_koniec;
+    private javax.swing.JButton btn_prihlasenie_prihlas;
     private javax.swing.JButton btn_vyradenieVoznaZVlaku_Koniec;
     private javax.swing.JButton btn_vyradenieVoznaZVlaku_Vyrad;
     private javax.swing.JButton btn_vytvorPohyb;
@@ -2204,6 +2331,7 @@ public class GUI extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXDatePicker datePicker_zoznamVoznovVoVlakoch_do;
     private org.jdesktop.swingx.JXDatePicker datePicker_zoznamVoznovVoVlakoch_od;
     private javax.swing.JDialog dialog_pridajVozen;
+    private javax.swing.JDialog dialog_prihlasenie;
     private javax.swing.JDialog dialog_vyradVozenZPrevadzky;
     private javax.swing.JDialog dialog_vyradVozenZVlaku;
     private javax.swing.JDialog dialog_vytvorPohybVoznaVlak;
@@ -2280,6 +2408,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -2304,6 +2436,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JMenuItem menu_Exit;
     private javax.swing.JMenuItem menu_createTrain;
+    private javax.swing.JMenuItem menu_odhlasenie;
     private javax.swing.JMenuItem menu_pridajVozen;
     private javax.swing.JMenuItem menu_vyhladajVozen;
     private javax.swing.JMenuItem menu_vyradVozen;
@@ -2354,6 +2487,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField txt_pridanieVozna_idSpolocnosti;
     private javax.swing.JTextField txt_pridanieVozna_idVozna;
     private javax.swing.JTextField txt_pridanieVozna_kod;
+    private javax.swing.JPasswordField txt_prihlasenie_heslo;
+    private javax.swing.JTextField txt_prihlasenie_meno;
+    private javax.swing.JTextField txt_prihlasenie_priezvisko;
     private javax.swing.JTextField txt_typ;
     private javax.swing.JTextField txt_typPohybu;
     private javax.swing.JTextField txt_vyradenieVoznaZVlaku_idSnimaca;

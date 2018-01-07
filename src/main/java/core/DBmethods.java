@@ -21,6 +21,9 @@ public class DBmethods {
     private String connString = "jdbc:oracle:thin:@asterix.fri.uniza.sk:1521/orclpdb.fri.uniza.sk";
     private String meno       = "alfa_sp";
     private String heslo      = "vsetcimajua";
+    
+    private String prihlasenyPouzivatel_meno;
+    private String prihlasenyPouzivatel_priezvisko;
 
     public DBmethods() {
         try {
@@ -30,6 +33,41 @@ public class DBmethods {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+    
+    public boolean prihlasenie(String pMeno, String pPriezvisko, String pHeslo) {
+        
+        Connection connection = null;
+        Statement  stmt;
+        String     sql;
+        String     result = "";
+        
+        try {
+                
+            connection = DriverManager.getConnection(connString,meno,heslo);
+            stmt       = connection.createStatement();
+            
+            sql          = "SELECT meno, priezvisko, heslo FROM pouzivatel";
+            ResultSet rs = stmt.executeQuery(sql);          
+     
+            while(rs.next()){
+                
+                if (rs.getString("meno").equals(pMeno) &&
+                    rs.getString("priezvisko").equals(pPriezvisko) &&
+                    rs.getString("heslo").equals(pHeslo)) 
+                {
+                    prihlasenyPouzivatel_meno       = pMeno;
+                    prihlasenyPouzivatel_priezvisko = pPriezvisko;                  
+                    return true;                                   
+                }       
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+        
     }
     
     public void vytvorStanicu(String pNazov, float pGpsSirka, float pGpsDlzka) {
