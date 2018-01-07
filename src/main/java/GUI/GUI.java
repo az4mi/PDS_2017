@@ -2031,7 +2031,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_zoznamVoznovVoVlakoch_koniecActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-		tabulkaVystupy.setModel(dbmethods.zobrazVsetkyStanice());
+		tabulkaVystupy.setModel(dbmethods.tableModelVsetkyStanice());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void menu_zobrazenieAktualnejPolohyVoznaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_zobrazenieAktualnejPolohyVoznaActionPerformed
@@ -2068,6 +2068,7 @@ public class GUI extends javax.swing.JFrame {
         Timestamp ts_do   = new Timestamp(datePicker_zobrazenieHistorieVyskytuVozna_do.getDate().getTime());
         
         txtArea.setText(dbmethods.zobrazHistoriuVyskytuVoznaZaObdobie(idVozna, kod, ts_od, ts_do));
+		tabulkaVystupy.setModel(dbmethods.tableModelHistoriaVyskytuVoznaZaObdobie(idVozna, kod, ts_od, ts_do));
     }//GEN-LAST:event_btn_zobrazenieHistorieVyskytuVozna_ZobrazActionPerformed
 
     private void menu_zobrazenieAktualnejPolohyVoznovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_zobrazenieAktualnejPolohyVoznovActionPerformed
@@ -2128,7 +2129,7 @@ public class GUI extends javax.swing.JFrame {
         }
         
         txtArea.setText(dbmethods.zobrazenieAktualnejPolohyVoznov(idSpolocnosti, kod, hmotnostOd, hmotnostDo, dlzkaOd, dlzkaDo, vPrevadzke));
-        
+        tabulkaVystupy.setModel(dbmethods.tableModelAktualnaPolohyVoznov(idSpolocnosti, kod, hmotnostOd, hmotnostDo, dlzkaOd, dlzkaDo, vPrevadzke));
     }//GEN-LAST:event_btn_zobrazenieAktualnejPolohyVoznov_zobrazActionPerformed
 
     /**
