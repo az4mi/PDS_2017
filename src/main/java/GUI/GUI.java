@@ -1549,6 +1549,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         btn_zobrazenieSkupinyVoznov_koniec.setText("Koniec");
+        btn_zobrazenieSkupinyVoznov_koniec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_zobrazenieSkupinyVoznov_koniecActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout dialog_zobrazenieSkupinVoznovLayout = new javax.swing.GroupLayout(dialog_zobrazenieSkupinVoznov.getContentPane());
         dialog_zobrazenieSkupinVoznov.getContentPane().setLayout(dialog_zobrazenieSkupinVoznovLayout);
@@ -2844,6 +2849,10 @@ public class GUI extends javax.swing.JFrame {
     private void btn_statistiky_koniecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_statistiky_koniecActionPerformed
         dialog_statistiky.setVisible(false);
     }//GEN-LAST:event_btn_statistiky_koniecActionPerformed
+
+    private void btn_zobrazenieSkupinyVoznov_koniecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_zobrazenieSkupinyVoznov_koniecActionPerformed
+        dialog_zobrazenieSkupinVoznov.setVisible(false);
+    }//GEN-LAST:event_btn_zobrazenieSkupinyVoznov_koniecActionPerformed
 
     /**
      * @param args the command line arguments
