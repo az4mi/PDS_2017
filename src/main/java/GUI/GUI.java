@@ -2462,7 +2462,7 @@ public class GUI extends javax.swing.JFrame {
 		int idVozna = Integer.parseInt(txt_zobrazenieAktualnejPolohyVozna_idVozna.getText());
 		int kodVozna = Integer.parseInt(txt_zobrazenieAktualnejPolohyVozna_kodVozna.getText());
 		txtArea.setText(dbmethods.zobrazAktualnuPolohuVozna(idVozna, kodVozna));
-		tabulkaVystupy.setModel(dbmethods.tableModelAktualnaPolohuVozna(idVozna, kodVozna));
+		tabulkaVystupy.setModel(dbmethods.tableModelAktualnaPolohaVozna(idVozna, kodVozna));
     }//GEN-LAST:event_btn_zobrazenieAktualnejPolohyVozna_zobrazActionPerformed
 
     private void menu_zobrazenieHistorieVyskytuVoznaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_zobrazenieHistorieVyskytuVoznaActionPerformed
@@ -2543,7 +2543,7 @@ public class GUI extends javax.swing.JFrame {
 		}
 
 		txtArea.setText(dbmethods.zobrazenieAktualnejPolohyVoznov(idSpolocnosti, kod, hmotnostOd, hmotnostDo, dlzkaOd, dlzkaDo, vPrevadzke));
-		tabulkaVystupy.setModel(dbmethods.tableModelAktualnaPolohyVoznov(idSpolocnosti, kod, hmotnostOd, hmotnostDo, dlzkaOd, dlzkaDo, vPrevadzke));
+		tabulkaVystupy.setModel(dbmethods.tableModelAktualnaPolohaVoznov(idSpolocnosti, kod, hmotnostOd, hmotnostDo, dlzkaOd, dlzkaDo, vPrevadzke));
     }//GEN-LAST:event_btn_zobrazenieAktualnejPolohyVoznov_zobrazActionPerformed
 
     private void btn_prihlasenie_prihlasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prihlasenie_prihlasActionPerformed

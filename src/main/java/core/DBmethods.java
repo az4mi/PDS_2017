@@ -784,7 +784,7 @@ public class DBmethods {
 
             connection   = DriverManager.getConnection(connString,meno,heslo);
             stmt         = connection.createStatement();          
-            sql          = "select id_vozna, kod, poznamka, nazov, gps_sirka, gps_dlzka, datum_do from VIEW_POLOHA_VOZNOV"
+            sql          = "select id_vozna, kod, nazov_stanice, gps_sirka, gps_dlzka, kolaj, datum_do from VIEW_POLOHA_VOZNOV"
                          + " where id_vozna = "+pIdVozna+" and "
                          + " kod = "+pKodVozna+" and "
                          + " datum_do is null";
@@ -796,10 +796,10 @@ public class DBmethods {
                 result.append("Vozen\n"
                         + " > ID vozna       = "+rs.getString("id_vozna")+"\n"
                         + " > Kod            = "+rs.getString("kod")+"\n"
-                        + " > Poznamka       = "+rs.getString("poznamka")+"\n"
-						+ " > Nazov stanice  = "+rs.getString("nazov")+"\n"
+						+ " > Nazov stanice  = "+rs.getString("nazov_stanice")+"\n"
                         + " > GPS sirka      = "+rs.getString("gps_sirka")+"\n"
-                        + " > GPS dlzka      = "+rs.getString("gps_dlzka")+"\n\n");
+                        + " > GPS dlzka      = "+rs.getString("gps_dlzka")+"\n"
+						+ " > Kolaj          = "+rs.getString("kolaj")+"\n\n");
 
             }
 
@@ -821,7 +821,7 @@ public class DBmethods {
 
             connection   = DriverManager.getConnection(connString,meno,heslo);
             stmt         = connection.createStatement();          
-            sql          = "select id_vozna, rad, kod, v_prevadzke, interabilita, dlzka, hmotnost, poznamka, nazov_spolocnosti, id_spolocnosti, gps_sirka, gps_dlzka, nazov, typ_pohybu, datum_od, datum_do "
+            sql          = "select id_vozna, rad, kod, v_prevadzke, interabilita, dlzka, hmotnost, poznamka, nazov_spolocnosti, id_spolocnosti, nazov, gps_sirka, gps_dlzka, kolaj, typ_pohybu, datum_od, datum_do "
                          + " from VIEW_POLOHA_VOZNOV"
                          + " where "
                          + " id_vozna = "+pIdVozna+" and "
@@ -852,6 +852,7 @@ public class DBmethods {
                             + "      > Nazov miesta = "+rs.getString("nazov")+"\n"
                             + "      > GPS sirka    = "+rs.getString("gps_sirka")+"\n"
                             + "      > GPS dlzka    = "+rs.getString("gps_dlzka")+"\n"
+                            + "      > Kolaj        = "+rs.getString("kolaj")+"\n"
                             + "      > Typ pohybu   = "+rs.getString("typ_pohybu")+"\n"
                             + "      > Datum od     = "+rs.getString("datum_od")+"\n"
                             + "      > Datum do     = "+rs.getString("datum_do")+"\n\n");
@@ -864,6 +865,7 @@ public class DBmethods {
                     result.append("      > Nazov miesta = "+rs.getString("nazov")+"\n"
                             + "      > GPS sirka    = "+rs.getString("gps_sirka")+"\n"
                             + "      > GPS dlzka    = "+rs.getString("gps_dlzka")+"\n"
+							+ "      > Kolaj        = "+rs.getString("kolaj")+"\n"
                             + "      > Typ pohybu   = "+rs.getString("typ_pohybu")+"\n"
                             + "      > Datum od     = "+rs.getString("datum_od")+"\n"
                             + "      > Datum do     = "+rs.getString("datum_do")+"\n\n");
@@ -1133,7 +1135,7 @@ public class DBmethods {
 		return null;
 	}
 	
-	public DefaultTableModel tableModelAktualnaPolohuVozna(int pIdVozna, int pKodVozna) {
+	public DefaultTableModel tableModelAktualnaPolohaVozna(int pIdVozna, int pKodVozna) {
         
         Connection connection = null;
         Statement  stmt;
@@ -1144,7 +1146,7 @@ public class DBmethods {
 
             connection   = DriverManager.getConnection(connString,meno,heslo);
             stmt         = connection.createStatement();          
-            sql          = "select id_vozna, kod, nazov, gps_sirka, gps_dlzka, poznamka from VIEW_POLOHA_VOZNOV"
+            sql          = "select id_vozna, kod, nazov_stanice, gps_sirka, gps_dlzka,kolaj , datum_do from VIEW_POLOHA_VOZNOV"
                          + " where id_vozna = "+pIdVozna+" and "
                          + " kod = "+pKodVozna+" and "
                          + " datum_do is null";
@@ -1170,7 +1172,7 @@ public class DBmethods {
 
             connection   = DriverManager.getConnection(connString,meno,heslo);
             stmt         = connection.createStatement();          
-            sql          = "select id_vozna, kod, nazov as NAZOV_MIESTA, gps_sirka, gps_dlzka, typ_pohybu, datum_od, datum_do "
+            sql          = "select id_vozna, kod, nazov as NAZOV_MIESTA, gps_sirka, gps_dlzka, kolaj, typ_pohybu, datum_od, datum_do "
                          + " from VIEW_POLOHA_VOZNOV"
                          + " where "
                          + " id_vozna = "+pIdVozna+" and "
@@ -1188,7 +1190,7 @@ public class DBmethods {
         return null;
     }
 	
-	public DefaultTableModel tableModelAktualnaPolohyVoznov(String pIdSpolocnosti, String pKod, int pHmotnostOd, int pHmotnostDo, int pDlzkaOd, int pDlzkaDo, int pVPrevadzke) {
+	public DefaultTableModel tableModelAktualnaPolohaVoznov(String pIdSpolocnosti, String pKod, int pHmotnostOd, int pHmotnostDo, int pDlzkaOd, int pDlzkaDo, int pVPrevadzke) {
         
         Connection connection = null;
         Statement  stmt;
