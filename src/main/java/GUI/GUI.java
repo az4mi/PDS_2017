@@ -5,9 +5,11 @@
  */
 package GUI;
 
+import core.ChartMethods;
 import core.DBmethods;
 import java.sql.Timestamp;
 import java.util.Calendar;
+import core.Histogram;
 
 /**
  *
@@ -15,13 +17,15 @@ import java.util.Calendar;
  */
 public class GUI extends javax.swing.JFrame {
 
-	private DBmethods dbmethods;
+	private DBmethods    dbmethods;
+        private ChartMethods chartMethods;
 
 	/**
 	 * Creates new form GUI
 	 */
 	public GUI() {
-		dbmethods = new DBmethods();
+		dbmethods    = new DBmethods();
+                chartMethods = new ChartMethods();
 		initComponents();
 
 		dialog_prihlasenie.pack();
@@ -257,6 +261,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel87 = new javax.swing.JLabel();
         btn_statistika_pocetZaznamovPrePouzivatela = new javax.swing.JButton();
         btn_statistiky_koniec = new javax.swing.JButton();
+        dialog_chartDialog = new javax.swing.JDialog();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -1794,6 +1799,17 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
+        javax.swing.GroupLayout dialog_chartDialogLayout = new javax.swing.GroupLayout(dialog_chartDialog.getContentPane());
+        dialog_chartDialog.getContentPane().setLayout(dialog_chartDialogLayout);
+        dialog_chartDialogLayout.setHorizontalGroup(
+            dialog_chartDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 527, Short.MAX_VALUE)
+        );
+        dialog_chartDialogLayout.setVerticalGroup(
+            dialog_chartDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 456, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txtArea.setEditable(false);
@@ -2684,8 +2700,16 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_pocetZaradeniVoznovPodlaTypuVoznaActionPerformed
 
     private void btn_statistika_pocetVoznovVStaniciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_statistika_pocetVoznovVStaniciActionPerformed
-		txtArea.setText(dbmethods.statistika_pocetVoznovVStanici(txt_statistiky_obdobie.getText(), txt_statistiky_idSpolocnosti.getText()));
+		
+                Histogram h = chartMethods.getNewHistogram("Pocetnost voznov", "Stanice", "Pocet");
+                h.setTitle("Pocet voznov v staniciach za stvrtroky v dane obdobie");
+               
+            
+                txtArea.setText(dbmethods.statistika_pocetVoznovVStanici(txt_statistiky_obdobie.getText(), txt_statistiky_idSpolocnosti.getText(), h));
 		tabulkaVystupy.setModel(dbmethods.tableModel_statistika_pocetVoznovVStanici(txt_statistiky_obdobie.getText(), txt_statistiky_idSpolocnosti.getText()));
+                
+                
+                
     }//GEN-LAST:event_btn_statistika_pocetVoznovVStaniciActionPerformed
 
     private void btn_statistika_pocetVoznovVStaniciachPodlaTypuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_statistika_pocetVoznovVStaniciachPodlaTypuActionPerformed
@@ -2796,6 +2820,7 @@ public class GUI extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXDatePicker datePicker_zobrazenieHistorieVyskytuVozna_od;
     private org.jdesktop.swingx.JXDatePicker datePicker_zoznamVoznovVoVlakoch_do;
     private org.jdesktop.swingx.JXDatePicker datePicker_zoznamVoznovVoVlakoch_od;
+    private javax.swing.JDialog dialog_chartDialog;
     private javax.swing.JDialog dialog_pridajVozen;
     private javax.swing.JDialog dialog_prihlasenie;
     private javax.swing.JDialog dialog_statistiky;

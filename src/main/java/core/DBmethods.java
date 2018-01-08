@@ -1481,7 +1481,7 @@ public class DBmethods {
         return result;
     }
     
-    public String statistika_pocetVoznovVStanici(String pRok, String pIdStanice) {
+    public String statistika_pocetVoznovVStanici(String pRok, String pIdStanice, Histogram pHistogram) {
         
         Connection connection = null;
         Statement  stmt;
@@ -1521,7 +1521,12 @@ public class DBmethods {
                         + "    > Prvy stvrtrok   = "+rs.getString("PRVY_STVRTROK")+"\n"
                         + "    > Druhy stvrtrok  = "+rs.getString("DRUHY_STVRTROK")+"\n"
                         + "    > Treti stvrtrok  = "+rs.getString("TRETI_STVRTROK")+"\n"
-                        + "    > Stvrty stvrtrok = "+rs.getString("STVRTY_STVRTROK")+"\n\n";                       
+                        + "    > Stvrty stvrtrok = "+rs.getString("STVRTY_STVRTROK")+"\n\n";  
+                
+                pHistogram.addData(Double.parseDouble(rs.getString("PRVY_STVRTROK")), "Prvy stvrtrok", rs.getString("nazov_spolocnosti"));
+                pHistogram.addData(Double.parseDouble(rs.getString("DRUHY_STVRTROK")), "Druhy stvrtrok", rs.getString("nazov_spolocnosti"));
+                pHistogram.addData(Double.parseDouble(rs.getString("TRETI_STVRTROK")), "Treti stvrtrok", rs.getString("nazov_spolocnosti"));
+                pHistogram.addData(Double.parseDouble(rs.getString("STVRTY_STVRTROK")), "Stvrty stvrtrok", rs.getString("nazov_spolocnosti"));
 
             }
 
