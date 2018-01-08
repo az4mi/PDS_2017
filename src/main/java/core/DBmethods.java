@@ -1,5 +1,11 @@
 package core;
 
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,6 +17,10 @@ import java.sql.Timestamp;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -934,6 +944,10 @@ public class DBmethods {
         return result;
     }
 	
+	//**************************************************************************************
+	//vystupy -> modely tabulky
+	
+	
 	public DefaultTableModel tableModelVsetkyStanice(){
 		try {
 			Connection connection = null;
@@ -1155,5 +1169,49 @@ public class DBmethods {
 			data.add(vector);
 		}
 		return new DefaultTableModel(data, columnNames);
+	}
+	
+	public void zobrazObrazok(String pKod, JDialog dialog, JLabel image){
+		try {
+			Connection connection = null;
+			Statement  stmt;
+			String     sql;
+			String     result = "";
+			
+			connection   = DriverManager.getConnection(connString,meno,heslo);
+			stmt         = connection.createStatement();
+			sql          = "select obrazok from typ_vozna where kod = " + pKod;
+			
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while (rs.next()){
+				InputStream in = rs.getBinaryStream("OBRAZOK");
+				
+				BufferedImage im = ImageIO.read(in); 
+				BufferedImage outimage = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_RGB);
+				Graphics2D g = outimage.createGraphics();
+
+				dialog.setSize((int)outimage.getWidth()+50, (int)outimage.getHeight()+90);
+				image.setSize((int)outimage.getWidth(), (int)outimage.getHeight());
+				
+				
+				float xScale = (float)image.getWidth() / outimage.getWidth();
+				float yScale = (float)image.getHeight() / outimage.getHeight();
+
+				AffineTransform at = AffineTransform.getScaleInstance(xScale,yScale);
+				g.drawRenderedImage(im,at);
+				g.dispose();
+				Image scaledImage = outimage.getScaledInstance(image.getWidth(), image.getHeight(), Image.SCALE_SMOOTH);
+				ImageIcon icon = new ImageIcon(scaledImage);
+				image.setIcon(icon);
+				image.revalidate();
+				
+			}
+			rs.close();
+		} catch (SQLException ex) {
+			Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (IOException ex) {
+			Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+		}
 	}
 }

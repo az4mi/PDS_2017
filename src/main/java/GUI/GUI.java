@@ -205,6 +205,14 @@ public class GUI extends javax.swing.JFrame {
         txt_prihlasenie_heslo = new javax.swing.JPasswordField();
         btn_prihlasenie_prihlas = new javax.swing.JButton();
         btn_prihlasenie_koniec = new javax.swing.JButton();
+        dialog_zobrazObrazok = new javax.swing.JDialog();
+        image = new javax.swing.JLabel();
+        btn_zobrazObrazok_koniec = new javax.swing.JButton();
+        dialog_vyhladajObrazok = new javax.swing.JDialog();
+        jLabel68 = new javax.swing.JLabel();
+        txt_vyhladajObrazok_kod = new javax.swing.JTextField();
+        btn_vyhladajObrazok_vyhladaj = new javax.swing.JButton();
+        btn_vyhladajObrazok_koniec = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         tabbedPane_panel = new javax.swing.JTabbedPane();
@@ -222,6 +230,7 @@ public class GUI extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
+        btn_vyhladajObrazok = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -1308,6 +1317,12 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel67.setText("Heslo:");
 
+        txt_prihlasenie_meno.setText("Fero");
+
+        txt_prihlasenie_priezvisko.setText("Mrkva");
+
+        txt_prihlasenie_heslo.setText("111");
+
         btn_prihlasenie_prihlas.setText("Prihlas");
         btn_prihlasenie_prihlas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1371,6 +1386,82 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addComponent(btn_prihlasenie_koniec)
                 .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        btn_zobrazObrazok_koniec.setText("Koniec");
+        btn_zobrazObrazok_koniec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_zobrazObrazok_koniecActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialog_zobrazObrazokLayout = new javax.swing.GroupLayout(dialog_zobrazObrazok.getContentPane());
+        dialog_zobrazObrazok.getContentPane().setLayout(dialog_zobrazObrazokLayout);
+        dialog_zobrazObrazokLayout.setHorizontalGroup(
+            dialog_zobrazObrazokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialog_zobrazObrazokLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_zobrazObrazok_koniec)
+                .addGap(458, 458, 458))
+            .addGroup(dialog_zobrazObrazokLayout.createSequentialGroup()
+                .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        dialog_zobrazObrazokLayout.setVerticalGroup(
+            dialog_zobrazObrazokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_zobrazObrazokLayout.createSequentialGroup()
+                .addComponent(image, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_zobrazObrazok_koniec)
+                .addContainerGap())
+        );
+
+        jLabel68.setText("Kod vozna");
+
+        btn_vyhladajObrazok_vyhladaj.setText("Vyhľadaj");
+        btn_vyhladajObrazok_vyhladaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vyhladajObrazok_vyhladajActionPerformed(evt);
+            }
+        });
+
+        btn_vyhladajObrazok_koniec.setText("Koniec");
+        btn_vyhladajObrazok_koniec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vyhladajObrazok_koniecActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialog_vyhladajObrazokLayout = new javax.swing.GroupLayout(dialog_vyhladajObrazok.getContentPane());
+        dialog_vyhladajObrazok.getContentPane().setLayout(dialog_vyhladajObrazokLayout);
+        dialog_vyhladajObrazokLayout.setHorizontalGroup(
+            dialog_vyhladajObrazokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_vyhladajObrazokLayout.createSequentialGroup()
+                .addGroup(dialog_vyhladajObrazokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialog_vyhladajObrazokLayout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jLabel68)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_vyhladajObrazok_kod, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dialog_vyhladajObrazokLayout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addGroup(dialog_vyhladajObrazokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_vyhladajObrazok_vyhladaj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_vyhladajObrazok_koniec, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(74, Short.MAX_VALUE))
+        );
+        dialog_vyhladajObrazokLayout.setVerticalGroup(
+            dialog_vyhladajObrazokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_vyhladajObrazokLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addGroup(dialog_vyhladajObrazokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel68)
+                    .addComponent(txt_vyhladajObrazok_kod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addComponent(btn_vyhladajObrazok_vyhladaj)
+                .addGap(51, 51, 51)
+                .addComponent(btn_vyhladajObrazok_koniec)
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1528,15 +1619,28 @@ public class GUI extends javax.swing.JFrame {
 
         tabbedPane_panel.addTab("Spolocnost", jPanel9);
 
+        btn_vyhladajObrazok.setText("Vyhladaj obrazok");
+        btn_vyhladajObrazok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vyhladajObrazokActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 434, Short.MAX_VALUE)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(168, 168, 168)
+                .addComponent(btn_vyhladajObrazok)
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 287, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addComponent(btn_vyhladajObrazok)
+                .addGap(222, 222, 222))
         );
 
         tabbedPane_panel.addTab("Typ vozna", jPanel10);
@@ -2257,6 +2361,27 @@ public class GUI extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btn_prihlasenie_koniecActionPerformed
 
+    private void btn_vyhladajObrazokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vyhladajObrazokActionPerformed
+		dialog_vyhladajObrazok.pack();
+		dialog_vyhladajObrazok.setVisible(true);
+    }//GEN-LAST:event_btn_vyhladajObrazokActionPerformed
+
+    private void btn_zobrazObrazok_koniecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_zobrazObrazok_koniecActionPerformed
+		dialog_zobrazObrazok.setVisible(false);
+    }//GEN-LAST:event_btn_zobrazObrazok_koniecActionPerformed
+
+    private void btn_vyhladajObrazok_vyhladajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vyhladajObrazok_vyhladajActionPerformed
+        dialog_vyhladajObrazok.setVisible(false);
+		dialog_zobrazObrazok.pack();
+        dialog_zobrazObrazok.setVisible(true);
+		
+		dbmethods.zobrazObrazok(txt_vyhladajObrazok_kod.getText(), dialog_zobrazObrazok, image);
+    }//GEN-LAST:event_btn_vyhladajObrazok_vyhladajActionPerformed
+
+    private void btn_vyhladajObrazok_koniecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vyhladajObrazok_koniecActionPerformed
+		dialog_vyhladajObrazok.setVisible(false);
+    }//GEN-LAST:event_btn_vyhladajObrazok_koniecActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2302,6 +2427,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_pridanieVozna_pridaj;
     private javax.swing.JButton btn_prihlasenie_koniec;
     private javax.swing.JButton btn_prihlasenie_prihlas;
+    private javax.swing.JButton btn_vyhladajObrazok;
+    private javax.swing.JButton btn_vyhladajObrazok_koniec;
+    private javax.swing.JButton btn_vyhladajObrazok_vyhladaj;
     private javax.swing.JButton btn_vyradenieVoznaZVlaku_Koniec;
     private javax.swing.JButton btn_vyradenieVoznaZVlaku_Vyrad;
     private javax.swing.JButton btn_vytvorPohyb;
@@ -2311,6 +2439,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_zaradenieVoznaDoVlaku_Zarad;
     private javax.swing.JButton btn_zmenaPolohyVozna_Zmen;
     private javax.swing.JButton btn_zmenaPolohyVozna_koniec;
+    private javax.swing.JButton btn_zobrazObrazok_koniec;
     private javax.swing.JMenuItem btn_zobrazPohybVoznaVlak;
     private javax.swing.JMenuItem btn_zobrazVlak;
     private javax.swing.JButton btn_zobrazVozneVStanici_koniec;
@@ -2332,6 +2461,7 @@ public class GUI extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXDatePicker datePicker_zoznamVoznovVoVlakoch_od;
     private javax.swing.JDialog dialog_pridajVozen;
     private javax.swing.JDialog dialog_prihlasenie;
+    private javax.swing.JDialog dialog_vyhladajObrazok;
     private javax.swing.JDialog dialog_vyradVozenZPrevadzky;
     private javax.swing.JDialog dialog_vyradVozenZVlaku;
     private javax.swing.JDialog dialog_vytvorPohybVoznaVlak;
@@ -2339,11 +2469,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JDialog dialog_vytvorVlak;
     private javax.swing.JDialog dialog_zaradVozenDoVlaku;
     private javax.swing.JDialog dialog_zmenPoholuVozna;
+    private javax.swing.JDialog dialog_zobrazObrazok;
     private javax.swing.JDialog dialog_zobrazenieAktualnejPolohyVoznov;
     private javax.swing.JDialog dialog_zobrazenieHistorieVyskytuVozna;
     private javax.swing.JDialog dialog_zobrazeniePolohyVozna;
     private javax.swing.JDialog dialog_zoznamVoznovVStanici;
     private javax.swing.JDialog dialog_zoznamVoznovVoVlakoch;
+    private javax.swing.JLabel image;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -2412,6 +2544,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -2492,6 +2625,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField txt_prihlasenie_priezvisko;
     private javax.swing.JTextField txt_typ;
     private javax.swing.JTextField txt_typPohybu;
+    private javax.swing.JTextField txt_vyhladajObrazok_kod;
     private javax.swing.JTextField txt_vyradenieVoznaZVlaku_idSnimaca;
     private javax.swing.JTextField txt_vyradenieVoznaZVlaku_idVlaku;
     private javax.swing.JTextField txt_vyradenieVoznaZVlaku_idVozna;
