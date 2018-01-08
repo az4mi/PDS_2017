@@ -821,7 +821,7 @@ public class DBmethods {
 
             connection   = DriverManager.getConnection(connString,meno,heslo);
             stmt         = connection.createStatement();          
-            sql          = "select id_vozna, rad, kod, v_prevadzke, interabilita, dlzka, hmotnost, poznamka, nazov_spolocnosti, id_spolocnosti, nazov, gps_sirka, gps_dlzka, kolaj, typ_pohybu, datum_od, datum_do "
+            sql          = "select id_vozna, rad, kod, v_prevadzke, interabilita, dlzka, hmotnost, poznamka, nazov_spolocnosti, id_spolocnosti, nazov_stanice, gps_sirka, gps_dlzka, kolaj, datum_od, datum_do "
                          + " from VIEW_POLOHA_VOZNOV"
                          + " where "
                          + " id_vozna = "+pIdVozna+" and "
@@ -849,11 +849,10 @@ public class DBmethods {
                         + " > Hmotnost [t]         = "+rs.getString("hmotnost")+"\n"
                         + " > Poznamka             = "+rs.getString("poznamka")+"\n\n"
                         + "   > Pohyb vozna\n"
-                            + "      > Nazov miesta = "+rs.getString("nazov")+"\n"
+                            + "      > Nazov miesta = "+rs.getString("nazov_stanice")+"\n"
                             + "      > GPS sirka    = "+rs.getString("gps_sirka")+"\n"
                             + "      > GPS dlzka    = "+rs.getString("gps_dlzka")+"\n"
                             + "      > Kolaj        = "+rs.getString("kolaj")+"\n"
-                            + "      > Typ pohybu   = "+rs.getString("typ_pohybu")+"\n"
                             + "      > Datum od     = "+rs.getString("datum_od")+"\n"
                             + "      > Datum do     = "+rs.getString("datum_do")+"\n\n");
                     
@@ -862,11 +861,10 @@ public class DBmethods {
                     
                 } else {
                     
-                    result.append("      > Nazov miesta = "+rs.getString("nazov")+"\n"
+                    result.append("      > Nazov miesta = "+rs.getString("nazov_stanice")+"\n"
                             + "      > GPS sirka    = "+rs.getString("gps_sirka")+"\n"
                             + "      > GPS dlzka    = "+rs.getString("gps_dlzka")+"\n"
 							+ "      > Kolaj        = "+rs.getString("kolaj")+"\n"
-                            + "      > Typ pohybu   = "+rs.getString("typ_pohybu")+"\n"
                             + "      > Datum od     = "+rs.getString("datum_od")+"\n"
                             + "      > Datum do     = "+rs.getString("datum_do")+"\n\n");
             
@@ -909,7 +907,7 @@ public class DBmethods {
 
             connection   = DriverManager.getConnection(connString,meno,heslo);
             stmt         = connection.createStatement();          
-            sql          = "select id_vozna, kod, rad, v_prevadzke, interabilita, dlzka, hmotnost, poznamka, nazov_spolocnosti, id_spolocnosti, gps_sirka, gps_dlzka, nazov from VIEW_POLOHA_VOZNOV"
+            sql          = "select id_vozna, kod, rad, v_prevadzke, interabilita, dlzka, hmotnost, poznamka, nazov_spolocnosti, id_spolocnosti, gps_sirka, gps_dlzka, nazov_stanice from VIEW_POLOHA_VOZNOV"
                          + " where "
                          + " hmotnost >= "+pHmotnostOd+" and "
 						 + " hmotnost <= "+pHmotnostDo+" and "
@@ -936,7 +934,7 @@ public class DBmethods {
                         + " > Hmotnost [t]         = "+rs.getString("hmotnost")+"\n"
                         + " > Poznamka             = "+rs.getString("poznamka")+"\n"
                         + " > Aktualna poloha vozna\n"
-                        + "    > Nazov miesta = "+rs.getString("nazov")+"\n"
+                        + "    > Nazov miesta = "+rs.getString("nazov_stanice")+"\n"
                         + "    > GPS sirka    = "+rs.getString("gps_sirka")+"\n"
                         + "    > GPS dlzka    = "+rs.getString("gps_dlzka")+"\n\n");
             }
@@ -999,7 +997,7 @@ public class DBmethods {
                          + podmienka_rad
                          + podmienka_vPrevadzke  
                          + " hmotnost >= "+pHmotnostOd+" and "
-			 + " hmotnost <= "+pHmotnostDo+" and "
+						 + " hmotnost <= "+pHmotnostDo+" and "
                          + " dlzka >= "+pDlzkaOd+" and "
                          + " dlzka <= "+pDlzkaDo+" and "
                          + " interabilita >= "+pInterabilitaOd+" and "
@@ -1172,7 +1170,7 @@ public class DBmethods {
 
             connection   = DriverManager.getConnection(connString,meno,heslo);
             stmt         = connection.createStatement();          
-            sql          = "select id_vozna, kod, nazov as NAZOV_MIESTA, gps_sirka, gps_dlzka, kolaj, typ_pohybu, datum_od, datum_do "
+            sql          = "select id_vozna, kod, nazov_stanice, gps_sirka, gps_dlzka, kolaj, datum_od, datum_do "
                          + " from VIEW_POLOHA_VOZNOV"
                          + " where "
                          + " id_vozna = "+pIdVozna+" and "
