@@ -1382,7 +1382,7 @@ public class DBmethods {
      * Statistiky 
      */
         
-    public String statistika_pocetPouzitychVoznovZaStvrtrokPodlaSpolocnosti(String pRok) {
+    public String statistika_pocetPouzitychVoznovZaStvrtrokPodlaSpolocnosti(String pRok, Histogram pHistogram) {
         
         Connection connection = null;
         Statement  stmt;
@@ -1420,7 +1420,12 @@ public class DBmethods {
                         + "    > Prvy stvrtrok   = "+rs.getString("PRVY_STVRTROK")+"\n"
                         + "    > Druhy stvrtrok  = "+rs.getString("DRUHY_STVRTROK")+"\n"
                         + "    > Treti stvrtrok  = "+rs.getString("TRETI_STVRTROK")+"\n"
-                        + "    > Stvrty stvrtrok = "+rs.getString("STVRTY_STVRTROK")+"\n\n";                       
+                        + "    > Stvrty stvrtrok = "+rs.getString("STVRTY_STVRTROK")+"\n\n";  
+                
+                pHistogram.addData((Double.parseDouble(rs.getString("PRVY_STVRTROK"))+
+                                    Double.parseDouble(rs.getString("DRUHY_STVRTROK"))+
+                                    Double.parseDouble(rs.getString("TRETI_STVRTROK"))+
+                                    Double.parseDouble(rs.getString("STVRTY_STVRTROK"))), "Pocet", rs.getString("nazov_spolocnosti"));
 
             }
 
@@ -1431,7 +1436,7 @@ public class DBmethods {
         return result;
     }
     
-    public String statistika_pocetZaradeniVoznovPodlaTypuVozna(String pObdobie) {
+    public String statistika_pocetZaradeniVoznovPodlaTypuVozna(String pObdobie, Histogram pHistogram) {
         
         Connection connection = null;
         Statement  stmt;
@@ -1464,15 +1469,30 @@ public class DBmethods {
                     "      order by TYP_VOZNA";
             
             ResultSet rs = stmt.executeQuery(sql);
+            
+            double p;
+            double d;
+            double t;
+            double s;
 
             while(rs.next()){
+                
+                p = Double.parseDouble(rs.getString("PRVY_STVRTROK"));
+                d = Double.parseDouble(rs.getString("DRUHY_STVRTROK"));
+                t = Double.parseDouble(rs.getString("TRETI_STVRTROK"));
+                s = Double.parseDouble(rs.getString("STVRTY_STVRTROK"));
 
                 result += "Typ vozna: "+rs.getString("typ_vozna")+"\n"
                         + " > Pocet zaradenych voznov za:\n"
-                        + "    > Prvy stvrtrok   = "+rs.getString("PRVY_STVRTROK")+"\n"
-                        + "    > Druhy stvrtrok  = "+rs.getString("DRUHY_STVRTROK")+"\n"
-                        + "    > Treti stvrtrok  = "+rs.getString("TRETI_STVRTROK")+"\n"
-                        + "    > Stvrty stvrtrok = "+rs.getString("STVRTY_STVRTROK")+"\n\n";                       
+                        + "    > Prvy stvrtrok   = "+(int)p+"\n"
+                        + "    > Druhy stvrtrok  = "+(int)d+"\n"
+                        + "    > Treti stvrtrok  = "+(int)t+"\n"
+                        + "    > Stvrty stvrtrok = "+(int)s+"\n\n"; 
+                
+                pHistogram.addData(p,"Prvy stvrtrok", rs.getString("typ_vozna"));            
+                pHistogram.addData(d,"Druhy stvrtrok", rs.getString("typ_vozna"));
+                pHistogram.addData(t,"Treti stvrtrok", rs.getString("typ_vozna"));
+                pHistogram.addData(s,"Stvrty stvrtrok", rs.getString("typ_vozna"));              
 
             }
 
@@ -1620,7 +1640,7 @@ public class DBmethods {
         return result;
     }
     
-    public String statistika_pocetZaznamovPouzivatelov(String pRok) {
+    public String statistika_pocetZaznamovPouzivatelov(String pRok, Histogram pHistogram) {
         
         Connection connection = null;
         Statement  stmt;
@@ -1692,7 +1712,20 @@ public class DBmethods {
                         + "    > September = "+rs.getString("SEPTEMBER")+"\n"
                         + "    > Oktober   = "+rs.getString("OKTOBER")+"\n"
                         + "    > November  = "+rs.getString("NOVEMBER")+"\n"
-                        + "    > December  = "+rs.getString("DECEMBER")+"\n\n";                     
+                        + "    > December  = "+rs.getString("DECEMBER")+"\n\n";   
+                
+                pHistogram.addData(Double.parseDouble(rs.getString("JANUAR"))+
+                                   Double.parseDouble(rs.getString("FEBRUAR"))+
+                                   Double.parseDouble(rs.getString("MAREC"))+
+                                   Double.parseDouble(rs.getString("APRIL"))+
+                                   Double.parseDouble(rs.getString("MAJ"))+
+                                   Double.parseDouble(rs.getString("JUN"))+
+                                   Double.parseDouble(rs.getString("JUL"))+
+                                   Double.parseDouble(rs.getString("AUGUST"))+
+                                   Double.parseDouble(rs.getString("SEPTEMBER"))+
+                                   Double.parseDouble(rs.getString("OKTOBER"))+
+                                   Double.parseDouble(rs.getString("NOVEMBER"))+
+                                   Double.parseDouble(rs.getString("DECEMBER")), "Pocet", rs.getString("MENO_PRACOVNIKA"));
 
             }
 

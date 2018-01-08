@@ -54,7 +54,7 @@ public class Histogram extends ApplicationFrame {
     }
 
     public void createGraph(String pXAxisName, String pYAxisName) {
-        chart = ChartFactory.createBarChart(chartTitle,pXAxisName,pYAxisName,dataset, PlotOrientation.VERTICAL,false,false,false);
+        chart = ChartFactory.createBarChart(chartTitle,pXAxisName,pYAxisName,dataset, PlotOrientation.HORIZONTAL,false,false,false);
 
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
         plot.getRenderer().setSeriesPaint(0, Color.BLUE);

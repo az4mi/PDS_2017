@@ -2685,7 +2685,10 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_menu_statistikyActionPerformed
 
     private void btn_statistika_pocetPouzitychVoznovPodlaSpolocnostiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_statistika_pocetPouzitychVoznovPodlaSpolocnostiActionPerformed
-		txtArea.setText(dbmethods.statistika_pocetPouzitychVoznovZaStvrtrokPodlaSpolocnosti(txt_statistiky_obdobie.getText()));
+		Histogram h = chartMethods.getNewHistogram("Celkova pocetnost pouzitych voznov", "Spolocnosti", "Pocet");
+                h.setTitle("Celkovy pocet pouzitych voznov");
+        
+                txtArea.setText(dbmethods.statistika_pocetPouzitychVoznovZaStvrtrokPodlaSpolocnosti(txt_statistiky_obdobie.getText(),h));
 		tabulkaVystupy.setModel(dbmethods.tableModel_statistika_pocetPouzitychVoznovZaStvrtrokPodlaSpolocnosti(txt_statistiky_obdobie.getText()));
     }//GEN-LAST:event_btn_statistika_pocetPouzitychVoznovPodlaSpolocnostiActionPerformed
 
@@ -2695,15 +2698,15 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_menu_statistikyMouseClicked
 
     private void btn_pocetZaradeniVoznovPodlaTypuVoznaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pocetZaradeniVoznovPodlaTypuVoznaActionPerformed
-		txtArea.setText(dbmethods.statistika_pocetZaradeniVoznovPodlaTypuVozna(txt_statistiky_obdobie.getText()));
-		tabulkaVystupy.setModel(dbmethods.tableModel_statistika_pocetZaradeniVoznovPodlaTypuVozna(txt_statistiky_obdobie.getText()));
+		
+	tabulkaVystupy.setModel(dbmethods.tableModel_statistika_pocetZaradeniVoznovPodlaTypuVozna(txt_statistiky_obdobie.getText()));
     }//GEN-LAST:event_btn_pocetZaradeniVoznovPodlaTypuVoznaActionPerformed
 
     private void btn_statistika_pocetVoznovVStaniciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_statistika_pocetVoznovVStaniciActionPerformed
 		
                 Histogram h = chartMethods.getNewHistogram("Pocetnost voznov", "Stanice", "Pocet");
                 h.setTitle("Pocet voznov v staniciach za stvrtroky v dane obdobie");
-               
+                
             
                 txtArea.setText(dbmethods.statistika_pocetVoznovVStanici(txt_statistiky_obdobie.getText(), txt_statistiky_idSpolocnosti.getText(), h));
 		tabulkaVystupy.setModel(dbmethods.tableModel_statistika_pocetVoznovVStanici(txt_statistiky_obdobie.getText(), txt_statistiky_idSpolocnosti.getText()));
@@ -2718,7 +2721,10 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_statistika_pocetVoznovVStaniciachPodlaTypuActionPerformed
 
     private void btn_statistika_pocetZaznamovPrePouzivatelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_statistika_pocetZaznamovPrePouzivatelaActionPerformed
-		txtArea.setText(dbmethods.statistika_pocetZaznamovPouzivatelov(txt_statistiky_obdobie.getText()));
+                Histogram h = chartMethods.getNewHistogram("Celkova pocetnost zaznamov v databaze", "Uzivatelia", "Pocet");
+                h.setTitle("Celkovy pocet zaznamov v DB podla uzivatela");	
+        
+                txtArea.setText(dbmethods.statistika_pocetZaznamovPouzivatelov(txt_statistiky_obdobie.getText(),h));
 		tabulkaVystupy.setModel(dbmethods.tableModel_statistika_pocetZaznamovPouzivatelov(txt_statistiky_obdobie.getText()));
     }//GEN-LAST:event_btn_statistika_pocetZaznamovPrePouzivatelaActionPerformed
 
