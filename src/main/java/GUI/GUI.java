@@ -1646,7 +1646,6 @@ public class GUI extends javax.swing.JFrame {
         txtArea.setColumns(20);
         txtArea.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         txtArea.setRows(5);
-        txtArea.setPreferredSize(new java.awt.Dimension(140, 200));
         jScrollPane1.setViewportView(txtArea);
 
         jButton1.setText("Vytvor stanicu");
