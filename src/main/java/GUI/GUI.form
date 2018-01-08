@@ -1950,6 +1950,259 @@
         </Component>
       </SubComponents>
     </Container>
+    <Container class="javax.swing.JDialog" name="dialog_zobrazenieSkupinVoznov">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel70" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel71" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel72" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel73" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="radioButton_zobrazenieSkupinyVoznov_mimoPrevadzky" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="txt_zobrazenieSkupinyVoznov_idSpolocnosti" min="-2" pref="102" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="358" max="-2" attributes="0"/>
+                          <Component id="btn_zobrazenieSkupinyVoznov_koniec" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="radioButton_zobrazenieSkupinyVoznov_vsetky" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btn_zobrazenieSkupinyVoznov_Zobraz" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="312" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jLabel69" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="txt_zobrazenieSkupinyVoznov_kodVozna" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txt_zobrazenieSkupinyVoznov_radVozna" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="radioButton_zobrazenieSkupinyVoznov_vPrevadzke" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel74" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="slider_zobrazenieSkupinyVoznov_interabilitaOd" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel75" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="slider_zobrazenieSkupinyVoznov_interabilitaDo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel76" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="slider_zobrazenieSkupinyVoznov_dlzkaOd" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel77" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="slider_zobrazenieSkupinyVoznov_dlzkaDo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel79" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel78" min="-2" max="-2" attributes="0"/>
+                              <Component id="slider_zobrazenieSkupinyVoznov_hmotnostOd" min="-2" max="-2" attributes="0"/>
+                              <Component id="slider_zobrazenieSkupinyVoznov_hmotnostDo" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="53" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="jLabel69" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel70" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_zobrazenieSkupinyVoznov_kodVozna" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel74" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel76" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel78" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="slider_zobrazenieSkupinyVoznov_interabilitaOd" min="-2" max="-2" attributes="0"/>
+                      <Component id="slider_zobrazenieSkupinyVoznov_dlzkaOd" min="-2" max="-2" attributes="0"/>
+                      <Component id="slider_zobrazenieSkupinyVoznov_hmotnostOd" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel71" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_zobrazenieSkupinyVoznov_radVozna" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel75" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel77" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel79" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel72" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="radioButton_zobrazenieSkupinyVoznov_vPrevadzke" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="slider_zobrazenieSkupinyVoznov_interabilitaDo" min="-2" max="-2" attributes="0"/>
+                      <Component id="slider_zobrazenieSkupinyVoznov_dlzkaDo" min="-2" max="-2" attributes="0"/>
+                      <Component id="slider_zobrazenieSkupinyVoznov_hmotnostDo" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="radioButton_zobrazenieSkupinyVoznov_mimoPrevadzky" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="radioButton_zobrazenieSkupinyVoznov_vsetky" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_zobrazenieSkupinyVoznov_Zobraz" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel73" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_zobrazenieSkupinyVoznov_idSpolocnosti" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="42" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btn_zobrazenieSkupinyVoznov_koniec" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel69">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Zobrazenie skupin voznov"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel70">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Kod vozna (nepovinne):"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel71">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Rad vozna (nepovinne):"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel72">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Stav vozna:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel73">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="ID polocnosti (nepovinne):"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txt_zobrazenieSkupinyVoznov_kodVozna">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txt_zobrazenieSkupinyVoznov_radVozna">
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioButton_zobrazenieSkupinyVoznov_vPrevadzke">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroup_zobrazenieSkupinyVoznov"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="V prevadzke"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioButton_zobrazenieSkupinyVoznov_mimoPrevadzky">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroup_zobrazenieSkupinyVoznov"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Mimo prevadzky"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="radioButton_zobrazenieSkupinyVoznov_vsetky">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroup_zobrazenieSkupinyVoznov"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Vsetky"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txt_zobrazenieSkupinyVoznov_idSpolocnosti">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel74">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Interabilita od:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSlider" name="slider_zobrazenieSkupinyVoznov_interabilitaOd">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel75">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Interabilita do:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSlider" name="slider_zobrazenieSkupinyVoznov_interabilitaDo">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel76">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Dlzka od:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSlider" name="slider_zobrazenieSkupinyVoznov_dlzkaOd">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel77">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Dlzka do:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSlider" name="slider_zobrazenieSkupinyVoznov_dlzkaDo">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel78">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Hmotnost od:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSlider" name="slider_zobrazenieSkupinyVoznov_hmotnostOd">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel79">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Hmotnost do:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSlider" name="slider_zobrazenieSkupinyVoznov_hmotnostDo">
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_zobrazenieSkupinyVoznov_Zobraz">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Zobraz skupinu voznov"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_zobrazenieSkupinyVoznov_ZobrazActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_zobrazenieSkupinyVoznov_koniec">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Koniec"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup_zobrazenieSkupinyVoznov">
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu1">
@@ -2217,6 +2470,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_zobrazenieHistorieVyskytuVoznaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menu_zobrazenieSkupinVoznov">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Zobrazenie skupin voznov"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_zobrazenieSkupinVoznovActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -2554,19 +2815,19 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="168" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
                       <Component id="btn_vyhladajObrazok" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="148" max="32767" attributes="0"/>
+                      <EmptySpace pref="160" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="42" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btn_vyhladajObrazok" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
+                      <EmptySpace pref="258" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

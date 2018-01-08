@@ -810,7 +810,8 @@ public class DBmethods {
         return result;
     }
 	
-	public String zobrazHistoriuVyskytuVoznaZaObdobie(int pIdVozna, int pKodVozna, Timestamp pOd, Timestamp pDo) {
+    public String zobrazHistoriuVyskytuVoznaZaObdobie(int pIdVozna, int pKodVozna, Timestamp pOd, Timestamp pDo) {
+        
         Connection connection = null;
         Statement  stmt;
         String     sql;
@@ -877,7 +878,7 @@ public class DBmethods {
         return result;
     }
 	
-	public String zobrazenieAktualnejPolohyVoznov(String pIdSpolocnosti, String pKod, int pHmotnostOd, int pHmotnostDo, int pDlzkaOd, int pDlzkaDo, int pVPrevadzke) {
+    public String zobrazenieAktualnejPolohyVoznov(String pIdSpolocnosti, String pKod, int pHmotnostOd, int pHmotnostDo, int pDlzkaOd, int pDlzkaDo, int pVPrevadzke) {
         
         Connection connection = null;
         Statement  stmt;
@@ -942,6 +943,96 @@ public class DBmethods {
         }
 		
         return result;
+    }
+        
+    public String zobrazSkupinyVoznov(
+           String pKod, 
+           String pRad,
+           int    pVPrevadzke,
+           int    pInterabilitaOd, 
+           int    pInterabilitaDo,
+           int    pDlzkaOd,
+           int    pDlzkaDo,
+           int    pHmotnostOd,
+           int    pHmotnostDo,
+           String pIdSpolocnosti) 
+    {
+        
+        Connection connection = null;
+        Statement  stmt;
+        String     sql;
+        String     result = "";
+        
+        String podmienka_idSpolocnosti = "";
+        String podmienka_kod           = "";
+        String podmienka_vPrevadzke    = "";
+        String podmienka_rad           = "";
+        
+        if(!pIdSpolocnosti.isEmpty() && !pIdSpolocnosti.equals("") && !pIdSpolocnosti.equals(" ")) {
+            podmienka_idSpolocnosti = " id_spolocnosti = "+pIdSpolocnosti+" and ";
+        }
+        
+        if(!pKod.isEmpty() && !pKod.equals("") && !pKod.equals(" ")) {
+            podmienka_kod = " kod = "+pKod+" and ";
+        }
+        
+        if(!pRad.isEmpty() && !pRad.equals("") && !pRad.equals(" ")) {
+            podmienka_rad = " rad = '"+pRad+"' and ";
+        }
+        
+        if        (pVPrevadzke == 0) {
+            podmienka_vPrevadzke = " v_prevadzke = 'N' and ";
+        } else if (pVPrevadzke == 1) {
+            podmienka_vPrevadzke = " v_prevadzke = 'A' and ";
+        }
+        
+        try {
+
+            connection   = DriverManager.getConnection(connString,meno,heslo);
+            stmt         = connection.createStatement();          
+            sql          = "select id_vozna, kod, rad, v_prevadzke, interabilita, dlzka, hmotnost, loz_hmotnost, loz_dlzka, loz_sirka, loz_plocha, loz_vyska, loz_objem, poznamka, nazov, id_spolocnosti from VIEW_VSETKY_VOZNE"
+                         + " where "
+                         + podmienka_idSpolocnosti
+                         + podmienka_kod
+                         + podmienka_rad
+                         + podmienka_vPrevadzke  
+                         + " hmotnost >= "+pHmotnostOd+" and "
+			 + " hmotnost <= "+pHmotnostDo+" and "
+                         + " dlzka >= "+pDlzkaOd+" and "
+                         + " dlzka <= "+pDlzkaDo+" and "
+                         + " interabilita >= "+pInterabilitaOd+" and "
+                         + " interabilita <= "+pInterabilitaDo;
+                                  
+            
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()){
+
+                result += "Vozen\n"
+                        + " > ID vozna             = "+rs.getString("id_vozna")+"\n"                     
+                        + " > Patriaci spolocnosti = "+rs.getString("nazov")+"\n"
+                        + " > ID spolocnosti       = "+rs.getString("id_spolocnosti")+"\n"
+                        + " > Rad                  = "+rs.getString("rad")+"\n"
+                        + " > Kod                  = "+rs.getString("kod")+"\n"
+                        + " > V prevadzke          = "+rs.getString("v_prevadzke")+"\n"
+                        + " > Interabilita         = "+rs.getString("interabilita")+"\n"
+                        + " > Dlzka                = "+rs.getString("dlzka")+"\n"
+                        + " > Hmotnost [t]         = "+rs.getString("hmotnost")+"\n"
+                        + " > loz. hmotnost        = "+rs.getString("loz_hmotnost")+"\n"
+                        + " > loz. dlzka           = "+rs.getString("loz_dlzka")+"\n"
+                        + " > loz. sirka           = "+rs.getString("loz_sirka")+"\n"
+                        + " > loz. plocha          = "+rs.getString("loz_plocha")+"\n"
+                        + " > loz. vyska           = "+rs.getString("loz_vyska")+"\n"
+                        + " > loz. objem           = "+rs.getString("loz_objem")+"\n"
+                        + " > Poznamka             = "+rs.getString("poznamka")+"\n\n";
+                        
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		
+        return result;
+        
     }
 	
 	//**************************************************************************************
@@ -1214,4 +1305,5 @@ public class DBmethods {
 			Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
+        
 }

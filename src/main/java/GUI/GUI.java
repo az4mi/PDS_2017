@@ -213,6 +213,33 @@ public class GUI extends javax.swing.JFrame {
         txt_vyhladajObrazok_kod = new javax.swing.JTextField();
         btn_vyhladajObrazok_vyhladaj = new javax.swing.JButton();
         btn_vyhladajObrazok_koniec = new javax.swing.JButton();
+        dialog_zobrazenieSkupinVoznov = new javax.swing.JDialog();
+        jLabel69 = new javax.swing.JLabel();
+        jLabel70 = new javax.swing.JLabel();
+        jLabel71 = new javax.swing.JLabel();
+        jLabel72 = new javax.swing.JLabel();
+        jLabel73 = new javax.swing.JLabel();
+        txt_zobrazenieSkupinyVoznov_kodVozna = new javax.swing.JTextField();
+        txt_zobrazenieSkupinyVoznov_radVozna = new javax.swing.JTextField();
+        radioButton_zobrazenieSkupinyVoznov_vPrevadzke = new javax.swing.JRadioButton();
+        radioButton_zobrazenieSkupinyVoznov_mimoPrevadzky = new javax.swing.JRadioButton();
+        radioButton_zobrazenieSkupinyVoznov_vsetky = new javax.swing.JRadioButton();
+        txt_zobrazenieSkupinyVoznov_idSpolocnosti = new javax.swing.JTextField();
+        jLabel74 = new javax.swing.JLabel();
+        slider_zobrazenieSkupinyVoznov_interabilitaOd = new javax.swing.JSlider();
+        jLabel75 = new javax.swing.JLabel();
+        slider_zobrazenieSkupinyVoznov_interabilitaDo = new javax.swing.JSlider();
+        jLabel76 = new javax.swing.JLabel();
+        slider_zobrazenieSkupinyVoznov_dlzkaOd = new javax.swing.JSlider();
+        jLabel77 = new javax.swing.JLabel();
+        slider_zobrazenieSkupinyVoznov_dlzkaDo = new javax.swing.JSlider();
+        jLabel78 = new javax.swing.JLabel();
+        slider_zobrazenieSkupinyVoznov_hmotnostOd = new javax.swing.JSlider();
+        jLabel79 = new javax.swing.JLabel();
+        slider_zobrazenieSkupinyVoznov_hmotnostDo = new javax.swing.JSlider();
+        btn_zobrazenieSkupinyVoznov_Zobraz = new javax.swing.JButton();
+        btn_zobrazenieSkupinyVoznov_koniec = new javax.swing.JButton();
+        buttonGroup_zobrazenieSkupinyVoznov = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         tabbedPane_panel = new javax.swing.JTabbedPane();
@@ -271,6 +298,7 @@ public class GUI extends javax.swing.JFrame {
         menu_zoznamVoznovVoVlakoch = new javax.swing.JMenuItem();
         menu_zobrazenieAktualnejPolohyVozna = new javax.swing.JMenuItem();
         menu_zobrazenieHistorieVyskytuVozna = new javax.swing.JMenuItem();
+        menu_zobrazenieSkupinVoznov = new javax.swing.JMenuItem();
 
         dialog_vytvorVlak.setMinimumSize(new java.awt.Dimension(400, 392));
         dialog_vytvorVlak.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1464,6 +1492,154 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap(86, Short.MAX_VALUE))
         );
 
+        jLabel69.setText("Zobrazenie skupin voznov");
+
+        jLabel70.setText("Kod vozna (nepovinne):");
+
+        jLabel71.setText("Rad vozna (nepovinne):");
+
+        jLabel72.setText("Stav vozna:");
+
+        jLabel73.setText("ID polocnosti (nepovinne):");
+
+        buttonGroup_zobrazenieSkupinyVoznov.add(radioButton_zobrazenieSkupinyVoznov_vPrevadzke);
+        radioButton_zobrazenieSkupinyVoznov_vPrevadzke.setText("V prevadzke");
+
+        buttonGroup_zobrazenieSkupinyVoznov.add(radioButton_zobrazenieSkupinyVoznov_mimoPrevadzky);
+        radioButton_zobrazenieSkupinyVoznov_mimoPrevadzky.setText("Mimo prevadzky");
+
+        buttonGroup_zobrazenieSkupinyVoznov.add(radioButton_zobrazenieSkupinyVoznov_vsetky);
+        radioButton_zobrazenieSkupinyVoznov_vsetky.setText("Vsetky");
+
+        jLabel74.setText("Interabilita od:");
+
+        jLabel75.setText("Interabilita do:");
+
+        jLabel76.setText("Dlzka od:");
+
+        jLabel77.setText("Dlzka do:");
+
+        jLabel78.setText("Hmotnost od:");
+
+        jLabel79.setText("Hmotnost do:");
+
+        btn_zobrazenieSkupinyVoznov_Zobraz.setText("Zobraz skupinu voznov");
+        btn_zobrazenieSkupinyVoznov_Zobraz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_zobrazenieSkupinyVoznov_ZobrazActionPerformed(evt);
+            }
+        });
+
+        btn_zobrazenieSkupinyVoznov_koniec.setText("Koniec");
+
+        javax.swing.GroupLayout dialog_zobrazenieSkupinVoznovLayout = new javax.swing.GroupLayout(dialog_zobrazenieSkupinVoznov.getContentPane());
+        dialog_zobrazenieSkupinVoznov.getContentPane().setLayout(dialog_zobrazenieSkupinVoznovLayout);
+        dialog_zobrazenieSkupinVoznovLayout.setHorizontalGroup(
+            dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_zobrazenieSkupinVoznovLayout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel70)
+                    .addComponent(jLabel71)
+                    .addComponent(jLabel72)
+                    .addComponent(jLabel73))
+                .addGap(26, 26, 26)
+                .addGroup(dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(radioButton_zobrazenieSkupinyVoznov_mimoPrevadzky)
+                    .addGroup(dialog_zobrazenieSkupinVoznovLayout.createSequentialGroup()
+                        .addComponent(txt_zobrazenieSkupinyVoznov_idSpolocnosti, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(358, 358, 358)
+                        .addComponent(btn_zobrazenieSkupinyVoznov_koniec))
+                    .addGroup(dialog_zobrazenieSkupinVoznovLayout.createSequentialGroup()
+                        .addComponent(radioButton_zobrazenieSkupinyVoznov_vsetky)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_zobrazenieSkupinyVoznov_Zobraz)
+                        .addGap(312, 312, 312))
+                    .addGroup(dialog_zobrazenieSkupinVoznovLayout.createSequentialGroup()
+                        .addGroup(dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel69)
+                            .addGroup(dialog_zobrazenieSkupinVoznovLayout.createSequentialGroup()
+                                .addGroup(dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txt_zobrazenieSkupinyVoznov_kodVozna, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_zobrazenieSkupinyVoznov_radVozna, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(radioButton_zobrazenieSkupinyVoznov_vPrevadzke, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(99, 99, 99)
+                                .addGroup(dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel74)
+                                    .addComponent(slider_zobrazenieSkupinyVoznov_interabilitaOd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel75)
+                                    .addComponent(slider_zobrazenieSkupinyVoznov_interabilitaDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(45, 45, 45)
+                        .addGroup(dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel76)
+                            .addComponent(slider_zobrazenieSkupinyVoznov_dlzkaOd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel77)
+                            .addComponent(slider_zobrazenieSkupinyVoznov_dlzkaDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)
+                        .addGroup(dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel79)
+                            .addComponent(jLabel78)
+                            .addComponent(slider_zobrazenieSkupinyVoznov_hmotnostOd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(slider_zobrazenieSkupinyVoznov_hmotnostDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
+        dialog_zobrazenieSkupinVoznovLayout.setVerticalGroup(
+            dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_zobrazenieSkupinVoznovLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel69)
+                .addGap(18, 18, 18)
+                .addGroup(dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel70)
+                    .addComponent(txt_zobrazenieSkupinyVoznov_kodVozna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel74)
+                    .addComponent(jLabel76)
+                    .addComponent(jLabel78))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(slider_zobrazenieSkupinyVoznov_interabilitaOd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(slider_zobrazenieSkupinyVoznov_dlzkaOd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(slider_zobrazenieSkupinyVoznov_hmotnostOd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialog_zobrazenieSkupinVoznovLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel71)
+                            .addComponent(txt_zobrazenieSkupinyVoznov_radVozna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialog_zobrazenieSkupinVoznovLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel75)
+                            .addComponent(jLabel77)
+                            .addComponent(jLabel79))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel72)
+                        .addComponent(radioButton_zobrazenieSkupinyVoznov_vPrevadzke))
+                    .addComponent(slider_zobrazenieSkupinyVoznov_interabilitaDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(slider_zobrazenieSkupinyVoznov_dlzkaDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(slider_zobrazenieSkupinyVoznov_hmotnostDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(radioButton_zobrazenieSkupinyVoznov_mimoPrevadzky)
+                .addGroup(dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialog_zobrazenieSkupinVoznovLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(radioButton_zobrazenieSkupinyVoznov_vsetky)
+                            .addComponent(btn_zobrazenieSkupinyVoznov_Zobraz))
+                        .addGap(28, 28, 28)
+                        .addGroup(dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel73)
+                            .addComponent(txt_zobrazenieSkupinyVoznov_idSpolocnosti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(42, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialog_zobrazenieSkupinVoznovLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_zobrazenieSkupinyVoznov_koniec)
+                        .addGap(27, 27, 27))))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txtArea.setEditable(false);
@@ -1631,16 +1807,16 @@ public class GUI extends javax.swing.JFrame {
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(168, 168, 168)
+                .addGap(147, 147, 147)
                 .addComponent(btn_vyhladajObrazok)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(btn_vyhladajObrazok)
-                .addGap(222, 222, 222))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
 
         tabbedPane_panel.addTab("Typ vozna", jPanel10);
@@ -1931,6 +2107,14 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         menu_vystupy.add(menu_zobrazenieHistorieVyskytuVozna);
+
+        menu_zobrazenieSkupinVoznov.setText("Zobrazenie skupin voznov");
+        menu_zobrazenieSkupinVoznov.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_zobrazenieSkupinVoznovActionPerformed(evt);
+            }
+        });
+        menu_vystupy.add(menu_zobrazenieSkupinVoznov);
 
         jMenuBar1.add(menu_vystupy);
 
@@ -2372,15 +2556,88 @@ public class GUI extends javax.swing.JFrame {
 
     private void btn_vyhladajObrazok_vyhladajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vyhladajObrazok_vyhladajActionPerformed
         dialog_vyhladajObrazok.setVisible(false);
-		dialog_zobrazObrazok.pack();
+	dialog_zobrazObrazok.pack();
         dialog_zobrazObrazok.setVisible(true);
 		
-		dbmethods.zobrazObrazok(txt_vyhladajObrazok_kod.getText(), dialog_zobrazObrazok, image);
+	dbmethods.zobrazObrazok(txt_vyhladajObrazok_kod.getText(), dialog_zobrazObrazok, image);
     }//GEN-LAST:event_btn_vyhladajObrazok_vyhladajActionPerformed
 
     private void btn_vyhladajObrazok_koniecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vyhladajObrazok_koniecActionPerformed
 		dialog_vyhladajObrazok.setVisible(false);
     }//GEN-LAST:event_btn_vyhladajObrazok_koniecActionPerformed
+
+    private void menu_zobrazenieSkupinVoznovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_zobrazenieSkupinVoznovActionPerformed
+        
+        slider_zobrazenieSkupinyVoznov_interabilitaOd.setMinimum(0);
+        slider_zobrazenieSkupinyVoznov_interabilitaOd.setMaximum(90);
+        slider_zobrazenieSkupinyVoznov_interabilitaOd.setMinorTickSpacing(1);
+        slider_zobrazenieSkupinyVoznov_interabilitaOd.setMajorTickSpacing(15);
+        slider_zobrazenieSkupinyVoznov_interabilitaOd.setPaintLabels(true);
+        slider_zobrazenieSkupinyVoznov_interabilitaOd.setValue(10);
+        
+        slider_zobrazenieSkupinyVoznov_interabilitaDo.setMinimum(0);
+        slider_zobrazenieSkupinyVoznov_interabilitaDo.setMaximum(90);
+        slider_zobrazenieSkupinyVoznov_interabilitaDo.setMinorTickSpacing(1);
+        slider_zobrazenieSkupinyVoznov_interabilitaDo.setMajorTickSpacing(15);
+        slider_zobrazenieSkupinyVoznov_interabilitaDo.setPaintLabels(true);
+        slider_zobrazenieSkupinyVoznov_interabilitaDo.setValue(70);
+        
+        slider_zobrazenieSkupinyVoznov_hmotnostOd.setMinimum(0);
+        slider_zobrazenieSkupinyVoznov_hmotnostOd.setMaximum(90);
+        slider_zobrazenieSkupinyVoznov_hmotnostOd.setMinorTickSpacing(1);
+        slider_zobrazenieSkupinyVoznov_hmotnostOd.setMajorTickSpacing(15);
+        slider_zobrazenieSkupinyVoznov_hmotnostOd.setPaintLabels(true);
+        slider_zobrazenieSkupinyVoznov_hmotnostOd.setValue(10);
+        
+        slider_zobrazenieSkupinyVoznov_hmotnostDo.setMinimum(0);
+        slider_zobrazenieSkupinyVoznov_hmotnostDo.setMaximum(90);
+        slider_zobrazenieSkupinyVoznov_hmotnostDo.setMinorTickSpacing(1);
+        slider_zobrazenieSkupinyVoznov_hmotnostDo.setMajorTickSpacing(15);
+        slider_zobrazenieSkupinyVoznov_hmotnostDo.setPaintLabels(true);
+        slider_zobrazenieSkupinyVoznov_hmotnostDo.setValue(70);
+        
+        slider_zobrazenieSkupinyVoznov_dlzkaOd.setMinimum(0);
+        slider_zobrazenieSkupinyVoznov_dlzkaOd.setMaximum(70);
+        slider_zobrazenieSkupinyVoznov_dlzkaOd.setMinorTickSpacing(1);
+        slider_zobrazenieSkupinyVoznov_dlzkaOd.setMajorTickSpacing(15);
+        slider_zobrazenieSkupinyVoznov_dlzkaOd.setPaintLabels(true);
+        slider_zobrazenieSkupinyVoznov_dlzkaOd.setValue(10);
+        
+        slider_zobrazenieSkupinyVoznov_dlzkaDo.setMinimum(0);
+        slider_zobrazenieSkupinyVoznov_dlzkaDo.setMaximum(70);
+        slider_zobrazenieSkupinyVoznov_dlzkaDo.setMinorTickSpacing(1);
+        slider_zobrazenieSkupinyVoznov_dlzkaDo.setMajorTickSpacing(15);
+        slider_zobrazenieSkupinyVoznov_dlzkaDo.setPaintLabels(true);
+        slider_zobrazenieSkupinyVoznov_dlzkaDo.setValue(50);
+        
+        buttonGroup_zobrazenieSkupinyVoznov.setSelected(radioButton_zobrazenieSkupinyVoznov_vsetky.getModel(), true);
+        
+        
+        dialog_zobrazenieSkupinVoznov.pack();
+        dialog_zobrazenieSkupinVoznov.setVisible(true);
+    }//GEN-LAST:event_menu_zobrazenieSkupinVoznovActionPerformed
+
+    private void btn_zobrazenieSkupinyVoznov_ZobrazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_zobrazenieSkupinyVoznov_ZobrazActionPerformed
+        
+        String idSpolocnosti  = txt_zobrazenieSkupinyVoznov_idSpolocnosti.getText();
+        String kod            = txt_zobrazenieSkupinyVoznov_kodVozna.getText();
+        String rad            = txt_zobrazenieSkupinyVoznov_radVozna.getText();
+        int    interabilitaOd = slider_zobrazenieSkupinyVoznov_interabilitaOd.getValue();
+        int    interabilitaDo = slider_zobrazenieSkupinyVoznov_interabilitaDo.getValue();
+        int    hmotnostOd     = slider_zobrazenieSkupinyVoznov_hmotnostOd.getValue();
+        int    hmotnostDo     = slider_zobrazenieSkupinyVoznov_hmotnostDo.getValue();
+        int    dlzkaOd        = slider_zobrazenieSkupinyVoznov_dlzkaOd.getValue();
+        int    dlzkaDo        = slider_zobrazenieSkupinyVoznov_dlzkaDo.getValue();
+        int    vPrevadzke     = -1;
+        
+        if (radioButton_zobrazenieAktualnejPolohyVoznov_mimoPrevadzky.isSelected()) {
+            vPrevadzke = 0;
+        } else if (radioButton_zobrazenieAktualnejPolohyVoznov_vPrevadzke.isSelected()) {
+            vPrevadzke = 1;
+        }
+        
+        txtArea.setText(dbmethods.zobrazSkupinyVoznov(kod, rad, vPrevadzke, interabilitaOd, interabilitaDo, dlzkaOd, dlzkaDo, hmotnostOd, hmotnostDo, idSpolocnosti));
+    }//GEN-LAST:event_btn_zobrazenieSkupinyVoznov_ZobrazActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2450,9 +2707,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_zobrazenieAktualnejPolohyVoznov_zobraz;
     private javax.swing.JButton btn_zobrazenieHistorieVyskytuVozna_Zobraz;
     private javax.swing.JButton btn_zobrazenieHistorieVyskytuVozna_koniec;
+    private javax.swing.JButton btn_zobrazenieSkupinyVoznov_Zobraz;
+    private javax.swing.JButton btn_zobrazenieSkupinyVoznov_koniec;
     private javax.swing.JButton btn_zoznamVoznovVoVlakoch_koniec;
     private javax.swing.JButton btn_zoznamVoznovVoVlakoch_zobraz;
     private javax.swing.ButtonGroup buttonGroup_zobrazenieAktualnejPolohyVoznov_stav;
+    private javax.swing.ButtonGroup buttonGroup_zobrazenieSkupinyVoznov;
     private org.jdesktop.swingx.JXDatePicker datePicker_ZobrazVozneVStanici_od;
     private org.jdesktop.swingx.JXDatePicker datePicker_zobrazVozneVStanici_do;
     private org.jdesktop.swingx.JXDatePicker datePicker_zobrazenieHistorieVyskytuVozna_do;
@@ -2473,6 +2733,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JDialog dialog_zobrazenieAktualnejPolohyVoznov;
     private javax.swing.JDialog dialog_zobrazenieHistorieVyskytuVozna;
     private javax.swing.JDialog dialog_zobrazeniePolohyVozna;
+    private javax.swing.JDialog dialog_zobrazenieSkupinVoznov;
     private javax.swing.JDialog dialog_zoznamVoznovVStanici;
     private javax.swing.JDialog dialog_zoznamVoznovVoVlakoch;
     private javax.swing.JLabel image;
@@ -2545,7 +2806,18 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
+    private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
@@ -2594,17 +2866,27 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem menu_zobrazenieAktualnejPolohyVozna;
     private javax.swing.JMenuItem menu_zobrazenieAktualnejPolohyVoznov;
     private javax.swing.JMenuItem menu_zobrazenieHistorieVyskytuVozna;
+    private javax.swing.JMenuItem menu_zobrazenieSkupinVoznov;
     private javax.swing.JMenuItem menu_zoznamVoznovVStanici;
     private javax.swing.JMenuItem menu_zoznamVoznovVoVlakoch;
     private javax.swing.JRadioButton radioBtn_zobrazVozneVStanici_vPrevadzke;
     private javax.swing.JRadioButton radioButton_zobrazenieAktualnejPolohyVoznov_mimoPrevadzky;
     private javax.swing.JRadioButton radioButton_zobrazenieAktualnejPolohyVoznov_vPrevadzke;
     private javax.swing.JRadioButton radioButton_zobrazenieAktualnejPolohyVoznov_vsetky;
+    private javax.swing.JRadioButton radioButton_zobrazenieSkupinyVoznov_mimoPrevadzky;
+    private javax.swing.JRadioButton radioButton_zobrazenieSkupinyVoznov_vPrevadzke;
+    private javax.swing.JRadioButton radioButton_zobrazenieSkupinyVoznov_vsetky;
     private javax.swing.JSlider slider_ZoznamVoznovVoVlakoch_hmotnostOd;
     private javax.swing.JSlider slider_zobrazenieAktualnejPolohyVoznov_dlzkaDo;
     private javax.swing.JSlider slider_zobrazenieAktualnejPolohyVoznov_dlzkaOd;
     private javax.swing.JSlider slider_zobrazenieAktualnejPolohyVoznov_hmotnostDo;
     private javax.swing.JSlider slider_zobrazenieAktualnejPolohyVoznov_hmotnostOd;
+    private javax.swing.JSlider slider_zobrazenieSkupinyVoznov_dlzkaDo;
+    private javax.swing.JSlider slider_zobrazenieSkupinyVoznov_dlzkaOd;
+    private javax.swing.JSlider slider_zobrazenieSkupinyVoznov_hmotnostDo;
+    private javax.swing.JSlider slider_zobrazenieSkupinyVoznov_hmotnostOd;
+    private javax.swing.JSlider slider_zobrazenieSkupinyVoznov_interabilitaDo;
+    private javax.swing.JSlider slider_zobrazenieSkupinyVoznov_interabilitaOd;
     private javax.swing.JSlider slider_zoznamVoznovVoVlakoch_hmotnostDo;
     private javax.swing.JTabbedPane tabbedPane_panel;
     private javax.swing.JTable tabulkaVystupy;
@@ -2651,6 +2933,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField txt_zobrazenieAktualnejPolohyVoznov_kod;
     private javax.swing.JTextField txt_zobrazenieHistorieVyskytuVozna_idVozna;
     private javax.swing.JTextField txt_zobrazenieHistorieVyskytuVozna_kodVozna;
+    private javax.swing.JTextField txt_zobrazenieSkupinyVoznov_idSpolocnosti;
+    private javax.swing.JTextField txt_zobrazenieSkupinyVoznov_kodVozna;
+    private javax.swing.JTextField txt_zobrazenieSkupinyVoznov_radVozna;
     private javax.swing.JTextField txt_zoznamVoznovVoVlakoch_idVlaku;
     // End of variables declaration//GEN-END:variables
 }
