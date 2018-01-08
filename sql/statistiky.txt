@@ -108,3 +108,50 @@ select substr(rad,1,1) as TYP_VOZNA,
     where extract(year from datum_od) = 2017
       group by substr(rad,1,1)
       order by typ_vozna;
+	  
+	  
+--zadanie 9
+--statistika, ktora zobrazi pocet zaevidovanych dokladov pre kazdeho pracovnika pre rok 2017 s prehladom na kazdy mesiac
+select meno||' '||priezvisko as MENO_PRACOVNIKA,
+        sum(case when extract(month from datum) = 1 then 1
+            else 0
+        end) as JANUAR,
+        sum(case when extract(month from datum) = 2 then 1
+            else 0
+        end) as FEBRUAR,
+        sum(case when extract(month from datum) = 3 then 1
+            else 0
+        end) as MAREC,
+        sum(case when extract(month from datum) = 4 then 1
+            else 0
+        end) as APRIL,
+        sum(case when extract(month from datum) = 5 then 1
+            else 0
+        end) as MAJ,
+        sum(case when extract(month from datum) = 6 then 1
+            else 0
+        end) as JUN,
+        sum(case when extract(month from datum) = 7 then 1
+            else 0
+        end) as JUL,
+        sum(case when extract(month from datum) = 8 then 1
+            else 0
+        end) as AUGUST,
+        sum(case when extract(month from datum) = 9 then 1
+            else 0
+        end) as SEPTEMBER,
+        sum(case when extract(month from datum) = 10 then 1
+            else 0
+        end) as OKTOBER,
+        sum(case when extract(month from datum) = 11 then 1
+            else 0
+        end) as NOVEMBER,
+        sum(case when extract(month from datum) = 12 then 1
+            else 0
+        end) as DECEMBER
+        
+    from zaznam
+      join pouzivatel using(id_pouzivatela)
+    where extract(year from datum) = 2017
+      group by meno||' '||priezvisko
+      order by MENO_PRACOVNIKA;
