@@ -1,0 +1,110 @@
+--zadanie 7 - statistika vypise pocet voznov vo vlakoch pre kazdu spolocnost... rozdelene podla datumu vypravenia na stvrtroky za rok 2016
+--kolko voznov zo spolocnosti bolo v danom stvrtroku roku 2016 pouzitych... 
+select nazov_spolocnosti,
+        sum(case when extract(month from dat_vypravenia) between 1 and 3 then 1
+            else 0
+        end) as PRVY_STVRTROK,
+        sum(case when extract(month from dat_vypravenia) between 4 and 6 then 1
+            else 0
+        end) as DRUHY_STVRTROK,
+        sum(case when extract(month from dat_vypravenia) between 7 and 9 then 1
+            else 0
+        end) as TRETI_STVRTROK,
+        sum(case when extract(month from dat_vypravenia) between 10 and 12 then 1
+            else 0
+        end) as STVRTY_STVRTROK
+        
+    from view_vozne_vlaku
+      group by nazov_spolocnosti;
+
+	  
+--zadanie 7 
+--statistika - pre kazdy typ vozna je vypisany celkovy pocet zaradeni do vlakov v prislusnom stvrtroku roku 2016... 
+select substr(rad,1,1) as TYP_VOZNA,
+        sum(case when extract(month from datum_od) between 1 and 3 then 1
+            else 0
+        end) as PRVY_STVRTROK,
+        sum(case when extract(month from datum_od) between 4 and 6 then 1
+            else 0
+        end) as DRUHY_STVRTROK,
+        sum(case when extract(month from datum_od) between 7 and 9 then 1
+            else 0
+        end) as TRETI_STVRTROK,
+        sum(case when extract(month from datum_od) between 10 and 12 then 1
+            else 0
+        end) as STVRTY_STVRTROK
+from pohyb
+  join pohyb_vozna_vlak using(id_zaradenia)
+  join vozen using (id_vozna)
+  join typ_vozna on (vozen.kod = typ_vozna.kod)
+    where typ_pohybu = 'Z' and extract(year from datum_od) = 2016
+      group by substr(rad,1,1)
+      order by TYP_VOZNA;
+	  
+
+
+--zadanie 8 - statistika prehladu voznov v stanici podla spolocbnosti... pre stanicu Babiná id=541 za kazdy mesiac roku 2016
+select nazov_spolocnosti,
+        sum(case when extract(month from datum_od) between 1 and 3 then 1
+            else 0
+        end) as PRVY_STVRTROK,
+        sum(case when extract(month from datum_od) between 4 and 6 then 1
+            else 0
+        end) as DRUHY_STVRTROK,
+        sum(case when extract(month from datum_od) between 7 and 9 then 1
+            else 0
+        end) as TRETI_STVRTROK,
+        sum(case when extract(month from datum_od) between 10 and 12 then 1
+            else 0
+        end) as STVRTY_STVRTROK
+        
+    from zoznam_voznov_v_stanici
+    where extract(year from datum_od) = 2016 and id_stanice = 541
+      group by nazov_spolocnosti;
+
+
+--zadanie 8 - statistika: pocty typov voznov vo vsetkych staniciach roku 2017 za kazdy mesiac
+-- pod typom vozna sa rozumie zakladna stavba vozna
+--napr. Z - Cisternový vozeò alebo H - Krytý vozeò osobitnej stavby a pod...  
+select substr(rad,1,1) as TYP_VOZNA,
+        sum(case when extract(month from datum_od) = 1 then 1
+            else 0
+        end) as JANUAR,
+        sum(case when extract(month from datum_od) = 2 then 1
+            else 0
+        end) as FEBRUAR,
+        sum(case when extract(month from datum_od) = 3 then 1
+            else 0
+        end) as MAREC,
+        sum(case when extract(month from datum_od) = 4 then 1
+            else 0
+        end) as APRIL,
+        sum(case when extract(month from datum_od) = 5 then 1
+            else 0
+        end) as MAJ,
+        sum(case when extract(month from datum_od) = 6 then 1
+            else 0
+        end) as JUN,
+        sum(case when extract(month from datum_od) = 7 then 1
+            else 0
+        end) as JUL,
+        sum(case when extract(month from datum_od) = 8 then 1
+            else 0
+        end) as AUGUST,
+        sum(case when extract(month from datum_od) = 9 then 1
+            else 0
+        end) as SEPTEMBER,
+        sum(case when extract(month from datum_od) = 10 then 1
+            else 0
+        end) as OKTOBER,
+        sum(case when extract(month from datum_od) = 11 then 1
+            else 0
+        end) as NOVEMBER,
+        sum(case when extract(month from datum_od) = 12 then 1
+            else 0
+        end) as DECEMBER
+        
+    from zoznam_voznov_v_stanici
+    where extract(year from datum_od) = 2017
+      group by substr(rad,1,1)
+      order by typ_vozna;
