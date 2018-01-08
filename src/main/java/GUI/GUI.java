@@ -240,6 +240,23 @@ public class GUI extends javax.swing.JFrame {
         btn_zobrazenieSkupinyVoznov_Zobraz = new javax.swing.JButton();
         btn_zobrazenieSkupinyVoznov_koniec = new javax.swing.JButton();
         buttonGroup_zobrazenieSkupinyVoznov = new javax.swing.ButtonGroup();
+        dialog_statistiky = new javax.swing.JDialog();
+        jLabel80 = new javax.swing.JLabel();
+        jLabel81 = new javax.swing.JLabel();
+        txt_statistiky_obdobie = new javax.swing.JTextField();
+        jLabel82 = new javax.swing.JLabel();
+        btn_statistika_pocetPouzitychVoznovPodlaSpolocnosti = new javax.swing.JButton();
+        jLabel83 = new javax.swing.JLabel();
+        btn_pocetZaradeniVoznovPodlaTypuVozna = new javax.swing.JButton();
+        jLabel84 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jLabel85 = new javax.swing.JLabel();
+        txt_statistiky_idSpolocnosti = new javax.swing.JTextField();
+        jLabel86 = new javax.swing.JLabel();
+        btn_statistika_pocetVoznovVStaniciachPodlaTypu = new javax.swing.JButton();
+        jLabel87 = new javax.swing.JLabel();
+        btn_statistika_pocetZaznamovPrePouzivatela = new javax.swing.JButton();
+        btn_statistiky_koniec = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         tabbedPane_panel = new javax.swing.JTabbedPane();
@@ -299,6 +316,7 @@ public class GUI extends javax.swing.JFrame {
         menu_zobrazenieAktualnejPolohyVozna = new javax.swing.JMenuItem();
         menu_zobrazenieHistorieVyskytuVozna = new javax.swing.JMenuItem();
         menu_zobrazenieSkupinVoznov = new javax.swing.JMenuItem();
+        menu_statistiky = new javax.swing.JMenu();
 
         dialog_vytvorVlak.setMinimumSize(new java.awt.Dimension(400, 392));
         dialog_vytvorVlak.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1500,7 +1518,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel72.setText("Stav vozna:");
 
-        jLabel73.setText("ID polocnosti (nepovinne):");
+        jLabel73.setText("ID spolocnosti (nepovinne):");
 
         buttonGroup_zobrazenieSkupinyVoznov.add(radioButton_zobrazenieSkupinyVoznov_vPrevadzke);
         radioButton_zobrazenieSkupinyVoznov_vPrevadzke.setText("V prevadzke");
@@ -1581,7 +1599,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel78)
                             .addComponent(slider_zobrazenieSkupinyVoznov_hmotnostOd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(slider_zobrazenieSkupinyVoznov_hmotnostDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         dialog_zobrazenieSkupinVoznovLayout.setVerticalGroup(
             dialog_zobrazenieSkupinVoznovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1638,6 +1656,146 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_zobrazenieSkupinyVoznov_koniec)
                         .addGap(27, 27, 27))))
+        );
+
+        jLabel80.setText("Statistiky");
+
+        jLabel81.setText("Obdobie:");
+
+        txt_statistiky_obdobie.setText("2016");
+
+        jLabel82.setText("Pocet pouzitych voznov za stvrtrok podla vlastniacej spolocnosti:");
+
+        btn_statistika_pocetPouzitychVoznovPodlaSpolocnosti.setText("Zobraz statistiku");
+        btn_statistika_pocetPouzitychVoznovPodlaSpolocnosti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_statistika_pocetPouzitychVoznovPodlaSpolocnostiActionPerformed(evt);
+            }
+        });
+
+        jLabel83.setText("Pocet zaradeni voznov podla typu vozna:");
+
+        btn_pocetZaradeniVoznovPodlaTypuVozna.setText("Zobraz statistiku");
+        btn_pocetZaradeniVoznovPodlaTypuVozna.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pocetZaradeniVoznovPodlaTypuVoznaActionPerformed(evt);
+            }
+        });
+
+        jLabel84.setText("Pocet voznov pre spolocnosti podla stanice:");
+
+        jButton5.setText("Zobraz statistiku");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jLabel85.setText("ID stanice:");
+
+        txt_statistiky_idSpolocnosti.setText("541");
+
+        jLabel86.setText("Pocet voznov v staniciach za mesiace podla typu vozna:");
+
+        btn_statistika_pocetVoznovVStaniciachPodlaTypu.setText("Zobraz statistiku");
+        btn_statistika_pocetVoznovVStaniciachPodlaTypu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_statistika_pocetVoznovVStaniciachPodlaTypuActionPerformed(evt);
+            }
+        });
+
+        jLabel87.setText("Pocet zaznamov v databaze za mesiace pre kazdeho pracovnika: ");
+
+        btn_statistika_pocetZaznamovPrePouzivatela.setText("Zobraz statistiku");
+        btn_statistika_pocetZaznamovPrePouzivatela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_statistika_pocetZaznamovPrePouzivatelaActionPerformed(evt);
+            }
+        });
+
+        btn_statistiky_koniec.setText("Koniec");
+        btn_statistiky_koniec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_statistiky_koniecActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialog_statistikyLayout = new javax.swing.GroupLayout(dialog_statistiky.getContentPane());
+        dialog_statistiky.getContentPane().setLayout(dialog_statistikyLayout);
+        dialog_statistikyLayout.setHorizontalGroup(
+            dialog_statistikyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_statistikyLayout.createSequentialGroup()
+                .addGroup(dialog_statistikyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialog_statistikyLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(dialog_statistikyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel82)
+                            .addComponent(jLabel83)
+                            .addComponent(jLabel86)
+                            .addComponent(jLabel87)
+                            .addComponent(jLabel84))
+                        .addGap(30, 30, 30)
+                        .addGroup(dialog_statistikyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_statistika_pocetPouzitychVoznovPodlaSpolocnosti, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_statistika_pocetVoznovVStaniciachPodlaTypu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_statistika_pocetZaznamovPrePouzivatela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_pocetZaradeniVoznovPodlaTypuVozna, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(dialog_statistikyLayout.createSequentialGroup()
+                        .addGap(247, 247, 247)
+                        .addComponent(btn_statistiky_koniec))
+                    .addGroup(dialog_statistikyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dialog_statistikyLayout.createSequentialGroup()
+                            .addGap(196, 196, 196)
+                            .addComponent(jLabel81)
+                            .addGap(76, 76, 76)
+                            .addComponent(txt_statistiky_obdobie, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dialog_statistikyLayout.createSequentialGroup()
+                            .addGap(195, 195, 195)
+                            .addComponent(jLabel85)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txt_statistiky_idSpolocnosti, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(dialog_statistikyLayout.createSequentialGroup()
+                        .addGap(253, 253, 253)
+                        .addComponent(jLabel80)))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+        dialog_statistikyLayout.setVerticalGroup(
+            dialog_statistikyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_statistikyLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel80)
+                .addGap(18, 18, 18)
+                .addGroup(dialog_statistikyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel81)
+                    .addComponent(txt_statistiky_obdobie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(dialog_statistikyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel82)
+                    .addComponent(btn_statistika_pocetPouzitychVoznovPodlaSpolocnosti))
+                .addGap(18, 18, 18)
+                .addGroup(dialog_statistikyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel83)
+                    .addComponent(btn_pocetZaradeniVoznovPodlaTypuVozna))
+                .addGap(18, 18, 18)
+                .addGroup(dialog_statistikyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel86)
+                    .addComponent(btn_statistika_pocetVoznovVStaniciachPodlaTypu))
+                .addGap(18, 18, 18)
+                .addGroup(dialog_statistikyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel87)
+                    .addComponent(btn_statistika_pocetZaznamovPrePouzivatela))
+                .addGap(30, 30, 30)
+                .addGroup(dialog_statistikyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_statistiky_idSpolocnosti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel85))
+                .addGap(18, 18, 18)
+                .addGroup(dialog_statistikyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel84)
+                    .addComponent(jButton5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(btn_statistiky_koniec)
+                .addGap(36, 36, 36))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -2116,6 +2274,19 @@ public class GUI extends javax.swing.JFrame {
         menu_vystupy.add(menu_zobrazenieSkupinVoznov);
 
         jMenuBar1.add(menu_vystupy);
+
+        menu_statistiky.setText("Statistiky");
+        menu_statistiky.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menu_statistikyMouseClicked(evt);
+            }
+        });
+        menu_statistiky.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_statistikyActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(menu_statistiky);
 
         setJMenuBar(jMenuBar1);
 
@@ -2629,14 +2800,50 @@ public class GUI extends javax.swing.JFrame {
         int    dlzkaDo        = slider_zobrazenieSkupinyVoznov_dlzkaDo.getValue();
         int    vPrevadzke     = -1;
         
-        if (radioButton_zobrazenieAktualnejPolohyVoznov_mimoPrevadzky.isSelected()) {
+        if (radioButton_zobrazenieSkupinyVoznov_mimoPrevadzky.isSelected()) {
             vPrevadzke = 0;
-        } else if (radioButton_zobrazenieAktualnejPolohyVoznov_vPrevadzke.isSelected()) {
+        } else if (radioButton_zobrazenieSkupinyVoznov_vPrevadzke.isSelected()) {
             vPrevadzke = 1;
         }
         
         txtArea.setText(dbmethods.zobrazSkupinyVoznov(kod, rad, vPrevadzke, interabilitaOd, interabilitaDo, dlzkaOd, dlzkaDo, hmotnostOd, hmotnostDo, idSpolocnosti));
     }//GEN-LAST:event_btn_zobrazenieSkupinyVoznov_ZobrazActionPerformed
+
+    private void menu_statistikyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_statistikyActionPerformed
+        
+        dialog_statistiky.pack();  
+        dialog_statistiky.setVisible(true);
+        
+    }//GEN-LAST:event_menu_statistikyActionPerformed
+
+    private void btn_statistika_pocetPouzitychVoznovPodlaSpolocnostiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_statistika_pocetPouzitychVoznovPodlaSpolocnostiActionPerformed
+        txtArea.setText(dbmethods.statistika_pocetPouzitychVoznovZaStvrtrokPodlaSpolocnosti(txt_statistiky_obdobie.getText()));
+    }//GEN-LAST:event_btn_statistika_pocetPouzitychVoznovPodlaSpolocnostiActionPerformed
+
+    private void menu_statistikyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_statistikyMouseClicked
+        dialog_statistiky.pack();  
+        dialog_statistiky.setVisible(true);
+    }//GEN-LAST:event_menu_statistikyMouseClicked
+
+    private void btn_pocetZaradeniVoznovPodlaTypuVoznaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pocetZaradeniVoznovPodlaTypuVoznaActionPerformed
+        txtArea.setText(dbmethods.statistika_pocetZaradeniVoznovPodlaTypuVozna(txt_statistiky_obdobie.getText()));
+    }//GEN-LAST:event_btn_pocetZaradeniVoznovPodlaTypuVoznaActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        txtArea.setText(dbmethods.statistika_pocetVoznovVStanici(txt_statistiky_obdobie.getText(),txt_statistiky_idSpolocnosti.getText()));
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void btn_statistika_pocetVoznovVStaniciachPodlaTypuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_statistika_pocetVoznovVStaniciachPodlaTypuActionPerformed
+        txtArea.setText(dbmethods.statistika_poctyTypovVoznovVStaniciach(txt_statistiky_obdobie.getText()));
+    }//GEN-LAST:event_btn_statistika_pocetVoznovVStaniciachPodlaTypuActionPerformed
+
+    private void btn_statistika_pocetZaznamovPrePouzivatelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_statistika_pocetZaznamovPrePouzivatelaActionPerformed
+        txtArea.setText(dbmethods.statistika_pocetZaznamovPouzivatelov(txt_statistiky_obdobie.getText()));
+    }//GEN-LAST:event_btn_statistika_pocetZaznamovPrePouzivatelaActionPerformed
+
+    private void btn_statistiky_koniecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_statistiky_koniecActionPerformed
+        dialog_statistiky.setVisible(false);
+    }//GEN-LAST:event_btn_statistiky_koniecActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2679,10 +2886,15 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btn_createTrain;
     private javax.swing.JButton btn_endTrainCreation;
     private javax.swing.JButton btn_koniec;
+    private javax.swing.JButton btn_pocetZaradeniVoznovPodlaTypuVozna;
     private javax.swing.JButton btn_pridanieVozna_koniec;
     private javax.swing.JButton btn_pridanieVozna_pridaj;
     private javax.swing.JButton btn_prihlasenie_koniec;
     private javax.swing.JButton btn_prihlasenie_prihlas;
+    private javax.swing.JButton btn_statistika_pocetPouzitychVoznovPodlaSpolocnosti;
+    private javax.swing.JButton btn_statistika_pocetVoznovVStaniciachPodlaTypu;
+    private javax.swing.JButton btn_statistika_pocetZaznamovPrePouzivatela;
+    private javax.swing.JButton btn_statistiky_koniec;
     private javax.swing.JButton btn_vyhladajObrazok;
     private javax.swing.JButton btn_vyhladajObrazok_koniec;
     private javax.swing.JButton btn_vyhladajObrazok_vyhladaj;
@@ -2720,6 +2932,7 @@ public class GUI extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXDatePicker datePicker_zoznamVoznovVoVlakoch_od;
     private javax.swing.JDialog dialog_pridajVozen;
     private javax.swing.JDialog dialog_prihlasenie;
+    private javax.swing.JDialog dialog_statistiky;
     private javax.swing.JDialog dialog_vyhladajObrazok;
     private javax.swing.JDialog dialog_vyradVozenZPrevadzky;
     private javax.swing.JDialog dialog_vyradVozenZVlaku;
@@ -2740,6 +2953,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2818,6 +3032,14 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel78;
     private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel83;
+    private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel87;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -2842,6 +3064,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem menu_createTrain;
     private javax.swing.JMenuItem menu_odhlasenie;
     private javax.swing.JMenuItem menu_pridajVozen;
+    private javax.swing.JMenu menu_statistiky;
     private javax.swing.JMenuItem menu_vyhladajVozen;
     private javax.swing.JMenuItem menu_vyradVozen;
     private javax.swing.JMenuItem menu_vyradVozenZVlaku;
@@ -2904,6 +3127,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPasswordField txt_prihlasenie_heslo;
     private javax.swing.JTextField txt_prihlasenie_meno;
     private javax.swing.JTextField txt_prihlasenie_priezvisko;
+    private javax.swing.JTextField txt_statistiky_idSpolocnosti;
+    private javax.swing.JTextField txt_statistiky_obdobie;
     private javax.swing.JTextField txt_typ;
     private javax.swing.JTextField txt_typPohybu;
     private javax.swing.JTextField txt_vyhladajObrazok_kod;

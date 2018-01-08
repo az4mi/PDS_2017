@@ -2011,7 +2011,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="53" max="32767" attributes="0"/>
+                  <EmptySpace pref="46" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -2111,7 +2111,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel73">
           <Properties>
-            <Property name="text" type="java.lang.String" value="ID polocnosti (nepovinne):"/>
+            <Property name="text" type="java.lang.String" value="ID spolocnosti (nepovinne):"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_zobrazenieSkupinyVoznov_kodVozna">
@@ -2203,6 +2203,206 @@
     </Container>
     <Component class="javax.swing.ButtonGroup" name="buttonGroup_zobrazenieSkupinyVoznov">
     </Component>
+    <Container class="javax.swing.JDialog" name="dialog_statistiky">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel82" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel83" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel86" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel87" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel84" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btn_statistika_pocetPouzitychVoznovPodlaSpolocnosti" max="32767" attributes="0"/>
+                              <Component id="btn_statistika_pocetVoznovVStaniciachPodlaTypu" max="32767" attributes="0"/>
+                              <Component id="btn_statistika_pocetZaznamovPrePouzivatela" max="32767" attributes="0"/>
+                              <Component id="jButton5" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btn_pocetZaradeniVoznovPodlaTypuVozna" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="247" max="-2" attributes="0"/>
+                          <Component id="btn_statistiky_koniec" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
+                              <Component id="jLabel81" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                              <Component id="txt_statistiky_obdobie" min="-2" pref="101" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
+                              <Component id="jLabel85" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="txt_statistiky_idSpolocnosti" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="253" max="-2" attributes="0"/>
+                          <Component id="jLabel80" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="37" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <Component id="jLabel80" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel81" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_statistiky_obdobie" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel82" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_statistika_pocetPouzitychVoznovPodlaSpolocnosti" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel83" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_pocetZaradeniVoznovPodlaTypuVozna" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel86" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_statistika_pocetVoznovVStaniciachPodlaTypu" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel87" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_statistika_pocetZaznamovPrePouzivatela" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txt_statistiky_idSpolocnosti" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel85" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel84" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="58" max="32767" attributes="0"/>
+                  <Component id="btn_statistiky_koniec" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel80">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Statistiky"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel81">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Obdobie:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txt_statistiky_obdobie">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="2016"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel82">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pocet pouzitych voznov za stvrtrok podla vlastniacej spolocnosti:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_statistika_pocetPouzitychVoznovPodlaSpolocnosti">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Zobraz statistiku"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_statistika_pocetPouzitychVoznovPodlaSpolocnostiActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel83">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pocet zaradeni voznov podla typu vozna:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_pocetZaradeniVoznovPodlaTypuVozna">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Zobraz statistiku"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_pocetZaradeniVoznovPodlaTypuVoznaActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel84">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pocet voznov pre spolocnosti podla stanice:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton5">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Zobraz statistiku"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel85">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="ID stanice:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txt_statistiky_idSpolocnosti">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="541"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel86">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pocet voznov v staniciach za mesiace podla typu vozna:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_statistika_pocetVoznovVStaniciachPodlaTypu">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Zobraz statistiku"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_statistika_pocetVoznovVStaniciachPodlaTypuActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel87">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pocet zaznamov v databaze za mesiace pre kazdeho pracovnika: "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_statistika_pocetZaznamovPrePouzivatela">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Zobraz statistiku"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_statistika_pocetZaznamovPrePouzivatelaActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_statistiky_koniec">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Koniec"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_statistiky_koniecActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu1">
@@ -2481,6 +2681,15 @@
               </Events>
             </MenuItem>
           </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menu_statistiky">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Statistiky"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menu_statistikyMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menu_statistikyActionPerformed"/>
+          </Events>
         </Menu>
       </SubComponents>
     </Menu>
