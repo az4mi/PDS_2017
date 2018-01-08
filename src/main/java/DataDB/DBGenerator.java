@@ -42,12 +42,12 @@ public class DBGenerator {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             //updateBlobs();
             //naplnTypyVagonov();
-            //naplnVozne(15);
+            //naplnVozne(200,800);
             //naplnStanice();
             //naplnKolaje();
             //naplnSmimace();
             //naplnPrvePohyby();
-            //naplnPohyby(2);
+            //naplnPohyby(1);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DBGenerator.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -115,32 +115,76 @@ public class DBGenerator {
         }
     }
     
-    public void naplnVozne( int pocet) {
+    public void naplnVozne( int pocetMin, int pocetMAx) {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(connString,meno,heslo);
             Statement stmt = connection.createStatement();
             String sql;
+            Random rand = new Random();
+            Timestamp timeSTamp = new Timestamp(116, 0, 1, 10, 0, 0, 0);
+            PreparedStatement prepared = connection.prepareStatement("INSERT INTO zaznam (id_pouzivatela,id_tabulky,datum) VALUES(?,?,?)");
             sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('AWT Rail SK')";
             stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
             sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('BF Logistics')";
             stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
             sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('Deutsche Bahn')";
             stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
             sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('Express Rail')";
             stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
             sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('U.S. Steel Kosice')";
             stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
             sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('UNIPETROL DOPRAVA')";
             stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
             sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('TSS GRADE')";
             stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
             sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('SLOV-VAGON')";
             stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
             sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('Petrolsped')";
             stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
             sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('OHL ŽS')";
             stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
+            
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('Dopravca Regio Rail')";
+            stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('Advanced World Transport')";
+            stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('BRYNTIN RAIL CZ')";
+            stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('CER Slovakia')";
+            stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('CENTRAL RAILWAYS')";
+            stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('ČD Cargo, a.s.')";
+            stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('GJW Praha')";
+            stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('IDS CARGO')";
+            stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('LOKORAIL, a.s.')";
+            stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
+            sql = "INSERT INTO SPOLOCNOST (nazov) VALUES('Metrans SK')";
+            stmt.executeUpdate(sql);
+            zapisZaznam(2, timeSTamp, prepared);
             sql = "SELECT id_spolocnosti FROM Spolocnost";
             ResultSet rs = stmt.executeQuery(sql);
             ArrayList<Integer> spolocnosti = new ArrayList<>(10);
@@ -155,10 +199,13 @@ public class DBGenerator {
                 int kod = rs.getInt("kod");
                 typy.add(kod);
             }
-            Random rand = new Random();
+            
             for (int i = 0; i < typy.size(); i++) {
-                int kod = typy.get(i);         
+                System.out.println("i = " + i);
+                int kod = typy.get(i);
+                int pocet = rand.nextInt(pocetMAx - pocetMin) + pocetMin;
                 for (int j = 0; j < pocet; j++) {
+                    System.out.println(j);
                     int idSpol = rand.nextInt(spolocnosti.size());
                     double prst = rand.nextDouble();
                     if( prst < 0.03 ) {
@@ -167,6 +214,8 @@ public class DBGenerator {
                         sql = "INSERT INTO vozen VALUES(T_VOZEN(" + (j + 1) + "," + kod + "," + "'A'" + "," + spolocnosti.get(idSpol) + "))";
                     }
                     stmt.executeUpdate(sql);
+                    timeSTamp = new Timestamp(116, rand.nextInt(2), rand.nextInt(20) + 1, rand.nextInt(9) + 9, rand.nextInt(60) + 1, rand.nextInt(60) + 1, 0);
+                    zapisZaznam(3, timeSTamp, prepared);
                 }
             }      
         } catch (SQLException ex) {
@@ -190,14 +239,20 @@ public class DBGenerator {
             
             BufferedReader br = new BufferedReader(new FileReader("stanice_small.txt"));
             String line;
+            int i = 0;
+            Timestamp timestamp = new Timestamp(116, 0, 1, 10, 0, 0, 0);
+            PreparedStatement prepared = connection.prepareStatement("INSERT INTO zaznam (id_pouzivatela,id_tabulky,datum) VALUES(?,?,?)");
             while((line = br.readLine()) != null) {
                 line = line.trim();
+                System.out.println(i);
                 if( line.length() > 2 ) {
                     float sirka = ( rand.nextInt(10) + 50 + rand.nextFloat());
                     float vyska = ( rand.nextInt(10) + 40 + rand.nextFloat());
                     String sql = "INSERT INTO stanica (nazov,gps_sirka,gps_dlzka) VALUES('" + line + "'," + sirka + "," +  vyska + ")";
                     stmt.executeUpdate(sql);
+                    zapisZaznam(8, timestamp, prepared);
                 }
+                i++;
             }
         } catch (SQLException ex) {
             Logger.getLogger(DBGenerator.class.getName()).log(Level.SEVERE, null, ex);
@@ -228,12 +283,18 @@ public class DBGenerator {
                 int id = rs.getInt("id_stanice");
                 stanice.add(id);
             }
+            Timestamp timestamp = new Timestamp(116, 0, 1, 10, 0, 0, 0);
+            PreparedStatement prepared = connection.prepareStatement("INSERT INTO zaznam (id_pouzivatela,id_tabulky,datum) VALUES(?,?,?)");
+            
             for (int i = 0; i < stanice.size(); i++) {
-                int pocet = rand.nextInt(5) + 3;
+                System.out.println("i = " + i);
+                int pocet = rand.nextInt(9) + 2;
                 for (int j = 1; j <= pocet; j++) {
+                    System.out.println(j);
                     int dlzka = rand.nextInt(1000) + 400;
                     sql = "INSERT INTO kolaj VALUES(" + j + "," + dlzka + "," + stanice.get(i) + ")";
                     stmt.executeUpdate(sql);
+                    zapisZaznam(9, timestamp, prepared);
                 }
             } 
         } catch (SQLException ex) {
@@ -257,19 +318,26 @@ public class DBGenerator {
             Statement stmtUpdate = connection.createStatement();
             String sql = "SELECT cislo, id_stanice,GPS_SIRKA,GPS_DLZKA from stanica JOIN kolaj USING(id_stanice)";
             ResultSet rs = stmt.executeQuery(sql);
-
+            Timestamp timestamp = new Timestamp(116, 0, 1, 10, 0, 0, 0);
+            PreparedStatement prepared = connection.prepareStatement("INSERT INTO zaznam (id_pouzivatela,id_tabulky,datum) VALUES(?,?,?)");
+            int j = 0;
             while(rs.next()){
-                int cislo = rs.getInt("cislo");
-                int idStanice = rs.getInt("id_stanice");
-                float sirka = rs.getFloat("GPS_SIRKA");
-                float dlzka = rs.getFloat("GPS_DLZKA");
-                int pocet = rand.nextInt(2) + 1;
-                for (int i = 0; i < pocet; i++) {
-                    float newSirka = sirka + (float) (rand.nextFloat()/1000.0 - 0.00005);
-                    float newDlzka = dlzka + (float) (rand.nextFloat()/1000.0 - 0.00005);
-                    sql = "INSERT INTO snimac (gps_sirka,gps_dlzka,cislo,id_stanice) VALUES(" + newSirka + "," + newDlzka + "," + cislo + "," + idStanice + ")";
-                    stmtUpdate.executeUpdate(sql);
-                }               
+                System.out.println(j);
+                j++;
+                if( j >= 727) {
+                    int cislo = rs.getInt("cislo");
+                    int idStanice = rs.getInt("id_stanice");
+                    float sirka = rs.getFloat("GPS_SIRKA");
+                    float dlzka = rs.getFloat("GPS_DLZKA");
+                    int pocet = rand.nextInt(2) + 1;
+                    for (int i = 0; i < pocet; i++) {
+                        float newSirka = sirka + (float) (rand.nextFloat()/1000.0 - 0.00005);
+                        float newDlzka = dlzka + (float) (rand.nextFloat()/1000.0 - 0.00005);
+                        sql = "INSERT INTO snimac (gps_sirka,gps_dlzka,cislo,id_stanice) VALUES(" + newSirka + "," + newDlzka + "," + cislo + "," + idStanice + ")";
+                        stmtUpdate.executeUpdate(sql);
+                        zapisZaznam(10, timestamp, prepared);
+                    }  
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(DBGenerator.class.getName()).log(Level.SEVERE, null, ex);
@@ -291,8 +359,8 @@ public class DBGenerator {
             Statement stmt = connection.createStatement();
             String sql = "SELECT id_vozna, kod FROM vozen";
             ResultSet rs = stmt.executeQuery(sql);
-            ArrayList<Integer> idcka = new ArrayList<>(100);
-            ArrayList<Integer> kody = new ArrayList<>(100);
+            ArrayList<Integer> idcka = new ArrayList<>(51000);
+            ArrayList<Integer> kody = new ArrayList<>(51000);
             while(rs.next()){
                 int id = rs.getInt("id_vozna");
                 idcka.add(id);
@@ -301,15 +369,22 @@ public class DBGenerator {
             }
             sql = "SELECT id_snimaca FROM snimac";
             rs = stmt.executeQuery(sql);
-            ArrayList<Integer> snimace = new ArrayList<>(100);
+            ArrayList<Integer> snimace = new ArrayList<>(2000);
             while(rs.next()){
                 int id = rs.getInt("id_snimaca");
                 snimace.add(id);
             }
+            ArrayList<Timestamp> datumy = new ArrayList<>(51000);
+            PreparedStatement preparedZaz = connection.prepareStatement("INSERT INTO zaznam (id_pouzivatela,id_tabulky,datum) VALUES(?,?,?)");
             for (int i = 0; i < idcka.size(); i++) {
+                System.out.println(i);
+                Timestamp timeSTamp = new Timestamp(116, rand.nextInt(2), rand.nextInt(20) + 1, rand.nextInt(9) + 9, rand.nextInt(60) + 1, rand.nextInt(60) + 1, 0);
                 int idSnimaca = snimace.get( rand.nextInt(snimace.size()) );
                 sql = "INSERT INTO presun (id_snimaca_z, id_snimaca_na) VALUES( null, + " + idSnimaca + ")";
                 stmt.executeUpdate(sql);
+                zapisZaznam(3, timeSTamp, preparedZaz);
+                zapisZaznam(4, timeSTamp, preparedZaz);
+                datumy.add(timeSTamp);
             } 
             sql = "SELECT id_presunu FROM presun";
             rs = stmt.executeQuery(sql);
@@ -322,12 +397,13 @@ public class DBGenerator {
             PreparedStatement prepared = connection.prepareStatement("INSERT INTO pohyb (id_presunu, datum_od, id_vozna, kod ) VALUES ( ?,?,?,? )");
             int i = 0;
             for (Integer presun : presuny) {
+                System.out.println(i);
                 prepared.setInt(1, presun);
                 prepared.setTimestamp(2, timestamp);
                 prepared.setInt(3, idcka.get(i));
                 prepared.setInt(4, kody.get(i));
-                i++;
                 prepared.executeUpdate();
+                zapisZaznam(7, datumy.get(i++), preparedZaz);
             }
         } catch (SQLException ex) {
             Logger.getLogger(DBGenerator.class.getName()).log(Level.SEVERE, null, ex);
@@ -345,8 +421,10 @@ public class DBGenerator {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(connString,meno,heslo);
-            Random rand = new Random();   
-            for (int i = 0; i < pocetCyklov; i++) {
+            Random rand = new Random(); 
+            PreparedStatement prepared = connection.prepareStatement("INSERT INTO zaznam (id_pouzivatela,id_tabulky,datum) VALUES(?,?,?)");
+            for (int i = 0; i < 7; i++) {
+                System.out.println("cyklus " + i);
                 String sql = "SELECT id_snimaca_na, id_snimaca, id_pohybu, datum_od, id_vozna, kod FROM pohyb" +
                                     "        LEFT JOIN presun pr USING(id_presunu) " +
                                     "            LEFT JOIN pohyb_vozna_vlak pv USING(id_zaradenia)" +
@@ -360,18 +438,22 @@ public class DBGenerator {
                 PreparedStatement preparedMax = connection.prepareStatement("SELECT max(id_presunu) as max FROM presun");
                 ResultSet rsPohyby = stmt.executeQuery(sql);
                 sql = "SELECT max(id_presunu) as max FROM presun";
+                int poc = 0;
+                System.out.println("presuny");
                 while(rsPohyby.next()){
+                    System.out.println(poc++);
                     double prst = rand.nextDouble();
-                    if(prst < 0.2) {
-                        Timestamp datum_do = rsPohyby.getTimestamp("datum_od");
+                    if(prst < 0.01 && i > 7 ) {
+                        //Timestamp datum_do = rsPohyby.getTimestamp("datum_od");
+                        Timestamp datum_do = new Timestamp(117, i, 1, 10, 0, 0, 0);
                         int id_vozna = rsPohyby.getInt("id_vozna");
                         int kod = rsPohyby.getInt("kod");
                         Integer id_snimaca_na = rsPohyby.getInt("id_snimaca_na");
                         Integer id_snimaca = rsPohyby.getInt("id_snimaca");
                         Calendar cal = Calendar.getInstance();
                         cal.setTime(datum_do);
-                        int seconds = rand.nextInt(3600 * 24 * 3) + 1000;
-                        cal.add(Calendar.SECOND, seconds);
+                        int minutes = rand.nextInt(10000) + 1000;
+                        cal.add(Calendar.MINUTE, minutes);
                         datum_do = new Timestamp(cal.getTime().getTime());
                         updatePohyb.setTimestamp(1, datum_do);
                         updatePohyb.setInt(2, id_vozna);
@@ -400,6 +482,7 @@ public class DBGenerator {
                         }
                         preparedPresun.setInt(2, id_snimacaNovy);
                         preparedPresun.executeUpdate();
+                        zapisZaznam(4, datum_do, prepared);
                         ResultSet rsMax = preparedMax.executeQuery();
                         rsMax.next();
                         int max = rsMax.getInt(1);
@@ -408,6 +491,7 @@ public class DBGenerator {
                         preparedPohyb.setInt(3, id_vozna);
                         preparedPohyb.setInt(4, kod);
                         preparedPohyb.executeUpdate();
+                        zapisZaznam(7, datum_do, prepared);
                     }                 
                 }
                 PreparedStatement preparedVlak = connection.prepareStatement("INSERT INTO vlak (zaciatok, ciel, typ, dat_vypravenia, dat_dorazenia, vozne) VALUES( ? , ? ,? ,? ,?, T_VOZNE() )");
@@ -428,17 +512,21 @@ public class DBGenerator {
                 ResultSet rs = stmt.executeQuery(sql);
                 PreparedStatement preparedSnimaceStanica = connection.prepareStatement("SELECT id_snimaca FROM snimac WHERE id_stanice = ?");
                 
-                CallableStatement stmZarad = connection.prepareCall("{call zarad_vozen_do_vlaku_pom(?,?,?,?,?)}");
-                CallableStatement stmVyrad = connection.prepareCall("{call vyrad_vozen_z_vlaku_pom(?,?,?,?,?)}");
+                CallableStatement stmZarad = connection.prepareCall("{call zarad_vozen_do_vlaku_pom(?,?,?,?,?,?)}");
+                CallableStatement stmVyrad = connection.prepareCall("{call vyrad_vozen_z_vlaku_pom(?,?,?,?,?,?)}");
                 
                 ArrayList<Integer> idcka_stanic = new ArrayList<>(100);
                 while(rs.next()){
                     int id = rs.getInt("id_stanice");
                     idcka_stanic.add(id);
                 }
+                poc = 0;
+                System.out.println("vlaky");
                 for (int j = 0; j < idcka_stanic.size(); j++) {
+                    System.out.println(j);
                     double prst = rand.nextDouble();
-                    if(prst < 0.2) {
+                    if(prst < 0.2 && j != 225) {
+                        int idUzivatel = rand.nextInt(4) + 1;
                         int zaciatok = idcka_stanic.get(j);
                         int ciel;
                         do
@@ -456,10 +544,13 @@ public class DBGenerator {
                         ArrayList<Integer> zaradeneKody = new ArrayList<>();
                         ArrayList<Integer> zaradeneId = new ArrayList<>();
                         Timestamp maxTimestamp = null;
-                        int pocetVoznov = (int) (rowcount * ((rand.nextDouble() * 0.08) + 0.25));
+                        int pocetVoznov = rand.nextInt(37) + 4;                               
                         Timestamp prev = null;
                         for (int k = 0; k < pocetVoznov; k++) {
-                            vozne.next();
+                            boolean next = vozne.next();
+                            if( next == false) {
+                                break;
+                            }
                             int id_vozna = vozne.getInt("id_vozna");
                             int kod = vozne.getInt("kod");
                             Timestamp cas = vozne.getTimestamp("datum_od");
@@ -480,14 +571,24 @@ public class DBGenerator {
                             zaradeneKody.add(kod);
                             zaradeneId.add(id_vozna);
                         }
+                        Timestamp myTimeStamp = new Timestamp(117, i, 1, 10, 0, 0, 0);
+                        if(maxTimestamp == null) {
+                            maxTimestamp = myTimeStamp;
+                        } else {
+                            if(maxTimestamp.compareTo(myTimeStamp) > 0 ) {
+
+                            } else {
+                                maxTimestamp = myTimeStamp;
+                            }
+                        }
                         Calendar cal = Calendar.getInstance();
                         cal.setTime(maxTimestamp);
-                        cal.add(Calendar.MINUTE, rand.nextInt(180) + 180);
+                        cal.add(Calendar.MINUTE, rand.nextInt(20000) + 3000);
                         Timestamp dat_vyrazenia = new Timestamp(cal.getTime().getTime());
                         int typ = rand.nextInt(7) + 1;
                         cal = Calendar.getInstance();
                         cal.setTime(dat_vyrazenia);
-                        cal.add(Calendar.MINUTE, rand.nextInt(1440) + 720);
+                        cal.add(Calendar.MINUTE, rand.nextInt(6000) + 760);
                         Timestamp dat_dorazenia = new Timestamp(cal.getTime().getTime());
                         
                         preparedVlak.setInt(1, zaciatok);
@@ -496,6 +597,7 @@ public class DBGenerator {
                         preparedVlak.setTimestamp(4, dat_vyrazenia);
                         preparedVlak.setTimestamp(5, dat_dorazenia);
                         preparedVlak.executeUpdate();
+                        zapisZaznam(5, idUzivatel, dat_vyrazenia, prepared);
                         ResultSet maxIDVlakuRS = preparedVlakMax.executeQuery();
                         maxIDVlakuRS.next();
                         preparedSnimaceStanica.setInt(1, zaciatok);
@@ -518,6 +620,7 @@ public class DBGenerator {
                             cal.add(Calendar.MINUTE, rand.nextInt(180) * -1);
                             Timestamp dat_zaradenia = new Timestamp(cal.getTime().getTime());
                             stmZarad.setTimestamp(5, dat_zaradenia);
+                            stmZarad.setInt(6, idUzivatel);
                             stmZarad.executeUpdate();
                         }
                         preparedSnimaceStanica.setInt(1, ciel);
@@ -536,9 +639,10 @@ public class DBGenerator {
                             
                             cal = Calendar.getInstance();
                             cal.setTime(dat_dorazenia);
-                            cal.add(Calendar.MINUTE, rand.nextInt(100));
+                            cal.add(Calendar.MINUTE, rand.nextInt(1000));
                             Timestamp dat_zaradenia = new Timestamp(cal.getTime().getTime());
                             stmVyrad.setTimestamp(5, dat_zaradenia);
+                            stmVyrad.setInt(6, idUzivatel);
                             stmVyrad.executeUpdate();
                         }
                     }
@@ -572,5 +676,30 @@ public class DBGenerator {
             Logger.getLogger(DBGenerator.class.getName()).log(Level.SEVERE, null, ex);
         } 
         
+    }
+    
+    private void zapisZaznam(int idTabulky, Timestamp datum, PreparedStatement prepared) {
+        Random rand = new Random();
+        int id = rand.nextInt(4) + 1;
+        try {
+            prepared.setInt(1, id);
+            prepared.setInt(2, idTabulky);
+            prepared.setTimestamp(3, datum);
+            prepared.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBGenerator.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void zapisZaznam(int idTabulky, int idUzivatel, Timestamp datum, PreparedStatement prepared) {
+        Random rand = new Random();
+        try {
+            prepared.setInt(1, idUzivatel);
+            prepared.setInt(2, idTabulky);
+            prepared.setTimestamp(3, datum);
+            prepared.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBGenerator.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

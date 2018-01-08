@@ -53,3 +53,10 @@ BEGIN
     SELECT seq_id_pouzivatela.nextval INTO :new.id_pouzivatela FROM DUAL;
 END;
 /
+
+CREATE OR REPLACE TRIGGER id_zaznamu BEFORE INSERT ON ZAZNAM
+FOR EACH ROW
+BEGIN
+    SELECT seq_id_zaznamu.nextval INTO :new.id_zaznamu FROM DUAL;
+END;
+/
