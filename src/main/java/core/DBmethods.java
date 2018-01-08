@@ -1239,6 +1239,76 @@ public class DBmethods {
         return null;
     }
 	
+	public DefaultTableModel tableModelSkupinyVoznov(
+           String pKod, 
+           String pRad,
+           int    pVPrevadzke,
+           int    pInterabilitaOd, 
+           int    pInterabilitaDo,
+           int    pDlzkaOd,
+           int    pDlzkaDo,
+           int    pHmotnostOd,
+           int    pHmotnostDo,
+           String pIdSpolocnosti) 
+    {
+        
+        Connection connection = null;
+        Statement  stmt;
+        String     sql;
+        StringBuilder result = new StringBuilder();
+        
+        String podmienka_idSpolocnosti = "";
+        String podmienka_kod           = "";
+        String podmienka_vPrevadzke    = "";
+        String podmienka_rad           = "";
+        
+        if(!pIdSpolocnosti.isEmpty() && !pIdSpolocnosti.equals("") && !pIdSpolocnosti.equals(" ")) {
+            podmienka_idSpolocnosti = " id_spolocnosti = "+pIdSpolocnosti+" and ";
+        }
+        
+        if(!pKod.isEmpty() && !pKod.equals("") && !pKod.equals(" ")) {
+            podmienka_kod = " kod = "+pKod+" and ";
+        }
+        
+        if(!pRad.isEmpty() && !pRad.equals("") && !pRad.equals(" ")) {
+            podmienka_rad = " rad = '"+pRad+"' and ";
+        }
+        
+        if        (pVPrevadzke == 0) {
+            podmienka_vPrevadzke = " v_prevadzke = 'N' and ";
+        } else if (pVPrevadzke == 1) {
+            podmienka_vPrevadzke = " v_prevadzke = 'A' and ";
+        }
+        
+        try {
+
+            connection   = DriverManager.getConnection(connString,meno,heslo);
+            stmt         = connection.createStatement();          
+            sql          = "select id_vozna, kod, rad, v_prevadzke, nazov as NAZOV_SPOLOCNOSTI from VIEW_VSETKY_VOZNE"
+                         + " where "
+                         + podmienka_idSpolocnosti
+                         + podmienka_kod
+                         + podmienka_rad
+                         + podmienka_vPrevadzke  
+                         + " hmotnost >= "+pHmotnostOd+" and "
+						 + " hmotnost <= "+pHmotnostDo+" and "
+                         + " dlzka >= "+pDlzkaOd+" and "
+                         + " dlzka <= "+pDlzkaDo+" and "
+                         + " interabilita >= "+pInterabilitaOd+" and "
+                         + " interabilita <= "+pInterabilitaDo;
+                                  
+            
+            ResultSet rs = stmt.executeQuery(sql);
+
+            return buildTableModel(rs);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		
+        return null;     
+    }
+	
 	private DefaultTableModel buildTableModel(ResultSet rs) throws SQLException {
 
 		ResultSetMetaData metaData = rs.getMetaData();
@@ -1625,5 +1695,262 @@ public class DBmethods {
 
         return result;
     }
+	
+	//*********************************************************************************************
+    //  STATISTIKY - TABLE MODELS
+	//*********************************************************************************************
+	
+	public DefaultTableModel tableModel_statistika_pocetPouzitychVoznovZaStvrtrokPodlaSpolocnosti(String pRok) {
         
+        Connection connection = null;
+        Statement  stmt;
+        String     sql;
+        String     result = "";
+
+        try {
+
+            connection   = DriverManager.getConnection(connString,meno,heslo);
+            stmt         = connection.createStatement();          
+            sql          = "select nazov_spolocnosti,\n" +
+                    "        sum(case when extract(month from dat_vypravenia) between 1 and 3 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as PRVY_STVRTROK,\n" +
+                    "        sum(case when extract(month from dat_vypravenia) between 4 and 6 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as DRUHY_STVRTROK,\n" +
+                    "        sum(case when extract(month from dat_vypravenia) between 7 and 9 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as TRETI_STVRTROK,\n" +
+                    "        sum(case when extract(month from dat_vypravenia) between 10 and 12 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as STVRTY_STVRTROK\n" +
+                    "        \n" +
+                    "    from view_vozne_vlaku\n" +
+                    "     where extract(year from dat_vypravenia) = "+pRok+"\n" +
+                    "      group by nazov_spolocnosti";
+            
+            ResultSet rs = stmt.executeQuery(sql);
+
+            return buildTableModel(rs);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+	
+	
+	public DefaultTableModel tableModel_statistika_pocetZaradeniVoznovPodlaTypuVozna(String pObdobie) {
+        
+        Connection connection = null;
+        Statement  stmt;
+        String     sql;
+        String     result = "";
+
+        try {
+
+            connection   = DriverManager.getConnection(connString,meno,heslo);
+            stmt         = connection.createStatement();          
+            sql          = "select substr(rad,1,1) as TYP_VOZNA,\n" +
+                    "        sum(case when extract(month from datum_od) between 1 and 3 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as PRVY_STVRTROK,\n" +
+                    "        sum(case when extract(month from datum_od) between 4 and 6 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as DRUHY_STVRTROK,\n" +
+                    "        sum(case when extract(month from datum_od) between 7 and 9 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as TRETI_STVRTROK,\n" +
+                    "        sum(case when extract(month from datum_od) between 10 and 12 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as STVRTY_STVRTROK\n" +
+                    "from pohyb\n" +
+                    "  join pohyb_vozna_vlak using(id_zaradenia)\n" +
+                    "  join vozen using (id_vozna)\n" +
+                    "  join typ_vozna on (vozen.kod = typ_vozna.kod)\n" +
+                    "    where typ_pohybu = 'Z' and extract(year from datum_od) = "+pObdobie+"\n" +
+                    "      group by substr(rad,1,1)\n" +
+                    "      order by TYP_VOZNA";
+            
+            ResultSet rs = stmt.executeQuery(sql);
+
+            return buildTableModel(rs);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+	
+	public DefaultTableModel tableModel_statistika_pocetVoznovVStanici(String pRok, String pIdStanice) {
+        
+        Connection connection = null;
+        Statement  stmt;
+        String     sql;
+        String     result = "";
+
+        try {
+            connection   = DriverManager.getConnection(connString,meno,heslo);
+            stmt         = connection.createStatement();          
+            sql          = "select nazov_spolocnosti, nazov_stanice,\n" +
+                    "        sum(case when extract(month from datum_od) between 1 and 3 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as PRVY_STVRTROK,\n" +
+                    "        sum(case when extract(month from datum_od) between 4 and 6 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as DRUHY_STVRTROK,\n" +
+                    "        sum(case when extract(month from datum_od) between 7 and 9 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as TRETI_STVRTROK,\n" +
+                    "        sum(case when extract(month from datum_od) between 10 and 12 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as STVRTY_STVRTROK\n" +
+                    "        \n" +
+                    "    from zoznam_voznov_v_stanici\n" +
+                    "    where extract(year from datum_od) = "+pRok+" and id_stanice = "+pIdStanice+"\n" +
+                    "      group by nazov_spolocnosti,nazov_stanice\n" +
+                    "       order by nazov_spolocnosti  ";
+            
+            ResultSet rs = stmt.executeQuery(sql);
+
+            return buildTableModel(rs);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+	
+	public DefaultTableModel tableModel_statistika_poctyTypovVoznovVStaniciach(String pRok) {
+        Connection connection = null;
+        Statement  stmt;
+        String     sql;
+        String     result = "";
+
+        try {
+
+            connection   = DriverManager.getConnection(connString,meno,heslo);
+            stmt         = connection.createStatement();          
+            sql          = "select substr(rad,1,1) as TYP_VOZNA,\n" +
+                    "        sum(case when extract(month from datum_od) = 1 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as JANUAR,\n" +
+                    "        sum(case when extract(month from datum_od) = 2 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as FEBRUAR,\n" +
+                    "        sum(case when extract(month from datum_od) = 3 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as MAREC,\n" +
+                    "        sum(case when extract(month from datum_od) = 4 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as APRIL,\n" +
+                    "        sum(case when extract(month from datum_od) = 5 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as MAJ,\n" +
+                    "        sum(case when extract(month from datum_od) = 6 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as JUN,\n" +
+                    "        sum(case when extract(month from datum_od) = 7 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as JUL,\n" +
+                    "        sum(case when extract(month from datum_od) = 8 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as AUGUST,\n" +
+                    "        sum(case when extract(month from datum_od) = 9 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as SEPTEMBER,\n" +
+                    "        sum(case when extract(month from datum_od) = 10 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as OKTOBER,\n" +
+                    "        sum(case when extract(month from datum_od) = 11 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as NOVEMBER,\n" +
+                    "        sum(case when extract(month from datum_od) = 12 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as DECEMBER\n" +
+                    "        \n" +
+                    "    from zoznam_voznov_v_stanici\n" +
+                    "    where extract(year from datum_od) = "+pRok+"\n" +
+                    "      group by substr(rad,1,1)\n" +
+                    "      order by typ_vozna";
+            
+            ResultSet rs = stmt.executeQuery(sql);
+
+            return buildTableModel(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+	}
+	
+	public DefaultTableModel tableModel_statistika_pocetZaznamovPouzivatelov(String pRok) {
+        
+        Connection connection = null;
+        Statement  stmt;
+        String     sql;
+        String     result = "";
+
+        try {
+
+            connection   = DriverManager.getConnection(connString,meno,heslo);
+            stmt         = connection.createStatement();          
+            sql          = "select meno||' '||priezvisko as MENO_PRACOVNIKA,\n" +
+                    "        sum(case when extract(month from datum) = 1 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as JANUAR,\n" +
+                    "        sum(case when extract(month from datum) = 2 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as FEBRUAR,\n" +
+                    "        sum(case when extract(month from datum) = 3 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as MAREC,\n" +
+                    "        sum(case when extract(month from datum) = 4 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as APRIL,\n" +
+                    "        sum(case when extract(month from datum) = 5 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as MAJ,\n" +
+                    "        sum(case when extract(month from datum) = 6 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as JUN,\n" +
+                    "        sum(case when extract(month from datum) = 7 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as JUL,\n" +
+                    "        sum(case when extract(month from datum) = 8 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as AUGUST,\n" +
+                    "        sum(case when extract(month from datum) = 9 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as SEPTEMBER,\n" +
+                    "        sum(case when extract(month from datum) = 10 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as OKTOBER,\n" +
+                    "        sum(case when extract(month from datum) = 11 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as NOVEMBER,\n" +
+                    "        sum(case when extract(month from datum) = 12 then 1\n" +
+                    "            else 0\n" +
+                    "        end) as DECEMBER\n" +
+                    "        \n" +
+                    "    from zaznam\n" +
+                    "      join pouzivatel using(id_pouzivatela)\n" +
+                    "    where extract(year from datum) = "+pRok+"\n" +
+                    "      group by meno||' '||priezvisko\n" +
+                    "      order by MENO_PRACOVNIKA";
+            
+            ResultSet rs = stmt.executeQuery(sql);
+
+            return buildTableModel(rs);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+	
 }

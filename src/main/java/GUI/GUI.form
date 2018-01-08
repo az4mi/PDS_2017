@@ -2227,7 +2227,7 @@
                               <Component id="btn_statistika_pocetPouzitychVoznovPodlaSpolocnosti" max="32767" attributes="0"/>
                               <Component id="btn_statistika_pocetVoznovVStaniciachPodlaTypu" max="32767" attributes="0"/>
                               <Component id="btn_statistika_pocetZaznamovPrePouzivatela" max="32767" attributes="0"/>
-                              <Component id="jButton5" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btn_statistika_pocetVoznovVStanici" alignment="0" max="32767" attributes="0"/>
                               <Component id="btn_pocetZaradeniVoznovPodlaTypuVozna" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -2296,7 +2296,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel84" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_statistika_pocetVoznovVStanici" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="58" max="32767" attributes="0"/>
                   <Component id="btn_statistiky_koniec" min="-2" max="-2" attributes="0"/>
@@ -2352,12 +2352,12 @@
             <Property name="text" type="java.lang.String" value="Pocet voznov pre spolocnosti podla stanice:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton5">
+        <Component class="javax.swing.JButton" name="btn_statistika_pocetVoznovVStanici">
           <Properties>
             <Property name="text" type="java.lang.String" value="Zobraz statistiku"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_statistika_pocetVoznovVStaniciActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel85">
