@@ -50,7 +50,6 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
         
         try {
                 
@@ -156,7 +155,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
         
         try {
                 
@@ -169,21 +168,21 @@ public class DBmethods {
      
             while(rs.next()){
                 
-                result += "Vlak\n"
+                result.append("Vlak\n"
                         + " > id              = "+rs.getString("id_vlaku")+"\n"
                         + " > zaciatok        = "+rs.getString("zaciatok")+"\n"
                         + " > ciel            = "+rs.getString("ciel")+"\n"
                         + " > typ             = "+rs.getString("typ")+"\n"
                         + " > dat. vypravenia = "+rs.getString("dat_vypravenia")+"\n"
                         + " > dat. dorazenia  = "+rs.getString("dat_dorazenia")+"\n"
-                        + " > vozne           = "+rs.getObject("vozne")+"\n\n";        
+                        + " > vozne           = "+rs.getObject("vozne")+"\n\n");        
             }
             
         } catch (SQLException ex) {
             Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return result;
+        return result.toString();
     }
     
     public String zobrazPohybVoznaVlak() {
@@ -191,7 +190,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
         
         try {
                 
@@ -204,11 +203,11 @@ public class DBmethods {
      
             while(rs.next()){
                 
-                result += "Pohyb vozna vlak\n"
+                result.append("Pohyb vozna vlak\n"
                         + " > id zaradenia = "+rs.getString("id_zaradenia")+"\n"
                         + " > typ pohybu   = "+rs.getString("typ_pohybu")+"\n"
                         + " > id snimaca   = "+rs.getString("id_snimaca")+"\n"
-                        + " > id vlaku     = "+rs.getString("id_vlaku")+"\n\n";
+                        + " > id vlaku     = "+rs.getString("id_vlaku")+"\n\n");
                                 
             }
             
@@ -216,7 +215,7 @@ public class DBmethods {
             Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return result;
+        return result.toString();
     }
     
     public String zobrazPohyb() {
@@ -224,7 +223,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
         
         try {
                 
@@ -235,7 +234,7 @@ public class DBmethods {
             
             while(rs.next()){
                 
-                result += "Pohyb\n"
+                result.append("Pohyb\n"
                         + " > id pohybu     = "+rs.getString("id_pohybu")+"\n"
                         + " > id presunu    = "+rs.getString("id_presunu")+"\n"
                         + " > id zaradenia  = "+rs.getString("id_zaradenia")+"\n"
@@ -243,7 +242,7 @@ public class DBmethods {
                         + " > datum do      = "+rs.getString("datum_do")+"\n"
                         + " > id_vozna      = "+rs.getString("id_vozna")+"\n"
                         + " > kod           = "+rs.getString("kod")+"\n"
-                        + " > poznamka      = "+rs.getString("poznamka")+"\n\n";
+                        + " > poznamka      = "+rs.getString("poznamka")+"\n\n");
                                 
             }
             
@@ -251,7 +250,7 @@ public class DBmethods {
             Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return result;
+        return result.toString();
     }
     
     public String zobrazSnimac() {
@@ -259,7 +258,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
         
         try {
                 
@@ -270,12 +269,12 @@ public class DBmethods {
             
             while(rs.next()){
                 
-                result += "Snimac\n"
+                result.append("Snimac\n"
                         + " > id snimaca = "+rs.getString("id_snimaca")+"\n"
                         + " > gps sirka  = "+rs.getString("gps_sirka")+"\n"
                         + " > gps dlzka  = "+rs.getString("gps_dlzka")+"\n"
                         + " > cislo      = "+rs.getString("cislo")+"\n"
-                        + " > id stanice = "+rs.getString("id_stanice")+"\n\n";
+                        + " > id stanice = "+rs.getString("id_stanice")+"\n\n");
                     
                                 
             }
@@ -284,7 +283,7 @@ public class DBmethods {
             Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return result;
+        return result.toString();
     }
     
     public String zobrazKolaj() {
@@ -292,7 +291,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
         
         try {
                 
@@ -305,10 +304,10 @@ public class DBmethods {
      
             while(rs.next()){
                 
-                result += "Kolaj\n"
+                result.append("Kolaj\n"
                         + " > cislo      = "+rs.getString("cislo")+"\n"
                         + " > dlzka      = "+rs.getString("dlzka")+"\n"
-                        + " > id stanice = "+rs.getString("id_stanice")+"\n\n";
+                        + " > id stanice = "+rs.getString("id_stanice")+"\n\n");
                                 
             }
             
@@ -316,7 +315,7 @@ public class DBmethods {
             Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return result;
+        return result.toString();
     }
     
     public String zobrazStanice() {
@@ -324,7 +323,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
         
         try {
                 
@@ -337,11 +336,11 @@ public class DBmethods {
      
             while(rs.next()){
                 
-                result += "Stanica\n"
+                result.append("Stanica\n"
                         + " > id stanice = "+rs.getString("id_stanice")+"\n"
                         + " > nazov      = "+rs.getString("nazov")+"\n"
                         + " > gps sirka  = "+rs.getString("gps_sirka")+"\n"
-                        + " > gps dlzka  = "+rs.getString("gps_dlzka")+"\n\n";
+                        + " > gps dlzka  = "+rs.getString("gps_dlzka")+"\n\n");
                                 
             }
             
@@ -349,14 +348,14 @@ public class DBmethods {
             Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return result;
+        return result.toString();
     }
     
     public String zobrazVozen() {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
         
         try {
                 
@@ -367,11 +366,11 @@ public class DBmethods {
      
             while(rs.next()){
                 
-                result += "Vozen\n"
+                result.append("Vozen\n"
                         + " > id vozna       = "+rs.getString("id_vozna")+"\n"
                         + " > kod            = "+rs.getString("kod")+"\n"
                         + " > v prevadzke    = "+rs.getString("v_prevadzke")+"\n"
-                        + " > id spolocnosti = "+rs.getString("id_spolocnosti")+"\n\n";
+                        + " > id spolocnosti = "+rs.getString("id_spolocnosti")+"\n\n");
                                 
             }
             
@@ -379,7 +378,7 @@ public class DBmethods {
             Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return result;
+        return result.toString();
     }
     
     public String zobrazPresun() {
@@ -387,7 +386,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
         
         try {
                 
@@ -398,10 +397,10 @@ public class DBmethods {
      
             while(rs.next()){
                 
-                result += "Presun\n"
+                result.append("Presun\n"
                         + " > id presunu    = "+rs.getString("id_presunu")+"\n"
                         + " > id snimaca z  = "+rs.getString("id_snimaca_z")+"\n"
-                        + " > id snimaca na = "+rs.getString("id_snimaca_na")+"\n\n";
+                        + " > id snimaca na = "+rs.getString("id_snimaca_na")+"\n\n");
                                 
             }
             
@@ -409,7 +408,7 @@ public class DBmethods {
             Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return result;
+        return result.toString();
     }
     
     public String zobrazSpolocnost() {
@@ -417,7 +416,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
         
         try {
                 
@@ -428,9 +427,9 @@ public class DBmethods {
      
             while(rs.next()){
                 
-                result += "Spolocnost\n"
+                result.append("Spolocnost\n"
                         + " > id spolocnosti = "+rs.getString("id_spolocnosti")+"\n"
-                        + " > nazov          = "+rs.getString("nazov")+"\n\n";
+                        + " > nazov          = "+rs.getString("nazov")+"\n\n");
                                 
             }
             
@@ -438,7 +437,7 @@ public class DBmethods {
             Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return result;
+        return result.toString();
     }
     
     public String zobrazTypVozna() {
@@ -446,7 +445,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
         
         try {
                 
@@ -470,7 +469,7 @@ public class DBmethods {
      
             while(rs.next()){
                 
-                result += "Typ vozna\n"
+                result.append("Typ vozna\n"
                         + " > rad           = "+rs.getString("rad")+"\n"
                         + " > kod           = "+rs.getString("kod")+"\n"
                         + " > interabilita  = "+rs.getString("interabilita")+"\n"
@@ -483,7 +482,7 @@ public class DBmethods {
                         + " > loz. vyska    = "+rs.getString("loz_vyska")+"\n"
                         + " > loz. objem    = "+rs.getString("loz_objem")+"\n"
                         + " > poznamka      = "+rs.getString("poznamka")+"\n"
-                        + " > obrazok       = "+rs.getBlob("obrazok")+"\n\n";
+                        + " > obrazok       = "+rs.getBlob("obrazok")+"\n\n");
                                 
             }
             
@@ -491,7 +490,7 @@ public class DBmethods {
             Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return result;
+        return result.toString();
     }
     
     public String zobrazPouzivatel() {
@@ -499,7 +498,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
         
         try {
                 
@@ -510,11 +509,11 @@ public class DBmethods {
      
             while(rs.next()){
                 
-                result += "Pouzivatel\n"
+                result.append("Pouzivatel\n"
                         + " > id pouzivatela = "+rs.getString("id_pouzivatela")+"\n"
                         + " > rodne cislo    = "+rs.getString("rod_cislo")+"\n"
                         + " > meno           = "+rs.getString("meno")+"\n"
-                        + " > priezvisko     = "+rs.getString("priezvisko")+"\n\n";
+                        + " > priezvisko     = "+rs.getString("priezvisko")+"\n\n");
                                 
             }
             
@@ -522,7 +521,7 @@ public class DBmethods {
             Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return result;
+        return result.toString();
     }
     
     public String zobrazZaznam() {
@@ -530,7 +529,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
         
         try {
                 
@@ -541,10 +540,10 @@ public class DBmethods {
      
             while(rs.next()){
                 
-                result += "Zaznam\n"
+                result.append("Zaznam\n"
                         + " > datum          = "+rs.getString("datum")+"\n"
                         + " > tabulka        = "+rs.getString("tabulka")+"\n"
-                        + " > id pouzivatela = "+rs.getString("id_pouzivatela")+"\n\n";
+                        + " > id pouzivatela = "+rs.getString("id_pouzivatela")+"\n\n");
                                 
             }
             
@@ -552,7 +551,7 @@ public class DBmethods {
             Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return result;
+        return result.toString();
     }
     
     public void pridajVozen(int pIdSpolocnosti, int pKod, int pIdVozna, int pIdSnimaca) {
@@ -674,7 +673,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
         
         String vPrevadzke;
         if(pVPrevadzke) {
@@ -700,7 +699,7 @@ public class DBmethods {
      
             while(rs.next()){
                                
-                result += "Vozen\n"
+                result.append("Vozen\n"
                         + " > V prevadzke          = "+vPrevadzke+"\n"   
                         + " > ID vozna             = "+rs.getString("id_vozna")+"\n"                     
                         + " > Patriaci spolocnosti = "+rs.getString("nazov_spolocnosti")+"\n"
@@ -708,7 +707,7 @@ public class DBmethods {
                         + " > Kod                  = "+rs.getString("kod")+"\n"
                         + " > Nazov stanice        = "+rs.getString("nazov_stanice")+"\n"
                         + " > Cas od               = "+rs.getString("datum_od")+"\n"
-                        + " > Cas do               = "+rs.getString("datum_do")+"\n\n";
+                        + " > Cas do               = "+rs.getString("datum_do")+"\n\n");
                                 
             }
             
@@ -716,7 +715,7 @@ public class DBmethods {
             Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return result;
+        return result.toString();
         
     }
     
@@ -725,7 +724,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
         
         String volitelnaPodmienka = "";
         if(!pIdVlaku.isEmpty() && !pIdVlaku.equals("") && !pIdVlaku.equals(" ")) {
@@ -752,7 +751,7 @@ public class DBmethods {
      
             while(rs.next()){
                                
-                result += "Vozen\n"
+                result.append("Vozen\n"
                         + " > ID vozna             = "+rs.getString("id_vozna")+"\n"                     
                         + " > Patriaci spolocnosti = "+rs.getString("nazov_spolocnosti")+"\n"
                         + " > Rad                  = "+rs.getString("rad")+"\n"
@@ -763,7 +762,7 @@ public class DBmethods {
                         + " > ID vlaku             = "+rs.getString("id_vlaku")+"\n"
                         + " > Datum vypravenia     = "+rs.getString("dat_vypravenia")+"\n"
                         + " > Zaciatok             = "+rs.getString("zaciatok")+"\n"
-                        + " > Ciel                 = "+rs.getString("ciel")+"\n\n";
+                        + " > Ciel                 = "+rs.getString("ciel")+"\n\n");
                                 
             }
             
@@ -771,7 +770,7 @@ public class DBmethods {
             Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return result;    
+        return result.toString();    
     }
 	
     public String zobrazAktualnuPolohuVozna(int pIdVozna, int pKodVozna) {
@@ -779,7 +778,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
 
         try {
 
@@ -794,12 +793,12 @@ public class DBmethods {
 
             while(rs.next()){
 
-                result += "Vozen\n"
+                result.append("Vozen\n"
                         + " > ID vozna  = "+rs.getString("id_vozna")+"\n"
                         + " > Kod       = "+rs.getString("kod")+"\n"
                         + " > Poznamka  = "+rs.getString("poznamka")+"\n"
                         + " > GPS sirka = "+rs.getString("gps_sirka")+"\n"
-                        + " > GPS dlzka = "+rs.getString("gps_dlzka")+"\n\n";
+                        + " > GPS dlzka = "+rs.getString("gps_dlzka")+"\n\n");
 
             }
 
@@ -807,7 +806,7 @@ public class DBmethods {
             Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return result;
+        return result.toString();
     }
 	
     public String zobrazHistoriuVyskytuVoznaZaObdobie(int pIdVozna, int pKodVozna, Timestamp pOd, Timestamp pDo) {
@@ -815,7 +814,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
 
         try {
 
@@ -837,7 +836,7 @@ public class DBmethods {
                 
                 if(!firstOutput) {
                     
-                    result += "Vozen\n"
+                    result.append("Vozen\n"
                         + " > ID vozna             = "+rs.getString("id_vozna")+"\n"                     
                         + " > Patriaci spolocnosti = "+rs.getString("nazov_spolocnosti")+"\n"
                         + " > ID spolocnosti       = "+rs.getString("id_spolocnosti")+"\n"
@@ -854,19 +853,19 @@ public class DBmethods {
                             + "      > GPS dlzka    = "+rs.getString("gps_dlzka")+"\n"
                             + "      > Typ pohybu   = "+rs.getString("typ_pohybu")+"\n"
                             + "      > Datum od     = "+rs.getString("datum_od")+"\n"
-                            + "      > Datum do     = "+rs.getString("datum_do")+"\n\n";
+                            + "      > Datum do     = "+rs.getString("datum_do")+"\n\n");
                     
                     
                     firstOutput = true;
                     
                 } else {
                     
-                    result += "      > Nazov miesta = "+rs.getString("nazov")+"\n"
+                    result.append("      > Nazov miesta = "+rs.getString("nazov")+"\n"
                             + "      > GPS sirka    = "+rs.getString("gps_sirka")+"\n"
                             + "      > GPS dlzka    = "+rs.getString("gps_dlzka")+"\n"
                             + "      > Typ pohybu   = "+rs.getString("typ_pohybu")+"\n"
                             + "      > Datum od     = "+rs.getString("datum_od")+"\n"
-                            + "      > Datum do     = "+rs.getString("datum_do")+"\n\n";
+                            + "      > Datum do     = "+rs.getString("datum_do")+"\n\n");
             
                 }
             }
@@ -875,7 +874,7 @@ public class DBmethods {
             Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return result;
+        return result.toString();
     }
 	
     public String zobrazenieAktualnejPolohyVoznov(String pIdSpolocnosti, String pKod, int pHmotnostOd, int pHmotnostDo, int pDlzkaOd, int pDlzkaDo, int pVPrevadzke) {
@@ -883,7 +882,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
         
         String podmienka_idSpolocnosti = "";
         String podmienka_kod           = "";
@@ -922,7 +921,7 @@ public class DBmethods {
 
             while(rs.next()){
 
-                result += "Vozen\n"
+                result.append("Vozen\n"
                         + " > ID vozna             = "+rs.getString("id_vozna")+"\n"                     
                         + " > Patriaci spolocnosti = "+rs.getString("nazov_spolocnosti")+"\n"
                         + " > ID spolocnosti       = "+rs.getString("id_spolocnosti")+"\n"
@@ -936,13 +935,13 @@ public class DBmethods {
                         + " > Aktualna poloha vozna\n"
                         + "    > Nazov miesta = "+rs.getString("nazov")+"\n"
                         + "    > GPS sirka    = "+rs.getString("gps_sirka")+"\n"
-                        + "    > GPS dlzka    = "+rs.getString("gps_dlzka")+"\n\n";
+                        + "    > GPS dlzka    = "+rs.getString("gps_dlzka")+"\n\n");
             }
         } catch (SQLException ex) {
             Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
         }
 		
-        return result;
+        return result.toString();
     }
         
     public String zobrazSkupinyVoznov(
@@ -961,7 +960,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
         
         String podmienka_idSpolocnosti = "";
         String podmienka_kod           = "";
@@ -1008,7 +1007,7 @@ public class DBmethods {
 
             while(rs.next()){
 
-                result += "Vozen\n"
+                result.append("Vozen\n"
                         + " > ID vozna             = "+rs.getString("id_vozna")+"\n"                     
                         + " > Patriaci spolocnosti = "+rs.getString("nazov")+"\n"
                         + " > ID spolocnosti       = "+rs.getString("id_spolocnosti")+"\n"
@@ -1024,14 +1023,14 @@ public class DBmethods {
                         + " > loz. plocha          = "+rs.getString("loz_plocha")+"\n"
                         + " > loz. vyska           = "+rs.getString("loz_vyska")+"\n"
                         + " > loz. objem           = "+rs.getString("loz_objem")+"\n"
-                        + " > Poznamka             = "+rs.getString("poznamka")+"\n\n";
+                        + " > Poznamka             = "+rs.getString("poznamka")+"\n\n");
                         
             }
         } catch (SQLException ex) {
             Logger.getLogger(DBmethods.class.getName()).log(Level.SEVERE, null, ex);
         }
 		
-        return result;
+        return result.toString();
         
     }
 	
@@ -1044,7 +1043,7 @@ public class DBmethods {
 			Connection connection = null;
 			Statement  stmt;
 			String     sql;
-			String     result = "";
+			StringBuilder result = new StringBuilder();
 			
 			
 			connection = DriverManager.getConnection(connString,meno,heslo);
@@ -1066,7 +1065,7 @@ public class DBmethods {
 			Connection connection = null;
 			Statement  stmt;
 			String     sql;
-			String     result = "";
+			StringBuilder result = new StringBuilder();
 			
 			String vPrevadzke;
 			if(pVPrevadzke) {
@@ -1101,7 +1100,7 @@ public class DBmethods {
 			Connection connection = null;
 			Statement  stmt;
 			String     sql;
-			String     result = "";
+			StringBuilder result = new StringBuilder();
 			
 			String volitelnaPodmienka = "";
 			if(!pIdVlaku.isEmpty() && !pIdVlaku.equals("") && !pIdVlaku.equals(" ")) {
@@ -1138,7 +1137,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
 
         try {
 
@@ -1164,7 +1163,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
 
         try {
 
@@ -1193,7 +1192,7 @@ public class DBmethods {
         Connection connection = null;
         Statement  stmt;
         String     sql;
-        String     result = "";
+        StringBuilder result = new StringBuilder();
         
         String podmienka_idSpolocnosti = "";
         String podmienka_kod           = "";
@@ -1267,7 +1266,7 @@ public class DBmethods {
 			Connection connection = null;
 			Statement  stmt;
 			String     sql;
-			String     result = "";
+			StringBuilder result = new StringBuilder();
 			
 			connection   = DriverManager.getConnection(connString,meno,heslo);
 			stmt         = connection.createStatement();
