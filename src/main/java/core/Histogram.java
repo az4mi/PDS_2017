@@ -13,7 +13,7 @@ import java.awt.*;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-public class Histogram extends ApplicationFrame {
+public class Histogram extends JFrame {
 
     private String chartTitle;
 
@@ -23,7 +23,8 @@ public class Histogram extends ApplicationFrame {
 
     public Histogram(String applicationTitle, String pChartTitle, String pXAxisName, String pYAxisName) {
         super(applicationTitle);
-        setDefaultCloseOperation(ApplicationFrame.HIDE_ON_CLOSE);
+        super.setDefaultCloseOperation(ApplicationFrame.HIDE_ON_CLOSE);
+        this.setDefaultCloseOperation(ApplicationFrame.HIDE_ON_CLOSE);
         chartTitle=pChartTitle;
         dataset = new DefaultCategoryDataset();
         createGraph(pXAxisName, pYAxisName);
@@ -58,6 +59,7 @@ public class Histogram extends ApplicationFrame {
 
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
         plot.getRenderer().setSeriesPaint(0, Color.BLUE);
+        
 
         ChartPanel chartPanel=new ChartPanel(chart);
         chartPanel.setPreferredSize( new Dimension(560, 367));
